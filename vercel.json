@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "outputDirectory": "public",
+  "rewrites": [
+    { "source": "/", "destination": "/api/app" },
+    { "source": "/teacher", "destination": "/api/teacher" }
+  ],
+  "functions": {
+    "api/app.js": { "includeFiles": "private/index.html" },
+    "api/teacher.js": { "includeFiles": "private/teacher.html" }
+  },
+  "headers": [
+    { "source": "/(.*)", "headers": [ { "key": "X-Robots-Tag", "value": "noindex, nofollow" } ] },
+    { "source": "/img/(.*)", "headers": [ { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" } ] }
+  ]
+}
