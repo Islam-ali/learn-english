@@ -1032,6 +1032,12 @@ details.guide-d summary{cursor:pointer;color:var(--rx);font-weight:700}
 .lesson-sb,.t-sb{--mark:var(--sb-mark);--mark-soft:var(--sb-mark-soft)}
 .lesson-fe,.t-fe{--mark:var(--fe-mark);--mark-soft:var(--fe-mark-soft)}
 .lesson-w3,.t-w3{--mark:var(--hw-mark);--mark-soft:var(--hw-mark-soft)}
+:root{--ex-mark:#3B4A63;--ex-mark-soft:#E6EBF3}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--ex-mark:#AFC0DA;--ex-mark-soft:#1E2633}}
+:root[data-theme="dark"]{--ex-mark:#AFC0DA;--ex-mark-soft:#1E2633}
+.lesson-ex1,.t-ex1,.lesson-ex2,.t-ex2{--mark:var(--ex-mark);--mark-soft:var(--ex-mark-soft)}
+.exam [data-model]{display:none}
+.tfb button[aria-pressed="true"]{border-color:var(--rx);background:var(--rx-soft);color:var(--rx)}
 .x-pics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:14px}
 .x-pics figure{margin:0;position:relative}
 .x-pics img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:10px;display:block;border:1px solid var(--line);background:var(--line-2)}
@@ -1122,7 +1128,7 @@ details.guide-d summary{cursor:pointer;color:var(--rx);font-weight:700}
   <!-- ============ HOMEWORK (sent to the teacher) ============ -->
   <div class="view" id="v-homework" data-view="homework" hidden>
     <a class="back" href="#home">All lessons</a>
-    <header class="hw-head"><span class="mono" style="color:var(--mark)">Homework</span><h1>My homework</h1><p class="lead">Do your workbook pages and assignments, then send them to your teacher. Her comments appear here.</p></header>
+    <header class="hw-head"><span class="mono" style="color:var(--mark)">Homework</span><h1>My homework</h1><p class="lead">Do your exams, workbook pages and assignments, then send them to your teacher. Her comments appear here.</p></header>
     <div id="hw-sync"></div>
     <div id="hw-list"></div>
   </div>
@@ -5703,13 +5709,14 @@ const txtParts=s=>String(s).split(/(\([^)]*\))/).map(y=>/^\(/.test(y)?`<span cla
 
 function buildLesson(L){
   const p=L.p,key=L.key,view='v-'+key;
+  const EX=!!L.exam,CT=EX?'<span class="res" hidden></span>':CTL; // exam: no checks, no answers, no model answers
   const DEF={ans:{},drafts:{},revealed:{},c:{},chat:{},notes:''};
   const ST=makeStore(L.storeKey,DEF,{topic:L.topic,focus:L.focus,fbHint:L.fbHint||''});
   const S=ST.S,save=()=>ST.save();
   const cs=id=>S.c[id]||(S.c[id]={});
   const COMPS={},PEND=[],STOPS=[];
   const SECS=L.sections.map(s=>({id:s.id,short:s.short,name:s.name,comps:[],threads:[]}));
-  const T=(id,q,model,opt)=>thread(id,q,model,ST,opt);
+  const T=(id,q,model,opt)=>thread(id,q,EX?'':model,ST,opt);
   const qBlock=(id,n,q,model,opt)=>`<div class="q"><div class="q-head"><span class="q-n">${n}</span><p class="q-text">${esc(q)}</p>${sayBtn(q,'d','ib','Listen to the question')}</div>${T(id,q,model,opt)}</div>`;
 
   /* ---------- blocks → html ---------- */
@@ -5759,7 +5766,7 @@ function buildLesson(L){
             return `<input class="gin${chk&&v.trim()?(good?' ok':' no'):''}" data-gk="${k}" value="${esc(v)}" style="width:${w}ch" aria-label="Gap ${i+1}" autocomplete="off" autocapitalize="off" spellcheck="false">${chk&&!good?`<span class="fix">${cap?'Capital letter! ':''}${esc(x.a[0])}</span>`:''}`;
           }).join('');
           return `<li><span class="gn">${b.nums?b.nums[i]:(b.start||1)+i}</span><span class="s">${inner}</span>${chk&&all&&!b.nosay?sayBtn(full(i),''):''}</li>`;
-        }).join('')+`</ol>${CTL}`;
+        }).join('')+`</ol>${CT}`;
         el.innerHTML=h;res();
       }
       el.addEventListener('input',e=>{const i=e.target.closest('[data-gk]');if(!i)return;const c=cs(b.id);(c.v||(c.v={}))[i.dataset.gk]=i.value;if(c.chk){c.chk=false;el.querySelectorAll('.gin').forEach(x=>x.classList.remove('ok','no'));el.querySelectorAll('.fix').forEach(x=>x.remove());res();}save();});
@@ -5782,7 +5789,7 @@ function buildLesson(L){
           <div class="picks" role="group" aria-label="Answer for ${esc(r.t)}">${opts.map(k=>`<button type="button" class="pick" data-pk="${i}" data-v="${esc(k)}" aria-pressed="${v===k}"${r.lock?' disabled':''}>${esc(k)}</button>`).join('')}</div>
           ${chk&&!r.lock&&v!=null?`<span class="mark">${ok?'Correct':'Try again'}</span>`:''}</div>`;}).join('');
         const used=new Set(rows.map((r,i)=>pick(i)).filter(x=>x!=null));
-        el.innerHTML=(b.legend?`<div class="match"><div>${list}</div><ol class="advice">${Object.keys(b.legend).map(k=>`<li class="${used.has(k)?'used':''}"><span class="num">${esc(k)}</span><span>${esc(b.legend[k])}</span></li>`).join('')}</ol></div>`:list)+CTL;
+        el.innerHTML=(b.legend?`<div class="match"><div>${list}</div><ol class="advice">${Object.keys(b.legend).map(k=>`<li class="${used.has(k)?'used':''}"><span class="num">${esc(k)}</span><span>${esc(b.legend[k])}</span></li>`).join('')}</ol></div>`:list)+CT;
         const n=scored.filter(good).length,r=el.querySelector('.res');
         if(chk){r.textContent=`${n} / ${scored.length} correct`;r.className='res '+(n===scored.length?'ok':'no');}
       }
@@ -5802,7 +5809,7 @@ function buildLesson(L){
       const full=i=>b.items[i].map(x=>typeof x==='object'?x.o[x.a]:x).join('');
       function render(){
         const c=cs(b.id),V=c.v||{},chk=!!c.chk;
-        el.innerHTML=`<ol class="cs">${b.ex?`<li class="exl"><span class="gn">e.g.</span><span class="s">${b.ex}</span></li>`:''}${b.items.map((parts,i)=>`<li><span class="gn">${(b.start||1)+i}</span><span class="s">${parts.map((x,j)=>{if(typeof x==='string')return esc(x);const k=i+'-'+j,v=V[k];return `<span class="inline-opts${chk?' chk':''}" role="group">${x.o.map((o,m)=>`<button type="button" data-ok="${k}" data-m="${m}" aria-pressed="${v===m}" class="${chk&&v===m?(m===x.a?'ok':'no'):''}">${esc(o)}</button>`).join('<span aria-hidden="true">/</span>')}</span>`;}).join('')}</span>${chk&&parts.every((x,j)=>typeof x==='string'||ok(i+'-'+j))?sayBtn(full(i),''):''}</li>`).join('')}</ol>${CTL}`;
+        el.innerHTML=`<ol class="cs">${b.ex?`<li class="exl"><span class="gn">e.g.</span><span class="s">${b.ex}</span></li>`:''}${b.items.map((parts,i)=>`<li><span class="gn">${(b.start||1)+i}</span><span class="s">${parts.map((x,j)=>{if(typeof x==='string')return esc(x);const k=i+'-'+j,v=V[k];return `<span class="inline-opts${chk?' chk':''}" role="group">${x.o.map((o,m)=>`<button type="button" data-ok="${k}" data-m="${m}" aria-pressed="${v===m}" class="${chk&&v===m?(m===x.a?'ok':'no'):''}">${esc(o)}</button>`).join('<span aria-hidden="true">/</span>')}</span>`;}).join('')}</span>${chk&&parts.every((x,j)=>typeof x==='string'||ok(i+'-'+j))?sayBtn(full(i),''):''}</li>`).join('')}</ol>${CT}`;
         const n=keys.filter(ok).length,r=el.querySelector('.res');
         if(chk){r.textContent=`${n} / ${keys.length} correct`;r.className='res '+(n===keys.length?'ok':'no');}
       }
@@ -5836,10 +5843,10 @@ function buildLesson(L){
           if(r){if(r.ok)res=`<p class="tr-res ok">Correct! ${sayBtn(it.ans[0],'','ib sm')}</p>`;
             else res=`<p class="tr-res no">${esc(hint(it,r.v))}${it.ar?`<span class="ar">${esc(it.ar)}</span>`:''} ${r.show?`<br>Answer: <b>${esc(it.ans[0])}</b> ${sayBtn(it.ans[0],'','ib sm')}`:`<button type="button" class="btn quiet" data-tshow="${i}">Show answer</button>`}</p>`;}
           return `<div class="tr-row"><div class="tr-src"><span class="q-n">${esc(it.n||String((b.start||1)+i))}</span><b>${esc(it.src)}</b>${it.task?`<span class="tr-task">${esc(it.task)}</span>`:''}</div>
-            <div class="tr-in"><label class="sr" for="${p}ti-${b.id}-${i}">Your sentence</label><input class="inp" id="${p}ti-${b.id}-${i}" data-ti="${i}" value="${esc(r?r.v:(D[i]||''))}" autocomplete="off" placeholder="${esc(it.ph||b.ph||'Write the sentence')}"><button type="button" class="btn primary" data-tc="${i}">Check</button></div>${res}</div>`;}).join('')}</div>`;
+            <div class="tr-in"><label class="sr" for="${p}ti-${b.id}-${i}">Your sentence</label><input class="inp" id="${p}ti-${b.id}-${i}" data-ti="${i}" value="${esc(r?r.v:(D[i]||''))}" autocomplete="off" placeholder="${esc(it.ph||b.ph||'Write the sentence')}">${EX?'':`<button type="button" class="btn primary" data-tc="${i}">Check</button>`}</div>${EX?'':res}</div>`;}).join('')}</div>`;
       }
       el.addEventListener('click',e=>{const c=e.target.closest('[data-tc]');if(c){check(+c.dataset.tc);return;}const s=e.target.closest('[data-tshow]');if(s){R()[s.dataset.tshow].show=true;save();render();}});
-      el.addEventListener('keydown',e=>{const i=e.target.closest('[data-ti]');if(i&&e.key==='Enter'){e.preventDefault();check(+i.dataset.ti);}});
+      el.addEventListener('keydown',e=>{const i=e.target.closest('[data-ti]');if(i&&e.key==='Enter'){e.preventDefault();if(!EX)check(+i.dataset.ti);}});
       el.addEventListener('input',e=>{const i=e.target.closest('[data-ti]');if(i){const c=cs(b.id);(c.d||(c.d={}))[i.dataset.ti]=i.value;save();}});
       return {render,score:()=>b.items.filter((it,i)=>R()[i]&&R()[i].ok).length/b.items.length,
         text:()=>b.items.map((it,i)=>R()[i]?`${it.src} → ${R()[i].v}${R()[i].ok?' ✓':''}`:'').filter(Boolean)};
@@ -5849,9 +5856,9 @@ function buildLesson(L){
       function render(){
         const V=cs(b.id).v||{};
         el.innerHTML=`<div class="tf">${b.items.map((r,i)=>{const v=V[i];let fb='';
-          if(v!=null){const ok=v===r.a;
+          if(v!=null&&!EX){const ok=v===r.a;
             fb=`<p class="${b.rw?'rw-fb':'ev'}"><b style="color:${ok?'var(--ok)':'var(--bad)'}">${ok?'Yes!':b.rw?'Look again.':'Not quite.'}</b> ${b.rw?(r.a?'It\'s right. ':`It's wrong. Say: <b>${esc(r.fix)}</b> `):(r.a?'True. ':'False. ')}${r.why?esc(r.why):''}${r.ar?`<span class="ar" style="display:block">${esc(r.ar)}</span>`:''}</p>`;}
-          return `<div class="tf-row"><div class="tf-top"><span class="q-n">${i+1}</span><p>${esc(r.s)}</p><span class="tfb"><button type="button" data-tf="${i}" data-v="1" class="${v===true?(r.a?'right':'wrong'):''}">${lab[0]}</button><button type="button" data-tf="${i}" data-v="0" class="${v===false?(!r.a?'right':'wrong'):''}">${lab[1]}</button></span></div>${fb}</div>`;}).join('')}</div>`;
+          return `<div class="tf-row"><div class="tf-top"><span class="q-n">${i+1}</span><p>${esc(r.s)}</p><span class="tfb"><button type="button" data-tf="${i}" data-v="1" aria-pressed="${v===true}" class="${!EX&&v===true?(r.a?'right':'wrong'):''}">${lab[0]}</button><button type="button" data-tf="${i}" data-v="0" aria-pressed="${v===false}" class="${!EX&&v===false?(!r.a?'right':'wrong'):''}">${lab[1]}</button></span></div>${fb}</div>`;}).join('')}</div>`;
       }
       el.addEventListener('click',e=>{const t=e.target.closest('[data-tf]');if(!t)return;const c=cs(b.id),V=c.v||(c.v={}),i=+t.dataset.tf;V[i]=t.dataset.v==='1';save();render();const r=b.items[i];if(b.rw&&!r.a&&V[i]===false)speak(r.fix,'');});
       return {render,score:()=>{const V=cs(b.id).v||{};return b.items.filter((r,i)=>V[i]===r.a).length/b.items.length;}};
@@ -5861,10 +5868,10 @@ function buildLesson(L){
         const V=cs(b.id).v||{};
         el.innerHTML=`<div class="x-mcq">${b.items.map((q,i)=>{const v=V[i];
           return `<div class="x-mrow"><div class="tf-top"><span class="q-n">${esc(q.n||String(i+1))}</span><p>${esc(q.q)}</p>${q.say?sayBtn(q.say,'d','ib sm'):''}</div>
-          <div class="guess">${q.o.map((o,j)=>`<button type="button" class="opt${v===j?(j===q.a?' right':' wrong'):''}" data-mq="${i}" data-j="${j}" aria-pressed="${v===j}">${esc(o)}</button>`).join('')}</div>
-          ${v!=null?`<span class="x-note ${v===q.a?'ok':'no'}">${v===q.a?'Correct!':'Not quite. '+(q.miss||'Listen again and try another answer.')}${v===q.a&&q.why?' '+esc(q.why):''}</span>`:''}</div>`;}).join('')}</div>`;
+          <div class="guess">${q.o.map((o,j)=>`<button type="button" class="opt${!EX&&v===j?(j===q.a?' right':' wrong'):''}" data-mq="${i}" data-j="${j}" aria-pressed="${v===j}">${esc(o)}</button>`).join('')}</div>
+          ${v!=null&&!EX?`<span class="x-note ${v===q.a?'ok':'no'}">${v===q.a?'Correct!':'Not quite. '+(q.miss||'Listen again and try another answer.')}${v===q.a&&q.why?' '+esc(q.why):''}</span>`:''}</div>`;}).join('')}</div>`;
       }
-      el.addEventListener('click',e=>{const t=e.target.closest('[data-mq]');if(!t)return;const c=cs(b.id),V=c.v||(c.v={}),i=+t.dataset.mq,j=+t.dataset.j;V[i]=j;save();render();if(j===b.items[i].a)speak(b.items[i].o[j],'');});
+      el.addEventListener('click',e=>{const t=e.target.closest('[data-mq]');if(!t)return;const c=cs(b.id),V=c.v||(c.v={}),i=+t.dataset.mq,j=+t.dataset.j;V[i]=j;save();render();if(!EX&&j===b.items[i].a)speak(b.items[i].o[j],'');});
       return {render,score:()=>{const V=cs(b.id).v||{};return b.items.filter((q,i)=>V[i]===q.a).length/b.items.length;}};
     }},
     cards:{score:true,make(b,el){
@@ -5882,7 +5889,7 @@ function buildLesson(L){
       function render(){
         const c=cs(b.id),chk=!!c.chk;
         el.innerHTML=`<div class="x-compass">${POS.map(([k,w])=>{const v=V()[k]||'',good=ok(k);return `<span class="slot ${k}"><input class="gin${chk&&v.trim()?(good?' ok':' no'):''}" data-cp="${k}" value="${esc(v)}" aria-label="Compass point ${k}" autocomplete="off" spellcheck="false">${chk&&!good?`<span class="fix">${w}</span>`:''}</span>`;}).join('')}
-          <svg viewBox="-60 -60 120 120" aria-hidden="true"><circle r="54" fill="none" stroke="var(--line)" stroke-width="2"/><polygon points="0,-50 9,0 0,50 -9,0" fill="var(--mark)"/><polygon points="-50,0 0,-9 50,0 0,9" fill="var(--ink-2)"/><circle r="5" fill="var(--sheet)" stroke="var(--ink)" stroke-width="2"/></svg></div>${CTL}`;
+          <svg viewBox="-60 -60 120 120" aria-hidden="true"><circle r="54" fill="none" stroke="var(--line)" stroke-width="2"/><polygon points="0,-50 9,0 0,50 -9,0" fill="var(--mark)"/><polygon points="-50,0 0,-9 50,0 0,9" fill="var(--ink-2)"/><circle r="5" fill="var(--sheet)" stroke="var(--ink)" stroke-width="2"/></svg></div>${CT}`;
         const n=POS.filter(x=>ok(x[0])).length,r=el.querySelector('.res');if(chk){r.textContent=`${n} / 4 correct`;r.className='res '+(n===4?'ok':'no');}
       }
       el.addEventListener('input',e=>{const i=e.target.closest('[data-cp]');if(!i)return;const c=cs(b.id);(c.v||(c.v={}))[i.dataset.cp]=i.value;c.chk=false;save();});
@@ -5991,9 +5998,26 @@ Give feedback on the student's lines only. Reply with only a JSON object:
     }}
   };
 
+  /* ---------- homework: a readable report of every answer, sent to the teacher ---------- */
+  const hstrip=h=>String(h==null?'':h).replace(/<[^>]+>/g,'').replace(/&amp;/g,'&').replace(/&nbsp;/g,' ').replace(/&#39;/g,"'").replace(/&quot;/g,'"').replace(/\s+/g,' ').trim();
+  const HWX={
+    gaps(b,out){const V=cs(b.id).v||{};b.items.forEach((parts,i)=>{let any=false,all=true;
+      const ans=parts.map((x,j)=>{if(typeof x==='string')return x;const v=String(V[i+'-'+j]||'').trim();if(v)any=true;if(!okGap(x,v))all=false;return '['+(v||'…')+']';}).join('');
+      out.push({n:b.nums?b.nums[i]:String((b.start||1)+i),p:hstrip(parts.map(x=>typeof x==='string'?x:'____').join('')),a:any?hstrip(ans):'',ok:any?all:null,x:hstrip(parts.map(x=>typeof x==='string'?x:x.a[0]).join(''))});});},
+    picks(b,out){const M=cs(b.id).m||{};b.rows.forEach((r,i)=>{if(r.lock)return;const v=M[i];out.push({n:r.L||String(i+1),p:hstrip(r.h||r.t),a:v==null?'':String(v),ok:v==null?null:v===r.a,x:String(r.a)});});},
+    opts(b,out){const V=cs(b.id).v||{};b.items.forEach((parts,i)=>{let any=false,all=true;
+      const ans=parts.map((x,j)=>{if(typeof x==='string')return x;const v=V[i+'-'+j];if(v==null){all=false;return '[…]';}any=true;if(v!==x.a)all=false;return '['+x.o[v]+']';}).join('');
+      out.push({n:String((b.start||1)+i),p:hstrip(parts.map(x=>typeof x==='string'?x:'('+x.o.join(' / ')+')').join('')),a:any?hstrip(ans):'',ok:any?all:null,x:hstrip(parts.map(x=>typeof x==='string'?x:x.o[x.a]).join(''))});});},
+    typed(b,out){const c=cs(b.id),R=c.r||{},D=c.d||{};b.items.forEach((it,i)=>{const r=R[i];const v=r?r.v:String(D[i]||'').trim();out.push({n:it.n||String((b.start||1)+i),p:(it.task?it.task+': ':'')+it.src,a:v||'',ok:r?!!r.ok:EX&&v?it.ans.some(a=>XN(a)===XN(v)):null,x:it.ans[0]});});},
+    tf(b,out){const V=cs(b.id).v||{},lab=b.labels||['True','False'];b.items.forEach((r,i)=>{const v=V[i];out.push({n:String(i+1),p:r.s,a:v==null?'':lab[v?0:1],ok:v==null?null:v===r.a,x:lab[r.a?0:1]+(b.rw&&!r.a&&r.fix?' → '+r.fix:'')});});},
+    mcq(b,out){const V=cs(b.id).v||{};b.items.forEach((q,i)=>{const v=V[i];out.push({n:q.n||String(i+1),p:q.q,a:v==null?'':q.o[v],ok:v==null?null:v===q.a,x:q.o[q.a]});});},
+    q(b,out){b.items.forEach((q,i)=>{const t=turnsOf(q[0]);const last=t.length?t[t.length-1].t:'';const dr=String((S.drafts&&S.drafts[q[0]])||'').trim();out.push({n:b.n?String(b.n[i]):String((b.start||1)+i),p:q[1],a:last||dr,ok:null,x:q[2],open:true});});}
+  };
+  function hwReport(secs){return secs.map(s=>{const items=[];const walk=b=>{if(!b||typeof b==='string')return;if(Array.isArray(b)){b.forEach(walk);return;}if(b.t==='two'){walk(b.a);walk(b.b);return;}if(HWX[b.t])HWX[b.t](b,items);};walk(s.body);return {id:s.id,title:hstrip(s.title||s.name),items};}).filter(s=>s.items.length);}
+
   /* ---------- the view ---------- */
   const H=L.hero;
-  let html=`<div class="view lesson lesson-${key}" id="${view}" data-view="${key}" hidden>
+  let html=`<div class="view lesson lesson-${key}${EX?' exam':''}" id="${view}" data-view="${key}" hidden>
   <a class="back" href="#home">${icon('left')}All lessons</a>
   <header class="hero"><div><div class="eyebrow"><span class="x-badge" aria-hidden="true">${H.badge}</span><span class="mono">${H.kicker}</span></div><h1>${H.h1}</h1><p class="lead">${H.lead}</p><div class="meta">${H.meta.map(m=>`<span>${m}</span>`).join('')}</div></div>
   <figure class="hero-fig"><img src="${H.img}" alt="${esc(H.alt)}"><figcaption><span>${esc(H.cap[0])}</span><span class="dark">${esc(H.cap[1])}</span></figcaption></figure>
@@ -6003,7 +6027,8 @@ Give feedback on the student's lines only. Reply with only a JSON object:
   L.sections.forEach((s,i)=>{
     html+=`<section class="task" id="${s.id}"><div class="task-head"><span class="task-no mono">${s.no||'Task '+String(i+1).padStart(2,'0')} <span>· ${esc(s.label)}</span></span><h2>${s.title}</h2>${s.brief?`<p class="brief">${s.brief}</p>`:''}</div>${blk(s.body,SECS[i])}</section>`;
   });
-  html+=`<section class="task" id="${p}wrap"><div class="task-head"><span class="task-no mono">Wrap-up</span><h2>Any questions?</h2><p class="brief">Write down anything you want to ask your teacher. You can copy all your answers and send them too.</p></div>
+  html+=`<section class="task" id="${p}wrap"><div class="task-head"><span class="task-no mono">Wrap-up</span><h2>${EX?'Finished?':'Any questions?'}</h2><p class="brief">${EX?'Answer every question, then send the exam to your teacher. You see your score after your teacher reviews it. If you change answers, send it again.':'Write down anything you want to ask your teacher. You can copy all your answers and send them too.'}</p></div>
+    ${EX?`<div class="c-row" style="margin-bottom:18px"><button class="btn primary" type="button" data-hwsend="${key}">Send to teacher</button><a class="btn" href="#homework">My homework${icon('right')}</a></div>`:''}
     <div class="wrap-grid"><div class="composer"><label for="${p}notes" class="hint">Questions for my teacher</label><textarea id="${p}notes" rows="5" placeholder="${esc(L.notesPh||'')}"></textarea></div>
     <div style="display:flex;flex-direction:column;gap:12px"><p class="hint">Copy every answer you wrote in this lesson as plain text, ready to paste into a message.</p>
     <div class="c-row"><button class="btn primary" type="button" id="${p}copy-all">${icon('copy')}Copy all my answers</button><button class="btn quiet" type="button" id="${p}reset-all">Reset the lesson</button></div>
@@ -6021,6 +6046,7 @@ Give feedback on the student's lines only. Reply with only a JSON object:
   /* progress */
   function frac(){
     const f={};
+    if(EX){L.sections.forEach(s=>{const it=hwReport([s]).flatMap(x=>x.items);f[s.id]=it.length?it.filter(x=>x.a).length/it.length:0;});return f;} // answered, not correct
     SECS.forEach(s=>{
       const parts=s.comps.map(id=>COMPS[id].score());
       if(s.threads.length)parts.push(s.threads.filter(answered).length/s.threads.length);
@@ -6060,25 +6086,9 @@ Give feedback on the student's lines only. Reply with only a JSON object:
   renderAll();
   (L.tracks||[]).forEach(t=>SH.add(Object.assign({lesson:L.title},t)));
 
-  /* ---------- homework: a readable report of every answer, sent to the teacher ---------- */
-  const hstrip=h=>String(h==null?'':h).replace(/<[^>]+>/g,'').replace(/&amp;/g,'&').replace(/&nbsp;/g,' ').replace(/&#39;/g,"'").replace(/&quot;/g,'"').replace(/\s+/g,' ').trim();
-  const HWX={
-    gaps(b,out){const V=cs(b.id).v||{};b.items.forEach((parts,i)=>{let any=false,all=true;
-      const ans=parts.map((x,j)=>{if(typeof x==='string')return x;const v=String(V[i+'-'+j]||'').trim();if(v)any=true;if(!okGap(x,v))all=false;return '['+(v||'…')+']';}).join('');
-      out.push({n:b.nums?b.nums[i]:String((b.start||1)+i),p:hstrip(parts.map(x=>typeof x==='string'?x:'____').join('')),a:any?hstrip(ans):'',ok:any?all:null,x:hstrip(parts.map(x=>typeof x==='string'?x:x.a[0]).join(''))});});},
-    picks(b,out){const M=cs(b.id).m||{};b.rows.forEach((r,i)=>{if(r.lock)return;const v=M[i];out.push({n:r.L||String(i+1),p:hstrip(r.h||r.t),a:v==null?'':String(v),ok:v==null?null:v===r.a,x:String(r.a)});});},
-    opts(b,out){const V=cs(b.id).v||{};b.items.forEach((parts,i)=>{let any=false,all=true;
-      const ans=parts.map((x,j)=>{if(typeof x==='string')return x;const v=V[i+'-'+j];if(v==null){all=false;return '[…]';}any=true;if(v!==x.a)all=false;return '['+x.o[v]+']';}).join('');
-      out.push({n:String((b.start||1)+i),p:hstrip(parts.map(x=>typeof x==='string'?x:'('+x.o.join(' / ')+')').join('')),a:any?hstrip(ans):'',ok:any?all:null,x:hstrip(parts.map(x=>typeof x==='string'?x:x.o[x.a]).join(''))});});},
-    typed(b,out){const c=cs(b.id),R=c.r||{},D=c.d||{};b.items.forEach((it,i)=>{const r=R[i];const v=r?r.v:String(D[i]||'').trim();out.push({n:it.n||String((b.start||1)+i),p:(it.task?it.task+': ':'')+it.src,a:v||'',ok:r?!!r.ok:null,x:it.ans[0]});});},
-    tf(b,out){const V=cs(b.id).v||{},lab=b.labels||['True','False'];b.items.forEach((r,i)=>{const v=V[i];out.push({n:String(i+1),p:r.s,a:v==null?'':lab[v?0:1],ok:v==null?null:v===r.a,x:lab[r.a?0:1]+(b.rw&&!r.a&&r.fix?' → '+r.fix:'')});});},
-    mcq(b,out){const V=cs(b.id).v||{};b.items.forEach((q,i)=>{const v=V[i];out.push({n:q.n||String(i+1),p:q.q,a:v==null?'':q.o[v],ok:v==null?null:v===q.a,x:q.o[q.a]});});},
-    q(b,out){b.items.forEach((q,i)=>{const t=turnsOf(q[0]);const last=t.length?t[t.length-1].t:'';const dr=String((S.drafts&&S.drafts[q[0]])||'').trim();out.push({n:b.n?String(b.n[i]):String((b.start||1)+i),p:q[1],a:last||dr,ok:null,x:q[2],open:true});});}
-  };
-  function hwReport(secs){return secs.map(s=>{const items=[];const walk=b=>{if(!b||typeof b==='string')return;if(Array.isArray(b)){b.forEach(walk);return;}if(b.t==='two'){walk(b.a);walk(b.b);return;}if(HWX[b.t])HWX[b.t](b,items);};walk(s.body);return {id:s.id,title:hstrip(s.title||s.name),items};}).filter(s=>s.items.length);}
   const isWB=/^workbook/.test(L.hash);
-  const hwUnits=isWB?[{id:key,title:L.title,secs:L.sections,anchor:null}]:L.sections.filter(s=>/-assign$/.test(s.id)).map(s=>({id:s.id,title:L.title+' · '+hstrip(s.title||s.name),secs:[s],anchor:s.id}));
-  hwUnits.forEach(u=>{const rep=()=>hwReport(u.secs);if(!rep().length)return;HW.push({id:u.id,title:u.title,lesson:L.title,lessonKey:key,hash:L.hash,anchor:u.anchor,kind:isWB?'Workbook':'Assignment',report:rep});});
+  const hwUnits=isWB||EX?[{id:key,title:L.title,secs:L.sections,anchor:null}]:L.sections.filter(s=>/-assign$/.test(s.id)).map(s=>({id:s.id,title:L.title+' · '+hstrip(s.title||s.name),secs:[s],anchor:s.id}));
+  hwUnits.forEach(u=>{const rep=()=>hwReport(u.secs);if(!rep().length)return;HW.push({id:u.id,title:u.title,lesson:L.title,lessonKey:key,hash:L.hash,anchor:u.anchor,kind:EX?'Exam':isWB?'Workbook':'Assignment',report:rep});});
   LESSONS[key]={hash:L.hash,title:L.title,store:ST,lookup:null,card:L.card,
     progress:()=>{const f=frac();return SECS.reduce((n,s)=>n+Math.min(1,f[s.id]||0),0)/SECS.length;},
     onShow:()=>{applyMic();},
@@ -6787,6 +6797,327 @@ buildLesson({key:'w3',p:'w3-',hash:'workbook-2b',title:'Workbook 2B–2C',storeK
 
 
 /* =====================================================================
+   EXAMS — two hard tests built from the homework and the assignments.
+   exam:true hides every check, answer and model answer; the teacher sees the score.
+   ===================================================================== */
+const EX1_READ=["Hi! My name's Nadia Hassan. I'm thirty-four and I'm Egyptian. I'm from Alexandria, but my apartment is in Cairo now. I'm a nurse, and my hospital is near my apartment.","My husband's name is Karim. He isn't Egyptian. He's from Lebanon, and his family is in Beirut. Our children are Adam and Lina. Adam is eight and Lina is five.","What's in my bag? My keys, my wallet, my phone and an English dictionary. My English classes are on Tuesday and Thursday. Our teacher is from Canada, and her classes are great!"];
+buildLesson({key:'ex1',p:'ex1-',hash:'exam-1',title:'Exam 1 · Units 1A–2A',storeKey:'exam-1-v1',cal:'✎',exam:true,
+  topic:'Exam 1: units 1A to 2A',focus:'be, questions and short answers, countries and nationalities, numbers, days, possessive adjectives, a / an, plurals, this / that / these / those',
+  hero:{badge:'Exam',kicker:'Exam · Units 1A, 1B, 1C and 2A',h1:'Exam <span class="amp">1</span>',lead:'A hard test of Workbook 1A–1C, Workbook 2A and their assignments. There are no answer checks: answer every question, then send the exam to your teacher.',meta:['<b>7</b> parts','<b>145</b> questions','No answer checks'],img:'img/wr-things.jpg',alt:'Numbered photos of everyday things: a coin, a laptop, glasses, a wallet, an umbrella, a key and a cell phone',cap:['Exam 1','be · my · a / an · plurals']},
+  card:{img:'img/wr-things.jpg',alt:'Numbered photos of everyday things',tag:'Exam',kicker:'Exam · Units 1A–2A',desc:'be, questions, countries and nationalities, numbers and days, my / your / his, a / an, plurals, this / that, a reading and two writing tasks.',meta:['<b>7</b> parts','<b>145</b> questions','Sent to your teacher']},
+  foot:'Built from Workbook 1A–1C, Workbook 2A and the assignments.',notesPh:'A note for your teacher about the exam',
+  sections:[
+   {id:'ex1-be',no:'Part 1',short:'be',name:'1 Verb be',label:'Grammar',title:'Verb be: positive, negative and questions',brief:'a · Choose the correct words.',body:[
+     {t:'opts',id:'a',items:[
+       ['My parents ',{o:['is','are','am'],a:1},' from Alexandria.'],
+       [{o:['Is','Are','Am'],a:0},' your teacher from the United States?'],
+       ['',{o:["I'm not","I isn't","I aren't"],a:0},' Brazilian. I\'m Argentinian.'],
+       ['A: Are you on vacation? B: No, ',{o:["I'm not","I amn't","I not"],a:0},'.'],
+       ['A: Is Ali a student? B: Yes, ',{o:["he's","he is","is he"],a:1},'.'],
+       ['Where ',{o:['is','are','be'],a:1},' my keys?'],
+       ['Sara and I ',{o:['am','are','is'],a:1},' in room 309.'],
+       ['It ',{o:["isn't","aren't","not"],a:0},' Monday today. It\'s Tuesday.'],
+       ['A: Are they Italian? B: No, ',{o:["they aren't","they isn't","they not"],a:0},'.'],
+       ['What ',{o:['is','are','am'],a:0},' her phone number?'],
+       [{o:['Is','Are','Am'],a:1},' Ahmed and Mona from Cairo?'],
+       ['My name ',{o:['is','are','am'],a:0},' Karim, and these ',{o:['is','are','am'],a:1},' my children.']]},
+     {t:'sub',x:'b · Say what is wrong, then say what is right. Write the full sentence.'},
+     `<div class="fixit"><span>A: Paris is in Italy. → B: <b>It isn't in Italy, it's in France.</b></span></div>`,
+     {t:'typed',id:'neg',ph:"… isn't …, … 's …",items:[
+       {src:'A: Sushi is Chinese.',task:'… Japanese.',ans:["It isn't Chinese, it's Japanese."]},
+       {src:'A: Messi is Brazilian.',task:'… Argentinian.',ans:["He isn't Brazilian, he's Argentinian.","He isn't Brazilian, he's Argentine."]},
+       {src:'A: You and your brother are from Spain.',task:'… Egypt.',ans:["We aren't from Spain, we're from Egypt."]},
+       {src:'A: Your keys are in your bag.',task:'… in my car.',ans:["They aren't in my bag, they're in my car."]},
+       {src:'A: Today is Friday.',task:'… Saturday.',ans:["It isn't Friday, it's Saturday.","Today isn't Friday, it's Saturday.","Today isn't Friday, today is Saturday."]},
+       {src:"A: I'm in room 12.",task:'… room 20.',ans:["You aren't in room 12, you're in room 20.","You aren't in room twelve, you're in room twenty."]}]},
+     {t:'sub',x:'c · Write the question for each answer. Use the words in brackets.'},
+     {t:'typed',id:'mk',ph:'Write the question',items:[
+       {src:"B: Yes, she is. She's a teacher.",task:'(she / a teacher)',ans:['Is she a teacher?']},
+       {src:"B: They're from Mexico.",task:'(Where / they)',ans:['Where are they from?']},
+       {src:"B: I'm thirty-five.",task:'(How old / you)',ans:['How old are you?']},
+       {src:"B: No, we aren't. We're Turkish.",task:'(you / Greek)',ans:['Are you Greek?']},
+       {src:"B: It's 917-555-0156.",task:'(What / your phone number)',ans:["What's your phone number?"]},
+       {src:'B: M-O-H-A-M-E-D.',task:'(How / spell / your first name)',ans:['How do you spell your first name?']}]}
+   ]},
+   {id:'ex1-world',no:'Part 2',short:'World',name:'2 The world',label:'Vocabulary',title:'Countries, nationalities and continents',brief:'a · Complete each sentence with a country or a nationality. Spelling counts.',body:[
+     {t:'gaps',id:'c',items:[
+       ["Pizza is from Italy. It's ",{a:['Italian']},'.'],
+       ["Kimchi is South Korean. It's from ",{a:['South Korea','Korea']},'.'],
+       ["Ahmed is from Egypt. He's ",{a:['Egyptian']},'.'],
+       ["Tacos are Mexican. They're from ",{a:['Mexico']},'.'],
+       ["My friends are from Turkey. They're ",{a:['Turkish']},'.'],
+       ["Croissants are from France. They're ",{a:['French']},'.'],
+       ["Hiro is Japanese. He's from ",{a:['Japan']},'.'],
+       ["We're from Peru. We're ",{a:['Peruvian']},'.'],
+       ["Volkswagen cars are from Germany. They're ",{a:['German']},'.'],
+       ["Lucas is from Brazil. He's ",{a:['Brazilian']},'.'],
+       ["Tom is from the United States. He's ",{a:['American']},'.'],
+       ["Pho is Vietnamese. It's from ",{a:['Vietnam']},'.'],
+       ["Anna is from Russia. She's ",{a:['Russian']},'.'],
+       ['Bangkok is in Thailand. The food there is ',{a:['Thai']},'.']]},
+     {t:'sub',x:'b · Continents and the compass'},
+     {t:'gaps',id:'k',items:[
+       ['Egypt is in ',{a:['Africa']},'.'],
+       ['Argentina and Peru are in ',{a:['South America']},'.'],
+       ['Germany and Spain are in ',{a:['Europe']},'.'],
+       ['China and Japan are in ',{a:['Asia']},'.'],
+       ['Mexico and Canada are in ',{a:['North America']},'.'],
+       ['On a compass, the opposite of north is ',{a:['south']},' and the opposite of east is ',{a:['west']},'.']]}
+   ]},
+   {id:'ex1-num',no:'Part 3',short:'Numbers · days',name:'3 Numbers and days',label:'Vocabulary',title:'Numbers 0–100 and days of the week',brief:'a · Write the numbers in words.',body:[
+     {t:'gaps',id:'n',items:[['13 → ',{a:['thirteen']}],['30 → ',{a:['thirty']}],['15 → ',{a:['fifteen']}],['50 → ',{a:['fifty']}],['44 → ',{a:['forty-four']}],['19 → ',{a:['nineteen']}],['90 → ',{a:['ninety']}],['68 → ',{a:['sixty-eight']}],['12 → ',{a:['twelve']}],['81 → ',{a:['eighty-one']}],['57 → ',{a:['fifty-seven']}],['100 → ',{a:['a hundred','one hundred']}]]},
+     {t:'sub',x:'b · Continue the series'},
+     {t:'gaps',id:'s',items:[
+       ['three, six, nine, ',{a:['twelve']},', ',{a:['fifteen']},', ',{a:['eighteen']},'.'],
+       ['one hundred, ninety, eighty, ',{a:['seventy']},', ',{a:['sixty']},', ',{a:['fifty']},'.'],
+       ['eleven, twenty-two, thirty-three, ',{a:['forty-four']},', ',{a:['fifty-five']},', ',{a:['sixty-six']},'.']]},
+     {t:'sub',x:'c · Days of the week. Start with a CAPITAL LETTER.'},
+     {t:'gaps',id:'d',items:[
+       ['The day after Monday is ',{a:['Tuesday'],cs:true},'.'],
+       ['The day before Friday is ',{a:['Thursday'],cs:true},'.'],
+       ['Two days after Thursday is ',{a:['Saturday'],cs:true},'.'],
+       ['The day between Tuesday and Thursday is ',{a:['Wednesday'],cs:true},'.'],
+       ['Two days before Tuesday is ',{a:['Sunday'],cs:true},'.'],
+       ['DIRAFY → ',{a:['Friday'],cs:true}]]}
+   ]},
+   {id:'ex1-poss',no:'Part 4',short:'my / your',name:'4 Possessive adjectives',label:'Grammar',title:'my, your, his, her, its, our, their',brief:"a · Choose the correct word. Be careful with its / it's, their / they're and your / you're.",body:[
+     {t:'opts',id:'p',items:[
+       ['This is my brother. ',{o:['His','Her','Its'],a:0},' name is Omar.'],
+       ['Mona is a doctor. ',{o:['His','Her','Their'],a:1},' hospital is in Giza.'],
+       ["We're from Cairo. ",{o:['Our','Their','We'],a:0},' apartment is near the Nile.'],
+       ['The restaurant is Italian. ',{o:["It's",'Its','Their'],a:1},' name is Roma.'],
+       [{o:["It's",'Its'],a:0},' a very good restaurant.'],
+       ['My parents are Egyptian. ',{o:["They're",'Their','There'],a:1},' house is in Alexandria.'],
+       [{o:["They're",'Their'],a:0},' from Spain.'],
+       ["A: What's ",{o:["you're",'your','you'],a:1},' last name? B: Ali.'],
+       [{o:["You're",'Your'],a:0},' in room 5.'],
+       ['Ahmed and Sara are students. ',{o:['His','Her','Their'],a:2},' teacher is American.'],
+       ["I'm Karim. ",{o:['My','Me','I'],a:0},' wife is a teacher.'],
+       ['Sara, is this ',{o:['you','your',"you're"],a:1},' bag?']]},
+     {t:'sub',x:'b · Write the correct possessive adjective'},
+     {t:'gaps',id:'pg',items:[
+       ['Mr. and Mrs. Baker are Canadian. ',{a:['Their']},' children are in Toronto.'],
+       ['Laila is from Lebanon. ',{a:['Her']},' last name is Haddad.'],
+       ['A: Is that ',{a:['your']},' phone? B: Yes, it is. Thanks!'],
+       ['We are in room 7. ',{a:['Our']},' teacher is in room 8.'],
+       ['This is my new car. ',{a:['Its']},' color is white.'],
+       ["I'm Karim. ",{a:['My']},' email address is karim@mail.com.']]},
+     {t:'sub',x:'c · Find the mistake and write the correct sentence.'},
+     {t:'typed',id:'fx',ph:'Write the correct sentence',items:[
+       {src:'This is Omar and she wife is Mona.',ans:['This is Omar and his wife is Mona.']},
+       {src:"They're teacher is very nice.",ans:['Their teacher is very nice.']},
+       {src:"What's you're email address?",ans:["What's your email address?"]},
+       {src:"It's name is Merry City.",ans:['Its name is Merry City.']},
+       {src:'We are students. We teacher is from Canada.',ans:['We are students. Our teacher is from Canada.']},
+       {src:"A: Are you from Egypt? B: Yes, I'm.",ans:['A: Are you from Egypt? B: Yes, I am.','Are you from Egypt? Yes, I am.','Yes, I am.']}]}
+   ]},
+   {id:'ex1-things',no:'Part 5',short:'a / an · plurals',name:'5 Things and plurals',label:'Grammar',title:'a / an, plurals, this / that / these / those',brief:"a · Write <b>It's a</b>, <b>It's an</b> or <b>They're</b>.",body:[
+     {t:'gaps',id:'aa',items:[[{a:["It's an"],w:9},' umbrella.'],[{a:["They're"],w:9},' glasses.'],[{a:["It's a"],w:9},' wallet.'],[{a:["It's an"],w:9},' ID card.'],[{a:["They're"],w:9},' scissors.'],[{a:["It's an"],w:9},' email address.'],[{a:["They're"],w:9},' headphones.'],[{a:["It's a"],w:9},' laptop.'],[{a:["They're"],w:9},' keys.'],[{a:["It's an"],w:9},' English dictionary.']]},
+     {t:'sub',x:'b · Write the plural'},
+     {t:'gaps',id:'pl',items:[['one watch → two ',{a:['watches']}],['one city → two ',{a:['cities']}],['one key → two ',{a:['keys']}],['one child → two ',{a:['children']}],['one address → two ',{a:['addresses']}],['one person → two ',{a:['people']}],['one dictionary → two ',{a:['dictionaries']}],['one woman → two ',{a:['women']}],['one sandwich → two ',{a:['sandwiches']}],['one country → two ',{a:['countries']}],['one man → two ',{a:['men']}],['one class → two ',{a:['classes']}]]},
+     {t:'sub',x:'c · Write this, that, these or those'},
+     {t:'gaps',id:'tt',items:[
+       [{a:['This']},' is my new phone. (in my hand)'],
+       [{a:['Those']},' are my children over there. (far)'],
+       [{a:['These']},' keys are for the office. (in my hand)'],
+       [{a:['That']},' car over there is very expensive. (far)'],
+       ['A: What are ',{a:['these']},"? (in my hand) B: They're tickets."],
+       ['A: Is ',{a:['that']},' your wallet on the table over there? (far)'],
+       [{a:['These']},' are my glasses. (near)'],
+       ['Look at ',{a:['those']},' people over there. (far)']]},
+     {t:'sub',x:'d · Which word ends in /ɪz/?'},
+     {t:'opts',id:'iz',items:[[{o:['books','watches','pens'],a:1}],[{o:['classes','keys','coins'],a:0}],[{o:['photos','tickets','addresses'],a:2}],[{o:['wallets','glasses','laptops'],a:1}]]},
+     {t:'sub',x:'e · Find the mistake and write the correct sentence.'},
+     {t:'typed',id:'tfx',ph:'Write the correct sentence',items:[
+       {src:'These is my keys.',ans:['These are my keys.']},
+       {src:"It's a umbrella.",ans:["It's an umbrella."]},
+       {src:'Those womans are teachers.',ans:['Those women are teachers.']},
+       {src:'I have three childs.',ans:['I have three children.']},
+       {src:'That are my headphones.',ans:['Those are my headphones.','These are my headphones.']},
+       {src:'Where is my glasses?',ans:['Where are my glasses?']}]}
+   ]},
+   {id:'ex1-read',no:'Part 6',short:'Reading',name:'6 Reading',label:'Reading',title:"Hi, I'm Nadia",brief:'Read the text. Then answer True or False, and choose the right answers.',body:[
+     `<div class="x-read"><h3>Hi, I'm Nadia ${sayBtn(EX1_READ.join(' '),'','ib sm','Listen to the text')}</h3>${EX1_READ.map(t=>`<p>${esc(t)}</p>`).join('')}</div>`,
+     {t:'tf',id:'tf',items:[
+       {s:'Nadia is from Cairo.',a:false},
+       {s:'She is thirty-four years old.',a:true},
+       {s:'Her hospital is near her apartment.',a:true},
+       {s:'Her husband is Egyptian.',a:false},
+       {s:"Karim's family is in Lebanon.",a:true},
+       {s:'Nadia has three children.',a:false},
+       {s:'Lina is eight.',a:false},
+       {s:'Her English classes are on Monday and Wednesday.',a:false},
+       {s:'Her English teacher is Canadian.',a:true}]},
+     {t:'sub',x:'Choose the right answer'},
+     {t:'mcq',id:'rq',items:[
+       {q:"What is Nadia's job?",o:['a teacher','a nurse','a doctor'],a:1},
+       {q:'Where is Karim from?',o:['Egypt','Lebanon','Canada'],a:1},
+       {q:"What are the children's names?",o:['Adam and Lina','Karim and Lina','Adam and Nadia'],a:0},
+       {q:'Which thing is NOT in her bag?',o:['her keys','an English dictionary','an umbrella'],a:2},
+       {q:'How old is Adam?',o:['five','eight','thirty-four'],a:1}]}
+   ]},
+   {id:'ex1-write',no:'Part 7',short:'Writing',name:'7 Writing',label:'Writing',title:'Write about you',brief:'Write full sentences. Your teacher reads and marks this part.',body:[
+     {t:'q',items:[
+       ['ex1-w1','Write about you and your family (5–7 sentences). Say your name, age, nationality and city. Then write about two people in your family. Use his / her / their.',"My name's Mohamed and I'm thirty-five. I'm Egyptian, from Cairo. My brother's name is Ali. His wife is a teacher, and her school is near their house. My parents are from Alexandria. Their apartment is near the sea.",{rows:6,ph:'My name is…'}],
+       ['ex1-w2',"Look at your desk or open your bag. Write 5 sentences with It's a / an, They're and this / that / these / those.","This is my laptop. It's a new laptop. These are my keys. That's an umbrella over there. Those are my glasses on the table.",{rows:5,ph:'This is my…'}]]}
+   ]}
+  ]
+});
+
+const EX2_READ=["My best friend's name is Lina. She's twenty-nine, and she's a teacher at a big school in Giza. She's tall and thin, with long dark hair and brown eyes.","Her husband, Omar, isn't very tall, and his hair is short and blond. He's from Jordan. Their apartment isn't very big, but it's really nice and very clean. Lina's car is very old, but it isn't slow. It's really fast!","Last week was very bad for Lina. She was very tired and stressed because there were a lot of students and a lot of tests at her school. Now she's happy because she's on vacation in Alexandria. It's sunny and hot there, and the sea is beautiful."];
+buildLesson({key:'ex2',p:'ex2-',hash:'exam-2',title:'Exam 2 · Units 2B–2C',storeKey:'exam-2-v1',cal:'✎',exam:true,
+  topic:'Exam 2: units 2B and 2C, with a review of 1A to 2A',focus:'adjective word order, very / really, opposite adjectives, colors, describing people, feelings, was / were, and a review of be, possessive adjectives and plurals',
+  hero:{badge:'Exam',kicker:'Exam · Units 2B and 2C, with a review',h1:'Exam <span class="amp">2</span>',lead:'A hard test of Workbook 2B–2C, the feelings assignment and a review of Units 1A–2A. There are no answer checks: answer every question, then send the exam to your teacher.',meta:['<b>9</b> parts','<b>127</b> questions','No answer checks'],img:'img/sb-people.jpg',alt:'Pairs of opposite people: a fat woman and a thin woman, an old woman and a young boy, a tall man and a short man',cap:['Exam 2','adjectives · feelings · was / were']},
+  card:{img:'img/sb-people.jpg',alt:'Pairs of opposite people',tag:'Exam',kicker:'Exam · Units 2B–2C',desc:'Adjective order, very / really, opposites, colors, describing people, feelings, was / were, a reading, a review of 1A–2A and two writing tasks.',meta:['<b>9</b> parts','<b>127</b> questions','Sent to your teacher']},
+  foot:'Built from Workbook 2B–2C, the 2B and 2C assignments and a review of Units 1A–2A.',notesPh:'A note for your teacher about the exam',
+  sections:[
+   {id:'ex2-adj',no:'Part 1',short:'Adjectives',name:'1 Adjectives',label:'Grammar',title:'Adjectives: word order, very / really',brief:'a · Choose the correct words.',body:[
+     {t:'opts',id:'a',items:[
+       ['She has ',{o:['hair long','long hair','longs hair'],a:1},'.'],
+       ["They're ",{o:['expensives watches','watches expensive','expensive watches'],a:2},'.'],
+       ['My brother is ',{o:['very tall','tall very','very talls'],a:0},'.'],
+       ["It's ",{o:['a old car','an old car','an car old'],a:1},'.'],
+       ['These are ',{o:['really good photos','photos really good','really goods photos'],a:0},'.'],
+       ['Is it ',{o:['a city dangerous','a dangerous city','an dangerous city'],a:1},'?'],
+       ['My shoes ',{o:['are very dirty','are dirty very','is very dirty'],a:0},'.'],
+       ["That's ",{o:['an easy question','a easy question','an question easy'],a:0},'.'],
+       ['Her children ',{o:["aren't very old","aren't old very","isn't very old"],a:0},'.'],
+       ['We have ',{o:['two big houses','two bigs houses','two houses big'],a:0},'.']]},
+     {t:'sub',x:'b · Order the words to make sentences'},
+     {t:'typed',id:'b',ph:'Write the sentence',items:[
+       {src:"car / That's / a / really / expensive",ans:["That's a really expensive car."]},
+       {src:"isn't / city / very / This / a / safe",ans:["This isn't a very safe city."]},
+       {src:'very / Is / good / restaurant / a / it',ans:['Is it a very good restaurant?']},
+       {src:'are / dirty / Your / really / jeans',ans:['Your jeans are really dirty.']},
+       {src:"tired / I'm / very / today / not",ans:["I'm not very tired today."]},
+       {src:"woman / very / She's / a / rich",ans:["She's a very rich woman."]}]}
+   ]},
+   {id:'ex2-opp',no:'Part 2',short:'Opposites',name:'2 Opposites',label:'Vocabulary',title:'Opposite adjectives',brief:'a · Write the opposite.',body:[
+     {t:'gaps',id:'o',items:[['cheap → ',{a:['expensive']}],['rich → ',{a:['poor']}],['slow → ',{a:['fast']}],['empty → ',{a:['full']}],['safe → ',{a:['dangerous']}],['near → ',{a:['far']}],['difficult → ',{a:['easy']}],['clean → ',{a:['dirty']}],['strong → ',{a:['weak']}],['right → ',{a:['wrong']}],['big → ',{a:['small','little']}],['hot → ',{a:['cold']}]]},
+     {t:'sub',x:'b · Complete each sentence with the opposite of the word in it.'},
+     {t:'gaps',id:'os',items:[
+       ["This street isn't safe at night. It's really ",{a:['dangerous']},'.'],
+       ["My car isn't new. It's very ",{a:['old']},'.'],
+       ["A: Is the train slow? B: No, it's very ",{a:['fast']},'.'],
+       ["These shoes aren't cheap. They're really ",{a:['expensive']},'.'],
+       ["My glass isn't full. It's ",{a:['empty']},'.'],
+       ["Your answer isn't right. It's ",{a:['wrong']},'.'],
+       ["My grandfather isn't young. He's ",{a:['old']},'.'],
+       ["The test isn't difficult. It's very ",{a:['easy']},'.'],
+       ["The hotel isn't near the airport. It's very ",{a:['far']},'.'],
+       ["Your hands aren't clean. They're ",{a:['dirty']},'.']]}
+   ]},
+   {id:'ex2-people',no:'Part 3',short:'Colors · people',name:'3 Colors and people',label:'Vocabulary',title:'Colors and describing people',brief:'a · Write the colors.',body:[
+     {t:'gaps',id:'c',items:[['blue + yellow = ',{a:['green']}],['black + white = ',{a:['gray','grey']}],['red + white = ',{a:['pink']}],['red + yellow = ',{a:['orange']}],['red + green = ',{a:['brown']}],['blue + red = ',{a:['purple']}]]},
+     {t:'sub',x:'b · Look at the picture. Who is it? Choose A–F.'},
+     {t:'two',a:{t:'img',src:'img/w3-people.jpg',alt:'A party picture with six people, letters A to F',size:'sm'},
+       b:{t:'picks',id:'pp',nosay:true,opts:['A','B','C','D','E','F'],rows:[
+         {t:"He isn't young. He has a beard.",a:'A'},
+         {t:"She has curly hair. She isn't thin.",a:'E'},
+         {t:"He isn't tall. His hair is dark.",a:'F'},
+         {t:'Her hair is blond.',a:'C'},
+         {t:"She's young and thin, with long dark hair.",a:'B'},
+         {t:"He's tall. His hair isn't long.",a:'D'}]}},
+     {t:'sub',x:'c · Look at the table. Choose the right answer.'},
+     {t:'two',a:{t:'img',src:'img/w3-table.jpg',alt:'Table. Rob: age 15, height 6 feet 5 inches, weight 300 pounds. Neil: age 65, 5 feet 2 inches, 250 pounds. Jim: age 85, 5 feet 9 inches, 121 pounds.',size:'sm'},
+       b:{t:'mcq',id:'tb',items:[
+         {q:'Who is very young?',o:['Rob','Neil','Jim'],a:0},
+         {q:'Who is very thin?',o:['Rob','Neil','Jim'],a:2},
+         {q:'Who is very short?',o:['Rob','Neil','Jim'],a:1},
+         {q:'Which sentence is right?',o:["Rob isn't very tall.","Jim isn't very fat.",'Neil is very thin.'],a:1},
+         {q:'Which sentence is right?',o:['Rob is very old.',"Neil isn't very young.",'Jim is very fat.'],a:1},
+         {q:'Which sentence is right?',o:["Jim isn't very old.",'Rob is very fat.','Neil is very tall.'],a:1}]}}
+   ]},
+   {id:'ex2-feel',no:'Part 4',short:'Feelings',name:'4 Feelings',label:'Vocabulary',title:'How do you feel?',brief:'a · Look at the pictures. Write the feeling for each number. Spelling counts.',body:[
+     {t:'two',a:{t:'img',src:'img/fe-faces.jpg',alt:'Eleven numbered drawings of a man and a woman with different feelings',size:'sm'},
+       b:{t:'gaps',id:'fw',items:[['Picture 1 → ',{a:['worried','stressed']}],['Picture 2 → ',{a:['happy']}],['Picture 3 → ',{a:['thirsty']}],['Picture 4 → ',{a:['angry']}],['Picture 5 → ',{a:['bored']}],['Picture 6 → ',{a:['hungry']}],['Picture 7 → ',{a:['tired']}],['Picture 8 → ',{a:['hot']}],['Picture 9 → ',{a:['cold']}],['Picture 10 → ',{a:['sad','unhappy']}],['Picture 11 → ',{a:['stressed','worried']}]]}},
+     {t:'sub',x:"b · What do you say? Write I'm + a feeling."},
+     {t:'gaps',id:'fs',items:[
+       ['I have three exams tomorrow. ',{a:["I'm stressed","I'm worried"],w:14}],
+       ["It's 2 a.m. and I'm still at work. ",{a:["I'm tired"],w:14}],
+       ['My son is late and his phone is off. ',{a:["I'm worried"],w:14}],
+       ["It's 45°C in Cairo today. ",{a:["I'm hot"],w:14}],
+       ['I want a big sandwich. ',{a:["I'm hungry"],w:14}],
+       ['My friend says, "Your car is ugly!" ',{a:["I'm angry","I'm sad"],w:14}],
+       ["There's nothing to do at home. ",{a:["I'm bored"],w:14}],
+       ["It's snowing and I don't have a jacket. ",{a:["I'm cold"],w:14}],
+       ['I want a glass of water. ',{a:["I'm thirsty"],w:14}],
+       ['Today is my birthday, and my family is here! ',{a:["I'm happy"],w:14}]]}
+   ]},
+   {id:'ex2-was',no:'Part 5',short:'was / were',name:'5 was / were',label:'Grammar',title:'was / were',brief:'a · Choose the correct words.',body:[
+     {t:'opts',id:'w',items:[
+       ['Yesterday I ',{o:['was','were','am'],a:0},' very tired.'],
+       ['My children ',{o:['was','were','is'],a:1},' happy last weekend.'],
+       [{o:['Was','Were'],a:1},' you stressed last week?'],
+       ['Last month ',{o:['was','were'],a:0},' very bad.'],
+       ['We ',{o:["wasn't","weren't"],a:1},' at home on Friday.'],
+       ['A: Was your father worried? B: Yes, he ',{o:['was','were','is'],a:0},'.'],
+       ['The test ',{o:["wasn't","weren't"],a:0},' difficult. It was easy.'],
+       ['A: Were they hungry? B: No, they ',{o:["wasn't","weren't"],a:1},'.']]},
+     {t:'sub',x:'b · Now or in the past? Write am, is, are, was or were.'},
+     {t:'gaps',id:'nw',items:[
+       ['Right now I ',{a:['am']},' at work, but yesterday I ',{a:['was']},' at home.'],
+       ['Today it ',{a:['is']},' hot. Yesterday it ',{a:['was']},' cold.'],
+       ['Last week my parents ',{a:['were']},' in Alexandria. Now they ',{a:['are']},' in Cairo.'],
+       [{a:['Were']},' you tired yesterday?'],
+       ['A: How ',{a:['was']},' your weekend? B: It ',{a:['was']},' great!'],
+       ['My friends ',{a:["weren't"]},' happy last night because the food was bad.']]}
+   ]},
+   {id:'ex2-read',no:'Part 6',short:'Reading',name:'6 Reading',label:'Reading',title:'My best friend, Lina',brief:'Read the text. Then answer True or False, and choose the right answers.',body:[
+     `<div class="x-read"><h3>My best friend, Lina ${sayBtn(EX2_READ.join(' '),'','ib sm','Listen to the text')}</h3>${EX2_READ.map(t=>`<p>${esc(t)}</p>`).join('')}</div>`,
+     {t:'tf',id:'tf',items:[
+       {s:'Lina is a doctor.',a:false},
+       {s:'She is tall, with long dark hair.',a:true},
+       {s:'Omar is very tall.',a:false},
+       {s:"Omar's hair is long.",a:false},
+       {s:'Their apartment is very big.',a:false},
+       {s:'The apartment is clean.',a:true},
+       {s:"Lina's car is new.",a:false},
+       {s:'Her car is fast.',a:true},
+       {s:'Last week Lina was tired and stressed.',a:true},
+       {s:'Lina is at work now.',a:false}]},
+     {t:'sub',x:'Choose the right answer'},
+     {t:'mcq',id:'rq',items:[
+       {q:'Where is Omar from?',o:['Egypt','Jordan','Lebanon'],a:1},
+       {q:'Why was Lina stressed last week?',o:['Her car was old.','There were a lot of students and tests.','Her apartment was dirty.'],a:1},
+       {q:'How does Lina feel now?',o:['happy','tired','worried'],a:0},
+       {q:'What is the weather like in Alexandria?',o:['cold and rainy','sunny and hot','cold and sunny'],a:1}]}
+   ]},
+   {id:'ex2-rev',no:'Part 7',short:'Review',name:'7 Review 1A–2A',label:'Review',title:'Review: Units 1A–2A',brief:'Choose the correct words.',body:[
+     {t:'opts',id:'r',items:[
+       ['A: Where ',{o:['is','are'],a:1},' your parents from? B: Turkey.'],
+       ['This is my sister. ',{o:['Her','His','Its'],a:0},' husband is Spanish.'],
+       [{o:['These','This'],a:0},' are my new glasses.'],
+       ['I have two ',{o:['childs','children','childrens'],a:1},'.'],
+       ["It's ",{o:['a','an'],a:1},' ID card.'],
+       ['A: Are you Mexican? B: No, ',{o:["I'm not","I am","I isn't"],a:0},'.'],
+       ["My friends are from Japan. They're ",{o:['Japan','Japanese','Japanes'],a:1},'.'],
+       ['A: How old ',{o:['is','are'],a:0},' your son? B: Twelve.'],
+       [{o:['Who','What','Where'],a:1},"'s your email address?"],
+       ['Two ',{o:['womans','women','woman'],a:1},' are in room 4.'],
+       ['A: Is ',{o:['this','that','those'],a:1},' your phone on the table over there? B: Yes, it is.']]}
+   ]},
+   {id:'ex2-fix',no:'Part 8',short:'Mistakes',name:'8 Find the mistake',label:'Grammar',title:'Find the mistake',brief:'Each sentence has one mistake. Write the correct sentence.',body:[
+     {t:'typed',id:'fx',ph:'Write the correct sentence',items:[
+       {src:'She has hair long and dark.',ans:['She has long dark hair.','Her hair is long and dark.','She has long, dark hair.']},
+       {src:"They're blues jeans.",ans:["They're blue jeans."]},
+       {src:"He's a man very rich.",ans:["He's a very rich man."]},
+       {src:"I'm very hungry yesterday.",ans:['I was very hungry yesterday.']},
+       {src:'We was very tired last week.',ans:['We were very tired last week.']},
+       {src:'This is a car fast.',ans:['This is a fast car.']},
+       {src:'My shoes is really dirty.',ans:['My shoes are really dirty.']},
+       {src:"It's a expensive watch.",ans:["It's an expensive watch."]},
+       {src:'A: Were you happy yesterday? B: Yes, I were.',ans:['A: Were you happy yesterday? B: Yes, I was.','Were you happy yesterday? Yes, I was.','Yes, I was.']}]}
+   ]},
+   {id:'ex2-write',no:'Part 9',short:'Writing',name:'9 Writing',label:'Writing',title:'Write about people and feelings',brief:'Write full sentences. Your teacher reads and marks this part.',body:[
+     {t:'q',items:[
+       ['ex2-w1','Describe a person in your family (5–7 sentences). What does this person look like (tall, short, hair, eyes)? Use very / really and adjectives before nouns.',"My brother Ali is thirty and he's very tall. He has short dark hair and brown eyes. He has a really fast car and a very big house. He isn't very patient, but he's a really good person.",{rows:6,ph:'My … is …'}],
+       ['ex2-w2','Write about last week (5–7 sentences). How were you each day, and why? Use was / were, feelings and because.',"On Sunday I was really stressed because I had a lot of meetings. On Tuesday I was happy because we finished a big project. My children were tired on Thursday because they had an exam. Yesterday I was very tired.",{rows:6,ph:'On Sunday I was…'}]]}
+   ]}
+  ]
+});
+
+/* =====================================================================
    HOMEWORK — send workbook pages and assignments to the teacher, read her comments
    ===================================================================== */
 const HWAPI=window.HW_API||null;
@@ -6834,12 +7165,12 @@ function hwComments(s){
 function hwRender(){
   const box=$('#hw-list');if(!box)return;
   $('#hw-sync').innerHTML=!HWAPI?'<p class="hw-off">Sending homework works on your own website (your Vercel link). Here you can still do the exercises.</p>':HWS.err?`<p class="hw-off">${esc(HWS.err)} <button type="button" class="btn quiet" data-hwreload>Try again</button></p>`:!HWS.loaded?'<p class="pending">Loading your homework…</p>':'';
-  const groups=[['Workbook','Workbook pages'],['Assignment','Assignments from the lessons']];
+  const groups=[['Exam','Exams'],['Workbook','Workbook pages'],['Assignment','Assignments from the lessons']];
   box.innerHTML=groups.map(([k,h])=>{const us=HW.filter(u=>u.kind===k);if(!us.length)return '';
     return `<h2 class="hw-gh">${h}</h2><div class="hw-grid">${us.map(u=>{const rep=u.report(),st=hwStats(rep),sub=HWS.subs[u.id],ss=hwState(u,rep),busy=!!HWS.busy[u.id];
-      return `<article class="hw-card t-${u.lessonKey}"><div class="hw-top"><span class="mono" style="color:var(--mark)">${u.kind==='Workbook'?'Workbook':'Assignment · '+esc(u.lesson)}</span><span class="hw-chip ${ss.k}">${esc(ss.t)}</span></div>
-        <h3>${esc(u.kind==='Workbook'?u.title:u.title.replace(u.lesson+' · ',''))}</h3>
-        <div class="hw-meta"><span><b>${st.a}</b> / ${st.n} answered</span>${st.sc?`<span><b>${st.ok}</b> / ${st.sc} correct</span>`:''}${sub&&sub.submittedAt?`<span>Sent ${esc(hwDate(sub.submittedAt))}</span>`:''}</div>
+      return `<article class="hw-card t-${u.lessonKey}"><div class="hw-top"><span class="mono" style="color:var(--mark)">${u.kind==='Assignment'?'Assignment · '+esc(u.lesson):u.kind}</span><span class="hw-chip ${ss.k}">${esc(ss.t)}</span></div>
+        <h3>${esc(u.kind==='Assignment'?u.title.replace(u.lesson+' · ',''):u.title)}</h3>
+        <div class="hw-meta"><span><b>${st.a}</b> / ${st.n} answered</span>${st.sc&&(u.kind!=='Exam'||(sub&&sub.status==='reviewed'))?`<span><b>${st.ok}</b> / ${st.sc} correct</span>`:''}${sub&&sub.submittedAt?`<span>Sent ${esc(hwDate(sub.submittedAt))}</span>`:''}</div>
         <div class="bar"><span style="--p:${st.n?st.a/st.n:0}"></span></div>
         ${ss.changed?'<p class="hint hw-warn">You changed some answers after you sent it. Send it again so your teacher sees the new version.</p>':''}
         ${hwComments(sub)}
@@ -6850,7 +7181,7 @@ function hwBanner(){
   const el=$('#hw-home');if(!el)return;
   let toSend=0,fresh=0,waiting=0;
   HW.forEach(u=>{const rep=u.report(),st=hwStats(rep),ss=hwState(u,rep);if((ss.k==='new'&&st.a)||ss.changed)toSend++;if(ss.k==='fresh')fresh++;if(ss.k==='sent'&&!ss.changed)waiting++;});
-  el.innerHTML=`<div><span class="mono" style="color:var(--mark)">Homework · for your teacher</span><h2>My homework</h2><p>${HW.length} workbook pages and assignments. Send your answers and read your teacher's comments.</p></div>
+  el.innerHTML=`<div><span class="mono" style="color:var(--mark)">Homework · for your teacher</span><h2>My homework</h2><p>${HW.length} exams, workbook pages and assignments. Send your answers and read your teacher's comments.</p></div>
     <div class="hw-nums"><span><b>${fresh}</b>new comments</span><span><b>${waiting}</b>waiting for review</span><span><b>${toSend}</b>ready to send</span></div>`;
 }
 document.addEventListener('click',e=>{
@@ -6866,8 +7197,8 @@ hwLoad().then(hwBanner);
 /* =====================================================================
    HOME + ROUTER
    ===================================================================== */
-const ORDER=['fe','sb','w3','wr','w2','mf','pr','ld','oy','hw','health','weekend','can','nn','wx'];
-const ROUTES={'':'home','home':'home','health-illness':'health','last-weekend':'weekend','can-cant':'can','noisy-neighbours':'nn','seasons-weather':'wx','arriving-in-london':'ld','open-your-books':'oy','workbook':'hw','writers-room':'wr','workbook-2a':'w2','how-much':'pr','mid-feedback':'mf','stars-and-stripes':'sb','feelings':'fe','workbook-2b':'w3','homework':'homework','shadowing':'studio'};
+const ORDER=['ex1','ex2','fe','sb','w3','wr','w2','mf','pr','ld','oy','hw','health','weekend','can','nn','wx'];
+const ROUTES={'':'home','home':'home','health-illness':'health','last-weekend':'weekend','can-cant':'can','noisy-neighbours':'nn','seasons-weather':'wx','arriving-in-london':'ld','open-your-books':'oy','workbook':'hw','writers-room':'wr','workbook-2a':'w2','how-much':'pr','mid-feedback':'mf','stars-and-stripes':'sb','feelings':'fe','workbook-2b':'w3','exam-1':'ex1','exam-2':'ex2','homework':'homework','shadowing':'studio'};
 function renderHome(){
   if(STUDIO)$('#sh-home').innerHTML=STUDIO.banner();
   hwBanner();
