@@ -96,32 +96,10 @@ button,input,textarea{font:inherit;color:inherit}
 .back{display:inline-flex;align-items:center;gap:6px;color:var(--ink-2);text-decoration:none;font-size:15px;margin-bottom:18px}
 .back:hover{color:var(--rx)}
 
-/* home */
-.home-hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:28px;align-items:end;margin-bottom:32px}
-.home-hero h1{font-size:clamp(44px,6.4vw,76px);font-weight:800;letter-spacing:-.035em;margin:10px 0 12px}
-.home-hero .lead{max-width:40ch}
-.how{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;border-left:2px solid var(--line);padding-left:18px}
-.how li{display:flex;flex-direction:column;gap:1px;font-size:15.5px;color:var(--ink-2)}
-.how b{color:var(--ink);font-size:16px}
-.shelf-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
-.shelf-h .hint{font-variant-numeric:tabular-nums}
-.topics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
-.topic{display:flex;flex-direction:column;background:var(--sheet);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:var(--ink);transition:border-color .15s,transform .2s,box-shadow .2s;min-width:0}
-.topic:hover{border-color:var(--rx);transform:translateY(-2px);box-shadow:0 16px 36px -22px var(--shade)}
-.topic-img{position:relative;aspect-ratio:16/8.2;overflow:hidden;background:var(--line-2)}
-.topic-img img{width:100%;height:100%;object-fit:cover;display:block}
-.topic-img .tag{position:absolute;left:12px;top:12px;background:rgba(255,255,255,.92);color:#13283E;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border-radius:4px}
-.topic-body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
-.topic-kicker{color:var(--mark)}
-.topic h2{font-size:clamp(28px,3.4vw,36px);font-weight:700}
-.topic p{color:var(--ink-2);max-width:46ch}
-.topic-meta{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:14.5px;color:var(--ink-2)}
-.topic-meta b{color:var(--ink)}
 .prog{display:flex;align-items:center;gap:12px;margin-top:4px}
 .bar{flex:1;height:8px;border-radius:4px;background:var(--line-2);overflow:hidden}
 .bar span{display:block;height:100%;width:calc(var(--p,0) * 100%);background:var(--mark);transition:width .4s}
 .prog .n{font-family:var(--f-mono);font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums;min-width:4ch;text-align:right}
-.topic .cta{margin-top:6px;align-self:flex-start}
 
 /* lesson hero */
 .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(24px,4vw,56px);align-items:center;margin-bottom:36px}
@@ -646,13 +624,12 @@ details.ex-chain ul{margin:8px 0 0;padding-left:18px;color:var(--ink-2)}
   .advice{position:static}
 }
 @media (max-width:820px){
-  .hero,.home-hero{grid-template-columns:minmax(0,1fr)}
+  .hero{grid-template-columns:minmax(0,1fr)}
   .hero-fig{order:-1}
   .organizer{grid-template-columns:minmax(0,1fr)}
   .org-sum{flex-direction:row;align-items:baseline;gap:10px}
-  .clinic,.fc,.pq,.match,.wrap-grid,.cards,.roles,.phr,.topics,.duo,.leo,.verbs,.forms,.trip{grid-template-columns:minmax(0,1fr)}
+  .clinic,.fc,.pq,.match,.wrap-grid,.cards,.roles,.phr,.duo,.leo,.verbs,.forms,.trip{grid-template-columns:minmax(0,1fr)}
   .clinic figure{display:none}
-  .appbar .tools{margin-left:0;width:100%}
 }
 @media (max-width:560px){
   body{font-size:16.5px}
@@ -1044,13 +1021,6 @@ details.guide-d summary{cursor:pointer;color:var(--rx);font-weight:700}
 .x-pics figcaption{position:absolute;left:8px;top:8px;background:rgba(255,255,255,.92);color:#13283E;font-family:var(--f-mono);font-size:11px;padding:1px 6px;border-radius:4px}
 @media (max-width:620px){.x-pics{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* ============ homework screen (sent to the teacher) ============ */
-.hw-banner{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px;align-items:center;padding:20px 22px;border-radius:16px;background:var(--sheet);border:1px solid var(--line);margin-bottom:24px;text-decoration:none;color:var(--ink);--mark:var(--mf-mark)}
-.hw-banner:hover{border-color:var(--rx)}
-.hw-banner h2{font-size:clamp(26px,3.4vw,34px);margin:6px 0}
-.hw-banner p{color:var(--ink-2);max-width:48ch}
-.hw-nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.hw-nums span{display:flex;flex-direction:column;gap:4px;padding:10px 12px;border-radius:10px;background:var(--paper);border:1px solid var(--line-2);font-size:13px;color:var(--ink-2)}
-.hw-nums b{font-family:var(--f-display);font-size:28px;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1}
 .hw-head{margin-bottom:10px;--mark:var(--mf-mark)}
 .hw-head h1{font-size:clamp(44px,6.4vw,72px);font-weight:800;letter-spacing:-.035em;margin:8px 0 10px}
 .hw-gh{font-size:24px;margin:26px 0 12px}
@@ -1074,7 +1044,7 @@ details.guide-d summary{cursor:pointer;color:var(--rx);font-weight:700}
 .hw-q{opacity:.85;font-size:14px}
 .hw-you{font-weight:700}
 .hw-c{white-space:pre-wrap}
-@media (max-width:820px){.hw-banner{grid-template-columns:minmax(0,1fr)}.hw-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:820px){.hw-grid{grid-template-columns:minmax(0,1fr)}}
 /* ============ A1 plan: 28 days, one rule a day ============ */
 :root{--a1-mark:#47750F;--a1-mark-soft:#E9F2DA}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--a1-mark:#A6D66B;--a1-mark-soft:#1F2C14}}
@@ -1320,6 +1290,153 @@ a.a1-stat:hover{border-color:var(--mark)}
   html.a1-printing .a1-book{border:0;padding:0}
   html.a1-printing .a1-bcard{break-inside:avoid}
 }
+/* app bar: main sections + settings */
+.mainnav{display:flex;gap:2px;margin-left:8px;overflow-x:auto;scrollbar-width:none;min-width:0}
+.mainnav::-webkit-scrollbar{display:none}
+.mainnav a{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:8px;text-decoration:none;color:var(--ink-2);font-weight:700;font-size:15px;white-space:nowrap}
+.mainnav a:hover{color:var(--ink);background:var(--sheet)}
+.mainnav a[aria-current="page"]{color:var(--ink);background:var(--sheet);box-shadow:inset 0 -2px 0 var(--rx)}
+.nav-badge{min-width:19px;height:19px;padding:0 5px;border-radius:999px;background:var(--rx);color:var(--on-rx);font-size:11.5px;display:inline-grid;place-items:center;font-variant-numeric:tabular-nums}
+.settings{position:relative;margin-left:auto}
+.set-btn[aria-expanded="true"]{color:var(--rx);border-color:var(--rx)}
+.settings-pop{position:absolute;right:0;top:calc(100% + 8px);z-index:40;background:var(--sheet);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:12px;width:max-content;max-width:calc(100vw - 32px);box-shadow:0 18px 40px -18px var(--shade)}
+.settings-pop .tool{justify-content:space-between;gap:16px}
+.settings-pop .status{padding-top:10px;border-top:1px solid var(--line-2)}
+
+/* home: continue, today, levels */
+.home-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px 40px;align-items:center;margin-bottom:22px}
+.home-top h1{font-size:clamp(40px,5.6vw,68px);font-weight:800;letter-spacing:-.035em;margin:8px 0 10px}
+.home-top .lead{max-width:42ch}
+.home-top>div>.mono{color:var(--ink-2)}
+.resume{display:grid;grid-template-columns:148px minmax(0,1fr);gap:16px;align-items:center;padding:14px;border-radius:16px;background:var(--sheet);border:1px solid var(--line);box-shadow:inset 4px 0 0 var(--mark);text-decoration:none;color:var(--ink);min-width:0;transition:border-color .15s}
+.resume:hover{border-color:var(--mark)}
+.rs-img img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;display:block;background:var(--line-2)}
+.rs-img .a1-mini{max-width:none;padding:6px}
+.rs-body{display:flex;flex-direction:column;gap:5px;min-width:0}
+.rs-body>.mono{color:var(--mark)}
+.rs-where{font-size:14px;color:var(--ink-2)}
+.rs-body b{font-family:var(--f-display);font-size:clamp(21px,2.4vw,26px);line-height:1.15}
+.rs-body .prog{margin-top:2px}
+.rs-body .btn{align-self:flex-start;margin-top:6px}
+.today{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:34px}
+.td{display:flex;flex-direction:column;gap:3px;padding:14px 16px;border-radius:14px;background:var(--sheet);border:1px solid var(--line);text-decoration:none;color:var(--ink);min-width:0;transition:border-color .15s}
+.td:hover{border-color:var(--mark)}
+.td>.mono{color:var(--mark)}
+.td b{font-family:var(--f-display);font-size:26px;line-height:1.15;font-variant-numeric:tabular-nums}
+.td .hint{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.td.hot{background:var(--mark-soft);border-color:var(--mark)}
+.td-a1{--mark:var(--a1-mark);--mark-soft:var(--a1-mark-soft)}
+.td-hw{--mark:var(--mf-mark);--mark-soft:var(--mf-mark-soft)}
+.td-sh{--mark:var(--sh-mark);--mark-soft:var(--sh-mark-soft)}
+.home-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.home-h h2{font-size:26px}
+.lv-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:14px;scroll-margin-top:16px}
+.lv-tab{display:flex;flex-direction:column;align-items:stretch;gap:3px;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:transparent;cursor:pointer;text-align:left;color:var(--ink);min-width:0}
+.lv-tab:hover{border-color:var(--ink-2);background:var(--sheet)}
+.lv-tab[aria-selected="true"]{background:var(--sheet);border-color:var(--ink);box-shadow:0 12px 30px -24px var(--shade)}
+.lv-tab .mono{color:var(--ink-2)}
+.lv-tab b{font-family:var(--f-display);font-size:20px;line-height:1.2}
+.lv-tab .hint{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lv-tab .prog{margin-top:6px;gap:8px}
+.lv-tab .prog .n{font-size:12px}
+.lv{background:var(--sheet);border:1px solid var(--line);border-radius:16px;padding:clamp(16px,3vw,30px);min-width:0}
+.lv-head{display:flex;justify-content:space-between;gap:12px 20px;align-items:flex-end;flex-wrap:wrap;margin-bottom:22px}
+.lv-head h2{font-size:clamp(28px,3.6vw,38px);margin:6px 0}
+.lv-head .mono{color:var(--ink-2)}
+.lv-nums{display:flex;gap:10px}
+.lv-nums span{display:flex;flex-direction:column;gap:3px;padding:10px 14px;border-radius:10px;background:var(--paper);border:1px solid var(--line-2);font-size:13px;color:var(--ink-2)}
+.lv-nums b{font-family:var(--f-display);font-size:24px;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.lec-list{list-style:none;margin:0;padding:0}
+.lec{position:relative;display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding-bottom:24px;scroll-margin-top:16px}
+.lec::before{content:"";position:absolute;left:21px;top:48px;bottom:4px;width:2px;border-radius:2px;background:var(--line-2)}
+.lec:last-child{padding-bottom:0}.lec:last-child::before{display:none}
+.lec-dot{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font:700 17px var(--f-display);background:var(--paper);border:2px solid var(--line);color:var(--ink-2);font-variant-numeric:tabular-nums}
+.lec-dot .ic{width:20px;height:20px}
+.lec.mile .lec-dot{border-radius:12px;background:var(--ex-mark-soft);border-color:var(--ex-mark);color:var(--ex-mark)}
+.lec.done .lec-dot{background:var(--ok);border-color:var(--ok);color:var(--sheet)}
+.lec.now .lec-dot{border-color:var(--rx);color:var(--rx);background:var(--sheet);box-shadow:0 0 0 4px var(--rx-soft)}
+.lec-h{display:flex;align-items:center;gap:4px 12px;flex-wrap:wrap;min-height:44px}
+.lec-h h3{font-size:22px}
+.lec-h .hint{font-variant-numeric:tabular-nums}
+.lec-now{font-size:12.5px;font-weight:700;color:var(--rx);background:var(--rx-soft);padding:2px 9px;border-radius:999px}
+.lec-items{display:flex;flex-direction:column;gap:8px;margin-top:6px;min-width:0}
+.it{display:grid;grid-template-columns:112px minmax(0,1fr) auto;gap:16px;align-items:center;padding:10px 14px 10px 10px;border-radius:12px;border:1px solid var(--line);background:var(--sheet);text-decoration:none;color:var(--ink);transition:border-color .15s,box-shadow .15s;min-width:0}
+.it:hover{border-color:var(--mark);box-shadow:0 12px 26px -22px var(--shade)}
+.it-img img{width:112px;aspect-ratio:16/10;object-fit:cover;border-radius:8px;display:block;background:var(--line-2)}
+.it-body{display:flex;flex-direction:column;gap:2px;min-width:0}
+.it-k{color:var(--mark);font-size:11px}
+.it-t{font-family:var(--f-display);font-size:19px;line-height:1.2}
+.it-d{font-size:14.5px;color:var(--ink-2);display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.it-s{display:flex;flex-direction:column;align-items:flex-end;gap:7px;width:168px}
+.it-s .prog{margin:0;width:100%;gap:8px}
+.it-s .prog .n{font-size:12px}
+.it-go{display:inline-flex;align-items:center;gap:2px;font-weight:700;font-size:14.5px;color:var(--rx)}
+.it-go .ic{width:16px;height:16px}
+.it.done .it-go{color:var(--ok)}
+.lv-foot{margin-top:22px;padding-top:16px;border-top:1px solid var(--line-2);display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.a1-lv{display:flex;flex-direction:column;gap:14px;--mark:var(--a1-mark);--mark-soft:var(--a1-mark-soft)}
+.a1-lv .a1-banner{margin:0}
+.a1-lvw-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.a1-lvw{padding:14px 16px;border:1px solid var(--line);border-radius:12px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.a1-lvw-h{display:flex;flex-direction:column;gap:2px}
+.a1-lvw-h .mono{color:var(--mark);font-size:11px}
+.a1-lvw-h b{font-family:var(--f-display);font-size:17px;line-height:1.2}
+.a1-tile.cur{outline:2.5px solid var(--mark);outline-offset:2px}
+
+/* inside a lesson: where am I, and what comes next */
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;font-size:15px;color:var(--ink-2);margin-bottom:18px}
+.crumbs a{display:inline-flex;align-items:center;gap:4px;color:var(--ink-2);text-decoration:none}
+.crumbs a:hover{color:var(--rx)}
+.crumbs .sep{color:var(--line)}
+.crumbs .here{color:var(--ink);font-weight:700}
+.lnav{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;margin-top:36px;padding-top:22px;border-top:1px solid var(--line)}
+.lnav a{display:flex;flex-direction:column;gap:4px;padding:16px 18px;border-radius:14px;border:1px solid var(--line);background:var(--sheet);text-decoration:none;color:var(--ink);min-width:0;transition:border-color .15s}
+.lnav a:hover{border-color:var(--rx)}
+.lnav .mono{color:var(--ink-2);display:inline-flex;align-items:center;gap:4px}
+.lnav b{font-family:var(--f-display);font-size:20px;line-height:1.2}
+.lnav .next{text-align:right;align-items:flex-end}
+.lnav .next .mono{color:var(--rx)}
+
+@media (max-width:980px){
+  .today{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:820px){
+  .appbar{gap:10px 12px}
+  .mainnav{order:3;flex-basis:100%;margin:0 -12px 0 -8px;padding-bottom:2px}
+  .home-top{grid-template-columns:minmax(0,1fr)}
+  .a1-lvw-grid{grid-template-columns:minmax(0,1fr)}
+  .it{grid-template-columns:72px minmax(0,1fr);gap:12px;padding:10px}
+  .it-img img{width:72px;aspect-ratio:1}
+  .it-s{grid-column:2;width:auto;flex-direction:row;align-items:center;gap:12px}
+  .it-s .prog{flex:1}
+  .it-d{display:none}
+}
+@media (max-width:560px){
+  .resume{grid-template-columns:88px minmax(0,1fr);gap:12px;padding:12px}
+  .today{gap:8px;margin-bottom:26px}
+  .td{padding:12px}
+  .td b{font-size:22px}
+  .lv-tabs{gap:6px}
+  .lv-tab{padding:10px 10px 12px}
+  .lv-tab b{font-size:16.5px}
+  .lv-tab .mono{font-size:10.5px}
+  .lv-tab .hint{display:none}
+  .lv-nums{width:100%}
+  .lv-nums span{flex:1}
+  .lec{grid-template-columns:30px minmax(0,1fr);gap:10px;padding-bottom:18px}
+  .lec::before{left:14px;top:34px}
+  .lec-dot{width:30px;height:30px;font-size:14px;border-width:1.5px}
+  .lec-dot .ic{width:15px;height:15px}
+  .lec.mile .lec-dot{border-radius:8px}
+  .lec-h{min-height:30px}
+  .lec-h h3{font-size:19px}
+  .lec-items{margin-left:-40px;margin-top:10px}
+  .it{grid-template-columns:56px minmax(0,1fr)}
+  .it-img img{width:56px}
+  .it-t{font-size:17px}
+  .lnav{grid-template-columns:minmax(0,1fr)}
+  .lnav .next{text-align:left;align-items:flex-start}
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1333,13 +1450,23 @@ a.a1-stat:hover{border-color:var(--mark)}
   <symbol id="i-eye" viewBox="0 0 24 24"><path d="M12 5C6.5 5 2.7 8.6 1.5 12c1.2 3.4 5 7 10.5 7s9.3-3.6 10.5-7C21.3 8.6 17.5 5 12 5zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-2.2a1.8 1.8 0 1 0 0-3.6 1.8 1.8 0 0 0 0 3.6z"/></symbol>
   <symbol id="i-left" viewBox="0 0 24 24"><path d="M15.4 7.4 14 6l-6 6 6 6 1.4-1.4L10.8 12z"/></symbol>
   <symbol id="i-right" viewBox="0 0 24 24"><path d="M8.6 16.6 10 18l6-6-6-6-1.4 1.4 4.6 4.6z"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.48.48 0 0 0-.48-.41h-3.84a.48.48 0 0 0-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.49.49 0 0 0-.59.22L2.74 8.87a.48.48 0 0 0 .12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32a.48.48 0 0 0-.12-.61l-2.01-1.58zM12 15.6a3.6 3.6 0 1 1 0-7.2 3.6 3.6 0 0 1 0 7.2z"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M14.4 6 14 4H5v17h2v-7h5.6l.4 2h7V6z"/></symbol>
   <symbol id="i-timer" viewBox="0 0 24 24"><path d="M15 1H9v2h6V1zm-4 13h2V8h-2v6zm8.03-6.61 1.42-1.42c-.43-.51-.9-.99-1.41-1.41l-1.42 1.42A8.96 8.96 0 0 0 12 4a9 9 0 1 0 9 9c0-2.12-.74-4.07-1.97-5.61zM12 20a7 7 0 1 1 0-14 7 7 0 0 1 0 14z"/></symbol>
 </svg>
 
 <div class="shell" id="app">
   <header class="appbar">
     <a class="brand" href="#home"><span class="brand-mark" aria-hidden="true">EN</span><span>My English Lessons</span></a>
-    <div class="tools">
+    <nav class="mainnav" aria-label="Main">
+      <a href="#home" data-nav="home">Home</a>
+      <a href="#a1-plan" data-nav="a1">A1 plan</a>
+      <a href="#homework" data-nav="homework">Homework<span class="nav-badge" id="nav-hw" hidden></span></a>
+      <a href="#shadowing" data-nav="studio">Speaking</a>
+    </nav>
+    <div class="settings">
+      <button type="button" class="ib set-btn" id="set-btn" aria-expanded="false" aria-controls="set-pop" aria-label="Settings"><svg class="ic" aria-hidden="true"><use href="#i-gear"/></svg></button>
+      <div class="settings-pop" id="set-pop" hidden>
       <div class="tool"><span>Voice</span>
         <div class="seg" role="group" aria-label="Voice speed"><button type="button" id="rate-n" data-rate="1">Normal</button><button type="button" id="rate-s" data-rate="0.75">Slow</button></div>
       </div>
@@ -1347,28 +1474,24 @@ a.a1-stat:hover{border-color:var(--mark)}
         <div class="seg" role="group" aria-label="Arabic hints"><button type="button" id="ar-on" data-ar="1">Show</button><button type="button" id="ar-off" data-ar="0">Hide</button></div>
       </div>
       <span class="status"><span class="dot"></span><span id="status-t">Checking for teacher feedback…</span></span>
+      </div>
     </div>
   </header>
 
   <!-- ============ HOME ============ -->
   <div class="view" id="v-home" data-view="home">
-    <section class="home-hero">
+    <section class="home-top">
       <div>
-        <span class="mono" style="color:var(--ink-2)">Lesson library</span>
+        <span class="mono">My English · Level 5 now</span>
         <h1>My English Lessons</h1>
-        <p class="lead">Every lesson from class, ready to practice. Pick a topic, listen to every word, and answer every question in your own English.</p>
+        <p class="lead">Every class lesson in order, by level and lecture. Start with today, then pick up where you left off.</p>
       </div>
-      <ul class="how">
-        <li><b>Listen</b>Tap any word or sentence to hear it, at normal or slow speed.</li>
-        <li><b>Answer</b>Write or say your answer to every question.</li>
-        <li><b>Improve</b>Send your homework to your teacher and read her comments.</li>
-      </ul>
+      <div id="home-resume"></div>
     </section>
-    <a class="a1-banner" href="#a1-plan" id="a1-home" aria-label="Open my A1 plan"></a>
-    <a class="hw-banner" href="#homework" id="hw-home" aria-label="Open my homework"></a>
-    <a class="sh-banner" href="#shadowing" id="sh-home" aria-label="Open the Shadowing Studio"></a>
-    <div class="shelf-h"><h2 style="font-size:24px">Topics</h2><span class="hint" id="home-stats"></span></div>
-    <div class="topics" id="topics"></div>
+    <section class="today" id="home-today" aria-label="Today"></section>
+    <div class="home-h"><h2>My levels</h2><span class="hint">Tap a level to see its lectures.</span></div>
+    <div class="lv-tabs" id="lv-tabs" role="tablist" aria-label="Levels"></div>
+    <section class="lv" id="lv-panel" role="tabpanel"></section>
   </div>
 
   <!-- ============ A1 PLAN: 28 days ============ -->
@@ -1376,7 +1499,7 @@ a.a1-stat:hover{border-color:var(--mark)}
     <a class="back" href="#home">All lessons</a>
     <header class="a1-head">
       <div>
-        <span class="mono kick">Level A1 · 28-day plan · Files 3 and 4</span>
+        <span class="mono kick">Level 6 · A1 plan · Files 3 and 4</span>
         <h1>28-Day A1 Plan</h1>
         <p class="lead">One short lesson a day, about 30 minutes. Learn one rule, fix real mistakes, learn new words, speak, then check what you still remember from earlier days.</p>
       </div>
@@ -2820,7 +2943,7 @@ const RM=()=>{try{return matchMedia('(prefers-reduced-motion: reduce)').matches;
 const escRe=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
 let toastT;
 function toast(msg){const t=$('#toast');t.textContent=msg;t.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>t.hidden=true,3200);}
-$$('.back').forEach(a=>a.innerHTML=`${icon('left')}All lessons`);
+$$('.back').forEach(a=>a.innerHTML=`${icon('left')}Home`);
 
 /* ---------- settings (shared) ---------- */
 const GKEY='english-lessons-settings-v1';
@@ -5386,7 +5509,7 @@ if(S.own)addOwn();
 $('#sh-own').value=S.own||'';
 
 STUDIO={
-  prog:trackProg,streakHTML,
+  prog:trackProg,streakHTML,today:()=>secs(today()),
   banner(){const t=secs(today());return `<div><span class="mono kick">Speaking practice · 5 minutes a day</span><h2>Shadowing Studio</h2><p>Listen, echo, shadow, then speak from memory. ${SH_TRACKS.length} tracks from your lessons, and you can add your own text.</p><span class="btn primary cta">${t>0?'Continue practising':'Start shadowing'}${icon('right')}</span></div><div class="streak">${streakHTML()}</div>`;},
   onScore(f){SH_HOOKS.push(f);}
 };
@@ -6293,7 +6416,7 @@ Give feedback on the student's lines only. Reply with only a JSON object:
   /* ---------- the view ---------- */
   const H=L.hero;
   let html=`<div class="view lesson lesson-${key}${EX?' exam':''}" id="${view}" data-view="${key}" hidden>
-  <a class="back" href="#home">${icon('left')}All lessons</a>
+  <a class="back" href="#home">${icon('left')}Home</a>
   <header class="hero"><div><div class="eyebrow"><span class="x-badge" aria-hidden="true">${H.badge}</span><span class="mono">${H.kicker}</span></div><h1>${H.h1}</h1><p class="lead">${H.lead}</p><div class="meta">${H.meta.map(m=>`<span>${m}</span>`).join('')}</div></div>
   <figure class="hero-fig"><img src="${H.img}" alt="${esc(H.alt)}"><figcaption><span>${esc(H.cap[0])}</span><span class="dark">${esc(H.cap[1])}</span></figcaption></figure>
   <div class="organizer" aria-label="Lesson progress"><div class="org-sum"><span class="pct" id="${p}pct">0%</span><small>of the lesson done</small></div><div class="box cal" id="${p}box" style="--n:${SECS.length}"></div></div></header>
@@ -7875,10 +7998,11 @@ const A1=(()=>{
     const n=doneCount(),due=dueKeys().length,sk=streak();
     $('#a1-stats').innerHTML=`<div class="a1-stat"><b>${n}<small> / 28</small></b>days done</div><div class="a1-stat"><b>${Object.keys(S.words).length}</b>words so far</div><a class="a1-stat${due?' hot':''}" href="#a1-words"><b>${due}</b>to review today</a><div class="a1-stat"><b>${sk}</b>${sk===1?'day':'days'} in a row</div>`;
   }
+  function tileHTML(i,cur,here){return `<a class="a1-tile${gd(i).done?' done':''}${isRev(i)?' rev':''}${cur?' cur':''}" href="#a1-day-${i+1}" style="--p:${dayP(i).toFixed(2)}" title="Day ${i+1} · ${esc(DAYS[i].t)}"${here?' aria-current="page"':''} aria-label="Day ${i+1}: ${esc(DAYS[i].t)}${gd(i).done?', done':''}">${gd(i).done?icon('check'):i+1}</a>`;}
   function paintMap(){
     const cw=wkOf(S.day);
     $('#a1-map').className='a1-map'+(S.mapAll?' all':'');
-    $('#a1-map').innerHTML=WEEKS.map((w,k)=>`<div class="a1-wk${k===cw?' on':''}"><div class="a1-wk-h"><span class="mono">Week ${k+1} · ${esc(w.f)}</span><b>${esc(w.t)}</b></div><div class="a1-tiles">${[0,1,2,3,4,5,6].map(x=>{const i=k*7+x,p=dayP(i);return `<a class="a1-tile${gd(i).done?' done':''}${isRev(i)?' rev':''}" href="#a1-day-${i+1}" style="--p:${p.toFixed(2)}" title="Day ${i+1} · ${esc(DAYS[i].t)}"${S.tab==='day'&&i===S.day?' aria-current="page"':''} aria-label="Day ${i+1}: ${esc(DAYS[i].t)}${gd(i).done?', done':''}">${gd(i).done?icon('check'):i+1}</a>`;}).join('')}</div></div>`).join('')
+    $('#a1-map').innerHTML=WEEKS.map((w,k)=>`<div class="a1-wk${k===cw?' on':''}"><div class="a1-wk-h"><span class="mono">Week ${k+1} · ${esc(w.f)}</span><b>${esc(w.t)}</b></div><div class="a1-tiles">${[0,1,2,3,4,5,6].map(x=>tileHTML(k*7+x,false,S.tab==='day'&&k*7+x===S.day)).join('')}</div></div>`).join('')
       +`<button type="button" class="btn quiet a1-maptog" data-a1map>${S.mapAll?'Show this week only':'Show all 4 weeks'}</button>`;
   }
   function changed(){ST.save();if(CUR!=='a1')return;paintStats();paintMap();paintTabs();const s=$('#a1-steps');if(s&&S.tab==='day')s.innerHTML=stepsHTML(S.day);}
@@ -7977,12 +8101,20 @@ const A1=(()=>{
   /* ---------- home banner ---------- */
   function banner(){
     const c=current(),D=DAYS[c],n=doneCount(),due=dueKeys().length,sk=streak(),started=!!S.d[c];
-    return `<div><span class="mono kick">Level A1 · 28-day plan</span><h2>Day ${c+1}: ${esc(D.t)}</h2><p>About 30 minutes a day. Learn one rule, fix 3 mistakes, learn new words, speak, then check what you remember.</p>
+    return `<div><span class="mono kick">Level 6 · A1 plan</span><h2>Day ${c+1}: ${esc(D.t)}</h2><p>About 30 minutes a day. Learn one rule, fix 3 mistakes, learn new words, speak, then check what you remember.</p>
       <div class="c-row a1-bn-cta"><span class="btn primary cta">${started?'Continue':'Start'} Day ${c+1}${icon('right')}</span>${due?`<span class="hint"><b>${due}</b> ${due===1?'word':'words'} to review</span>`:''}</div></div>
-      <div class="a1-bn-r"><div class="a1-mini" aria-hidden="true">${DAYS.map((_,i)=>`<i class="${gd(i).done?'done':''}${i===c?' cur':''}" style="--p:${dayP(i).toFixed(2)}"></i>`).join('')}</div>
+      <div class="a1-bn-r">${mini()}
       <div class="a1-bn-n"><span><b>${n}</b>/ 28 days</span><span><b>${Object.keys(S.words).length}</b>words</span><span><b>${sk}</b>${sk===1?'day':'days'} in a row</span></div></div>`;
   }
-  return {banner,href:()=>'#a1-day-'+(current()+1)};
+  const mini=()=>`<div class="a1-mini" aria-hidden="true">${DAYS.map((_,i)=>`<i class="${gd(i).done?'done':''}${i===current()?' cur':''}" style="--p:${dayP(i).toFixed(2)}"></i>`).join('')}</div>`;
+  function levelHTML(){
+    const c=current();
+    return `<div class="a1-lv"><a class="a1-banner" href="#a1-day-${c+1}">${banner()}</a>
+      <div class="a1-lvw-grid">${WEEKS.map((w,k)=>{let n=0;for(let i=k*7;i<k*7+7;i++)if(gd(i).done)n++;return `<div class="a1-lvw"><div class="a1-lvw-h"><span class="mono">Week ${k+1} · ${esc(w.f)} · ${n} / 7 days</span><b>${esc(w.t)}</b></div><div class="a1-tiles">${[0,1,2,3,4,5,6].map(x=>tileHTML(k*7+x,k*7+x===c)).join('')}</div></div>`;}).join('')}</div>
+      <div class="lv-foot"><span class="hint">Every rule and every word from the plan, in one place.</span><div class="c-row"><a class="btn" href="#a1-rules">Rule book</a><a class="btn" href="#a1-words">My words</a></div></div></div>`;
+  }
+  return {banner,mini,levelHTML,href:()=>'#a1-day-'+(current()+1),
+    today:()=>{const c=current();return {day:c+1,title:DAYS[c].t,due:dueKeys().length,done:doneCount(),href:'#a1-day-'+(c+1),started:!!S.d[c]};}};
 })();
 
 /* =====================================================================
@@ -8036,7 +8168,7 @@ function hwRender(){
   const groups=[['A1 plan','A1 plan · one report a week'],['Exam','Exams'],['Workbook','Workbook pages'],['Assignment','Assignments from the lessons']];
   box.innerHTML=groups.map(([k,h])=>{const us=HW.filter(u=>u.kind===k);if(!us.length)return '';
     return `<h2 class="hw-gh">${h}</h2><div class="hw-grid">${us.map(u=>{const rep=u.report(),st=hwStats(rep),sub=HWS.subs[u.id],ss=hwState(u,rep),busy=!!HWS.busy[u.id];
-      return `<article class="hw-card t-${u.lessonKey}"><div class="hw-top"><span class="mono" style="color:var(--mark)">${u.kind==='Assignment'?'Assignment · '+esc(u.lesson):u.kind}</span><span class="hw-chip ${ss.k}">${esc(ss.t)}</span></div>
+      return `<article class="hw-card t-${u.lessonKey}"><div class="hw-top"><span class="mono" style="color:var(--mark)">${esc([WHERE[u.lessonKey]&&WHERE[u.lessonKey].label,u.kind==='Assignment'?u.lesson:u.kind].filter(Boolean).join(' · '))}</span><span class="hw-chip ${ss.k}">${esc(ss.t)}</span></div>
         <h3>${esc(u.kind==='Assignment'?u.title.replace(u.lesson+' · ',''):u.title)}</h3>
         <div class="hw-meta"><span><b>${st.a}</b> / ${st.n} answered</span>${st.sc&&(u.kind!=='Exam'||(sub&&sub.status==='reviewed'))?`<span><b>${st.ok}</b> / ${st.sc} correct</span>`:''}${sub&&sub.submittedAt?`<span>Sent ${esc(hwDate(sub.submittedAt))}</span>`:''}</div>
         <div class="bar"><span style="--p:${st.n?st.a/st.n:0}"></span></div>
@@ -8045,13 +8177,7 @@ function hwRender(){
         <div class="hw-act"><button type="button" class="btn" data-hwopen="${u.id}">Open${icon('right')}</button><button type="button" class="btn primary" data-hwsend="${u.id}"${!HWAPI||busy?' disabled':''}>${busy?'Sending…':sub?'Send again':'Send to teacher'}</button></div>
       </article>`;}).join('')}</div>`;}).join('');
 }
-function hwBanner(){
-  const el=$('#hw-home');if(!el)return;
-  let toSend=0,fresh=0,waiting=0;
-  HW.forEach(u=>{const rep=u.report(),st=hwStats(rep),ss=hwState(u,rep);if((ss.k==='new'&&st.a)||ss.changed)toSend++;if(ss.k==='fresh')fresh++;if(ss.k==='sent'&&!ss.changed)waiting++;});
-  el.innerHTML=`<div><span class="mono" style="color:var(--mark)">Homework · for your teacher</span><h2>My homework</h2><p>${HW.length} A1 plan weeks, exams, workbook pages and assignments. Send your answers and read your teacher's comments.</p></div>
-    <div class="hw-nums"><span><b>${fresh}</b>new comments</span><span><b>${waiting}</b>waiting for review</span><span><b>${toSend}</b>ready to send</span></div>`;
-}
+function hwBanner(){paintNav(CUR||'home');if(!CUR)paintToday();}
 document.addEventListener('click',e=>{
   const s=e.target.closest('[data-hwsend]');if(s){hwSend(s.dataset.hwsend);return;}
   const o=e.target.closest('[data-hwopen]');if(o){hwOpen(o.dataset.hwopen);return;}
@@ -8065,36 +8191,125 @@ hwLoad().then(hwBanner);
 /* =====================================================================
    HOME + ROUTER
    ===================================================================== */
-const ORDER=['ex1','ex2','fe','sb','w3','wr','w2','mf','pr','ld','oy','hw','health','weekend','can','nn','wx'];
-const ROUTES={'':'home','home':'home','health-illness':'health','last-weekend':'weekend','can-cant':'can','noisy-neighbours':'nn','seasons-weather':'wx','arriving-in-london':'ld','open-your-books':'oy','workbook':'hw','writers-room':'wr','workbook-2a':'w2','how-much':'pr','mid-feedback':'mf','stars-and-stripes':'sb','feelings':'fe','workbook-2b':'w3','exam-1':'ex1','exam-2':'ex2','homework':'homework','shadowing':'studio','a1-plan':'a1','a1-rules':'a1','a1-words':'a1'};
+const ROUTES={'':'home','home':'home','health-illness':'health','last-weekend':'weekend','can-cant':'can','noisy-neighbours':'nn','seasons-weather':'wx','arriving-in-london':'ld','open-your-books':'oy','workbook':'hw','writers-room':'wr','workbook-2a':'w2','how-much':'pr','mid-feedback':'mf','stars-and-stripes':'sb','feelings':'fe','workbook-2b':'w3','exam-1':'ex1','exam-2':'ex2','homework':'homework','shadowing':'studio','a1-plan':'a1','a1-rules':'a1','a1-words':'a1','level-5':'home','level-6':'home','earlier-lessons':'home'};
 for(let i=1;i<=28;i++)ROUTES['a1-day-'+i]='a1';
-function renderHome(){
-  if(STUDIO)$('#sh-home').innerHTML=STUDIO.banner();
-  hwBanner();
-  const a1=$('#a1-home');a1.innerHTML=A1.banner();a1.href=A1.href();
-  $('#topics').innerHTML=ORDER.map(k=>{
-    const L=LESSONS[k],c=L.card,p=L.progress(),pc=Math.round(p*100);
-    return `<a class="topic t-${k}" href="#${L.hash}">
-      <div class="topic-img"><img src="${c.img}" alt="${esc(c.alt)}"><span class="tag">${esc(c.tag)}</span></div>
-      <div class="topic-body">
-        <span class="mono topic-kicker">${esc(c.kicker)}</span>
-        <h2>${esc(L.title)}</h2>
-        <p>${esc(c.desc)}</p>
-        <div class="topic-meta">${c.meta.map(m=>`<span>${m}</span>`).join('')}</div>
-        <div class="prog"><span class="bar"><span style="--p:${p}"></span></span><span class="n">${pc}%</span></div>
-        <span class="btn ${pc>0?'primary':''} cta">${pc>=100?'Review lesson':pc>0?'Continue':'Start lesson'}${icon('right')}</span>
-      </div></a>`;
-  }).join('');
-  const n=Object.keys(QMETA).filter(answered).length;
-  $('#home-stats').textContent=`${ORDER.length} topics · ${n} ${n===1?'answer':'answers'} written`;
+/* the course map: levels → lectures → lessons, workbook pages and exams */
+const LEVELS=[
+  {id:'level-5',name:'Level 5',sub:'Units 1–2 · your class',tk:'Units 1–2',th:'Your class now',lead:'Your class lessons in order, lecture by lecture, with the workbook pages and exams for each part.',
+   rows:[{n:1,keys:['oy','hw']},{n:2,keys:['nn']},{n:3,keys:['wx']},{n:4,keys:['ld','pr']},{n:5,keys:['wr','w2']},
+     {mile:'Mid-course check',keys:['mf','ex1']},{n:6,keys:['sb']},{n:7,keys:['fe','w3']},{mile:'End of Unit 2',keys:['ex2']}]},
+  {id:'level-6',name:'Level 6',sub:'A1 plan · Files 3–4',tk:'A1 plan',th:'28 days · Files 3–4',plan:true,lead:'A 28-day plan for Files 3 and 4: one short lesson a day, with spaced review.'},
+  {id:'earlier-lessons',name:'Earlier lessons',sub:'Before Level 5',tk:'Review',th:'Before Level 5',lead:'Lessons from before Level 5. Open one when you want to review it.',rows:[{keys:['health','weekend','can']}]}
+];
+const KIND={hw:'Workbook',w2:'Workbook',w3:'Workbook',ex1:'Exam',ex2:'Exam',mf:'Feedback'};
+const UNIT={oy:'Unit 1C',hw:'Units 1A–1C',nn:'Present continuous',wx:'Weather and dates',ld:'Practical English',pr:'Numbers and prices',wr:'Unit 2A',w2:'Unit 2A',mf:'Your teacher',ex1:'Units 1A–2A',sb:'Unit 2B',fe:'Unit 2C',w3:'Units 2B–2C',ex2:'Units 2B–2C',health:'Vocabulary',weekend:'Past simple',can:"can / can't"};
+const WHERE={},SEQ=[];
+LEVELS.forEach(lv=>(lv.rows||[]).forEach(r=>r.keys.forEach(k=>{WHERE[k]={lv,label:r.mile||(r.n?'Lecture '+r.n:'')};SEQ.push(k);})));
+const prog=k=>Math.min(1,LESSONS[k].progress()||0);
+const isDone=k=>prog(k)>=.999;
+const avg=ks=>ks.length?ks.reduce((n,k)=>n+prog(k),0)/ks.length:0;
+const lvKeys=lv=>(lv.rows||[]).flatMap(r=>r.keys);
+const lvProg=lv=>lv.plan?A1.today().done/28:avg(lvKeys(lv));
+const deEnt=s=>String(s).replace(/&amp;/g,'&');
+function hwCounts(){let toSend=0,fresh=0,waiting=0;HW.forEach(u=>{const rep=u.report(),st=hwStats(rep),ss=hwState(u,rep);if((ss.k==='new'&&st.a)||ss.changed)toSend++;if(ss.k==='fresh')fresh++;if(ss.k==='sent'&&!ss.changed)waiting++;});return {toSend,fresh,waiting};}
+function hwChip(k){
+  if(!HWS.loaded)return '';
+  const us=HW.filter(u=>u.lessonKey===k);if(!us.length)return '';
+  const ss=us.map(u=>{const rep=u.report();return Object.assign(hwState(u,rep),{a:hwStats(rep).a});});
+  if(ss.some(s=>s.k==='fresh'))return '<span class="hw-chip fresh">New comments</span>';
+  if(ss.some(s=>s.changed||(s.k==='new'&&s.a)))return '<span class="hw-chip">Ready to send</span>';
+  if(ss.every(s=>s.k==='done'))return '<span class="hw-chip done">Reviewed</span>';
+  if(ss.some(s=>s.k==='sent'))return '<span class="hw-chip sent">Sent</span>';
+  return '';
 }
+function itemRow(k){
+  const L=LESSONS[k],c=L.card,p=prog(k),pc=Math.round(p*100);
+  return `<a class="it t-${k}${p>=.999?' done':''}" href="#${L.hash}">
+    <span class="it-img"><img src="${c.img}" alt="" loading="lazy"></span>
+    <span class="it-body"><span class="mono it-k">${KIND[k]||'Lesson'} · ${esc(UNIT[k]||'')}</span><b class="it-t">${esc(L.title)}</b><span class="it-d">${esc(deEnt(c.desc))}</span></span>
+    <span class="it-s">${hwChip(k)}<span class="prog"><span class="bar"><span style="--p:${p}"></span></span><span class="n">${pc}%</span></span><span class="it-go">${pc>=100?'Review':pc>0?'Continue':'Start'}${icon('right')}</span></span></a>`;
+}
+function levelHTML(lv){
+  const ks=lvKeys(lv),done=ks.filter(isDone).length,head=`<header class="lv-head"><div><span class="mono">${esc(lv.sub)}</span><h2>${esc(lv.name)}</h2><p class="hint">${esc(lv.lead)}</p></div>`;
+  if(lv.plan)return `${head}</header>${A1.levelHTML()}`;
+  const nowAt=lv.rows.findIndex(r=>avg(r.keys)<.999);
+  const rows=lv.rows.map((r,i)=>{
+    const a=avg(r.keys),ok=a>=.999,lab=r.mile||(r.n?'Lecture '+r.n:'');
+    if(!lab)return `<div class="lec-items">${r.keys.map(itemRow).join('')}</div>`;
+    return `<li class="lec${r.mile?' mile':''}${ok?' done':''}${i===nowAt?' now':''}" id="${lv.id}-${r.n||'m'+i}">
+      <span class="lec-dot" aria-hidden="true">${ok?icon('check'):r.mile?icon('flag'):r.n}</span>
+      <div class="lec-body"><div class="lec-h"><h3>${esc(lab)}</h3><span class="hint">${r.keys.length} ${r.keys.length===1?'part':'parts'} · ${Math.round(a*100)}%</span>${i===nowAt?'<span class="lec-now">Up next</span>':''}</div>
+      <div class="lec-items">${r.keys.map(itemRow).join('')}</div></div></li>`;
+  }).join('');
+  const lect=lv.rows.filter(r=>r.n).length;
+  return `${head}<div class="lv-nums">${lect?`<span><b>${lect}</b>lectures</span>`:''}<span><b>${done} / ${ks.length}</b>finished</span><span><b>${Math.round(avg(ks)*100)}%</b>done</span></div></header>${lv.rows.some(r=>r.n||r.mile)?`<ol class="lec-list">${rows}</ol>`:rows}`;
+}
+function paintLevels(){
+  $('#lv-tabs').innerHTML=LEVELS.map(lv=>{const p=lvProg(lv),on=lv.id===G.lv;
+    return `<button type="button" class="lv-tab" role="tab" id="tab-${lv.id}" aria-selected="${on}" aria-controls="lv-panel" data-lv="${lv.id}"><span class="mono">${esc(lv.tk)}</span><b>${esc(lv.name)}</b><span class="hint">${esc(lv.th)}</span><span class="prog"><span class="bar"><span style="--p:${p}"></span></span><span class="n">${Math.round(p*100)}%</span></span></button>`;}).join('');
+  const lv=LEVELS.find(l=>l.id===G.lv);
+  const el=$('#lv-panel');el.setAttribute('aria-labelledby','tab-'+lv.id);el.innerHTML=levelHTML(lv);
+}
+function resumeHTML(){
+  if(G.lastL==='a1'){const a=A1.today();return `<a class="resume t-a1" href="${a.href}"><span class="rs-img">${A1.mini()}</span><span class="rs-body"><span class="mono">Continue where you left off</span><span class="rs-where">Level 6 · A1 plan · Day ${a.day} of 28</span><b>${esc(a.title)}</b><span class="btn primary">${a.started?'Continue':'Start'} Day ${a.day}${icon('right')}</span></span></a>`;}
+  let k=G.lastL,lead='Continue where you left off';
+  if(!WHERE[k]||isDone(k)){k=SEQ.find(x=>!isDone(x))||SEQ[0];lead='Up next';}
+  const L=LESSONS[k],w=WHERE[k],p=prog(k),pc=Math.round(p*100);
+  return `<a class="resume t-${k}" href="#${L.hash}"><span class="rs-img"><img src="${L.card.img}" alt=""></span><span class="rs-body"><span class="mono">${lead}</span><span class="rs-where">${esc(w.lv.name)}${w.label?' · '+esc(w.label):''} · ${KIND[k]||'Lesson'}</span><b>${esc(L.title)}</b><span class="prog"><span class="bar"><span style="--p:${p}"></span></span><span class="n">${pc}%</span></span><span class="btn primary">${pc>0?'Continue':'Start'}${icon('right')}</span></span></a>`;
+}
+function paintToday(){
+  const el=$('#home-today');if(!el)return;
+  const a=A1.today(),h=hwCounts(),sm=STUDIO?Math.round(STUDIO.today()/60):0;
+  el.innerHTML=`<a class="td td-a1" href="${a.href}"><span class="mono">A1 plan · today</span><b>Day ${a.day}</b><span class="hint">${esc(a.title)}</span></a>
+    <a class="td td-a1${a.due?' hot':''}" href="#a1-words"><span class="mono">My words</span><b>${a.due}</b><span class="hint">${a.due?(a.due===1?'word':'words')+' to review today':'Nothing to review today'}</span></a>
+    <a class="td td-hw${h.fresh||h.toSend?' hot':''}" href="#homework"><span class="mono">Homework</span><b>${h.fresh||h.toSend||h.waiting}</b><span class="hint">${h.fresh?'new comments from your teacher':h.toSend?'ready to send':h.waiting?'waiting for review':'nothing to send'}</span></a>
+    <a class="td td-sh" href="#shadowing"><span class="mono">Speaking</span><b>${sm} min</b><span class="hint">shadowed today · aim for 5</span></a>`;
+}
+function paintNav(r){
+  const sec=r==='a1'?'a1':r==='homework'?'homework':r==='studio'?'studio':'home';
+  $$('.mainnav a').forEach(a=>{if(a.dataset.nav===sec)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+  const b=$('#nav-hw');if(b){const n=hwCounts().fresh;b.hidden=!n;b.textContent=n;}
+}
+const LV_ROUTE={'level-5':'level-5','level-6':'level-6','earlier-lessons':'earlier-lessons'};
+function renderHome(){
+  const h=(location.hash||'').slice(1);
+  if(LV_ROUTE[h])G.lv=h;
+  if(!LEVELS.some(l=>l.id===G.lv))G.lv='level-5';
+  $('#home-resume').innerHTML=resumeHTML();
+  paintToday();paintLevels();
+  if(LV_ROUTE[h])requestAnimationFrame(()=>$('#lv-tabs').scrollIntoView({block:'start'}));
+}
+$('#lv-tabs').addEventListener('click',e=>{const b=e.target.closest('[data-lv]');if(!b)return;G.lv=b.dataset.lv;saveG();paintLevels();try{history.replaceState(null,'','#'+G.lv);}catch(err){}});
+$('#lv-tabs').addEventListener('keydown',e=>{if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;const i=LEVELS.findIndex(l=>l.id===G.lv),n=LEVELS[(i+(e.key==='ArrowRight'?1:LEVELS.length-1))%LEVELS.length];G.lv=n.id;saveG();paintLevels();$('#tab-'+n.id).focus();});
+
+/* every lesson page: a breadcrumb at the top, previous / next at the bottom */
+SEQ.forEach((k,i)=>{
+  const v=document.getElementById('v-'+k);if(!v)return;
+  const w=WHERE[k],b=v.querySelector(':scope > .back');
+  if(b){const nav=document.createElement('nav');nav.className='crumbs';nav.setAttribute('aria-label','You are here');
+    nav.innerHTML=`<a href="#home">${icon('left')}Home</a><span class="sep" aria-hidden="true">/</span><a href="#${w.lv.id}">${esc(w.lv.name)}</a>${w.label?`<span class="sep" aria-hidden="true">/</span><span class="here">${esc(w.label)}</span>`:''}`;
+    b.replaceWith(nav);}
+  const p=SEQ[i-1],n=SEQ[i+1],same=x=>x&&WHERE[x].lv===w.lv,lab=x=>(WHERE[x].label?WHERE[x].label+' · ':'')+(KIND[x]||'Lesson');
+  const ln=document.createElement('nav');ln.className='lnav';ln.setAttribute('aria-label','More in '+w.lv.name);
+  ln.innerHTML=(same(p)?`<a class="prev" href="#${LESSONS[p].hash}"><span class="mono">${icon('left')}Previous · ${esc(lab(p))}</span><b>${esc(LESSONS[p].title)}</b></a>`:`<a class="prev" href="#${w.lv.id}"><span class="mono">${icon('left')}${esc(w.lv.name)}</span><b>All lectures</b></a>`)
+    +(same(n)?`<a class="next" href="#${LESSONS[n].hash}"><span class="mono">Next · ${esc(lab(n))}${icon('right')}</span><b>${esc(LESSONS[n].title)}</b></a>`:`<a class="next" href="#${w.lv.id}"><span class="mono">${esc(w.lv.name)}${icon('right')}</span><b>Back to all lectures</b></a>`);
+  v.appendChild(ln);
+});
+{const b=$('#v-a1 > .back');if(b){const nav=document.createElement('nav');nav.className='crumbs';nav.setAttribute('aria-label','You are here');nav.innerHTML=`<a href="#home">${icon('left')}Home</a><span class="sep" aria-hidden="true">/</span><a href="#level-6">Level 6</a><span class="sep" aria-hidden="true">/</span><span class="here">A1 plan</span>`;b.replaceWith(nav);}}
+
+/* settings: voice speed, Arabic hints, feedback status */
+{const btn=$('#set-btn'),pop=$('#set-pop');
+  const close=()=>{pop.hidden=true;btn.setAttribute('aria-expanded','false');};
+  btn.addEventListener('click',()=>{const open=pop.hidden;pop.hidden=!open;btn.setAttribute('aria-expanded',String(open));});
+  document.addEventListener('click',e=>{if(!pop.hidden&&!e.target.closest('.settings'))close();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!pop.hidden){close();btn.focus();}});}
 function show(r){
   stopPlayback();stopListening();pop.hidden=true;
   if(CUR&&LESSONS[CUR]&&LESSONS[CUR].onHide)LESSONS[CUR].onHide();
   $$('.view').forEach(v=>v.hidden=v.dataset.view!==r);
-  CUR=r==='home'?null:r;
+  CUR=r==='home'?null:r;paintNav(r);
   if(r==='home'){renderHome();document.title='My English Lessons';}
-  else{G.last=r;saveG();document.title=LESSONS[r].title+' · My English Lessons';if(LESSONS[r].onShow)LESSONS[r].onShow();}
+  else{G.last=r;if(WHERE[r]||r==='a1')G.lastL=r;saveG();document.title=LESSONS[r].title+' · My English Lessons';if(LESSONS[r].onShow)LESSONS[r].onShow();}
   window.scrollTo(0,0);
 }
 function routeFromHash(){const h=(location.hash||'').slice(1);if(Object.prototype.hasOwnProperty.call(ROUTES,h))show(ROUTES[h]);else if(!CUR)show('home');}
