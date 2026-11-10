@@ -1075,6 +1075,251 @@ details.guide-d summary{cursor:pointer;color:var(--rx);font-weight:700}
 .hw-you{font-weight:700}
 .hw-c{white-space:pre-wrap}
 @media (max-width:820px){.hw-banner{grid-template-columns:minmax(0,1fr)}.hw-grid{grid-template-columns:minmax(0,1fr)}}
+/* ============ A1 plan: 28 days, one rule a day ============ */
+:root{--a1-mark:#47750F;--a1-mark-soft:#E9F2DA}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--a1-mark:#A6D66B;--a1-mark-soft:#1F2C14}}
+:root[data-theme="dark"]{--a1-mark:#A6D66B;--a1-mark-soft:#1F2C14}
+.v-a1,.t-a1,.a1-banner{--mark:var(--a1-mark);--mark-soft:var(--a1-mark-soft)}
+.v-a1 .kick,.a1-banner .kick{color:var(--mark)}
+.hl{color:var(--mark)}
+.a1-arx,.a1-mean{font-family:var(--f-ar);direction:rtl;unicode-bidi:isolate}
+kbd{font-family:var(--f-mono);font-size:11px;border:1px solid currentColor;border-radius:4px;padding:0 4px;opacity:.7;margin-left:4px}
+
+/* home banner */
+.a1-banner{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px 28px;align-items:center;padding:22px 24px;border-radius:16px;background:var(--sheet);border:1px solid var(--line);box-shadow:inset 4px 0 0 var(--mark);margin-bottom:24px;text-decoration:none;color:var(--ink)}
+.a1-banner:hover{border-color:var(--mark)}
+.a1-banner h2{font-size:clamp(26px,3.4vw,34px);margin:6px 0}
+.a1-banner p{color:var(--ink-2);max-width:50ch}
+.a1-bn-cta{margin-top:14px;gap:14px}
+.a1-mini{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;max-width:280px}
+.a1-mini i{display:block;aspect-ratio:1;border-radius:5px;background:var(--line-2);position:relative;overflow:hidden}
+.a1-mini i::after{content:"";position:absolute;inset:auto 0 0 0;height:calc(var(--p,0) * 100%);background:var(--mark);opacity:.35}
+.a1-mini i.done{background:var(--mark)}.a1-mini i.done::after{display:none}
+.a1-mini i.cur{outline:2px solid var(--mark);outline-offset:1px}
+.a1-bn-n{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font-size:14px;color:var(--ink-2)}
+.a1-bn-n b{font-family:var(--f-display);font-size:22px;color:var(--ink);margin-right:5px;font-variant-numeric:tabular-nums}
+
+/* plan page */
+.a1-head{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:20px 32px;align-items:end;margin-bottom:26px}
+.a1-head h1{font-size:clamp(42px,6vw,70px);font-weight:800;letter-spacing:-.035em;margin:8px 0 10px}
+.a1-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.a1-stat{display:flex;flex-direction:column;gap:5px;padding:12px 14px;border-radius:12px;background:var(--sheet);border:1px solid var(--line);font-size:13px;color:var(--ink-2);min-width:0;text-decoration:none}
+.a1-stat b{font-family:var(--f-display);font-size:28px;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.a1-stat b small{font-size:15px;color:var(--ink-2);font-weight:600}
+a.a1-stat:hover{border-color:var(--mark)}
+.a1-stat.hot{border-color:var(--mark);background:var(--mark-soft)}
+.a1-stat.hot b{color:var(--mark)}
+.a1-layout{display:grid;grid-template-columns:minmax(250px,290px) minmax(0,1fr);gap:28px;align-items:start}
+.a1-side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);display:flex;flex-direction:column;gap:14px;min-width:0}
+.a1-main{min-width:0;display:flex;flex-direction:column;gap:18px}
+.a1-map{display:flex;flex-direction:column;gap:16px;background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:16px}
+.a1-wk-h{display:flex;flex-direction:column;gap:2px;margin-bottom:8px}
+.a1-wk-h b{font-family:var(--f-display);font-size:16px;line-height:1.2}
+.a1-wk-h .mono{color:var(--ink-2);font-size:10.5px}
+.a1-wk.on .a1-wk-h .mono{color:var(--mark)}
+.a1-tiles{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}
+.a1-tile{position:relative;display:grid;place-items:center;aspect-ratio:1;border-radius:8px;border:1px solid var(--line);background:var(--paper);color:var(--ink);text-decoration:none;font-family:var(--f-display);font-weight:700;font-size:14.5px;overflow:hidden;font-variant-numeric:tabular-nums}
+.a1-tile::after{content:"";position:absolute;left:0;bottom:0;height:4px;width:calc(var(--p,0) * 100%);background:var(--mark)}
+.a1-tile:hover{border-color:var(--mark)}
+.a1-tile.rev{border-style:dashed;border-color:var(--mark)}
+.a1-tile.done{background:var(--mark);border-color:var(--mark);color:var(--sheet)}
+.a1-tile.done::after{display:none}
+.a1-tile .ic{width:15px;height:15px}
+.a1-tile[aria-current="page"]{outline:2.5px solid var(--ink);outline-offset:2px}
+.a1-maptog{display:none;align-self:flex-start}
+.a1-how{background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:16px;font-size:15px}
+.a1-how h3{font-size:17px;margin-bottom:8px}
+.a1-how ol{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+.a1-how li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:8px;color:var(--ink-2)}
+.a1-how li b{font-family:var(--f-mono);font-size:12px;color:var(--mark);padding-top:2px}
+.a1-tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+.a1-tab{padding:10px 14px;text-decoration:none;color:var(--ink-2);font-weight:700;font-size:15.5px;border-bottom:3px solid transparent;margin-bottom:-1px;white-space:nowrap;display:inline-flex;gap:7px;align-items:center}
+.a1-tab:hover{color:var(--ink)}
+.a1-tab[aria-current="page"]{color:var(--ink);border-bottom-color:var(--mark)}
+.a1-badge{min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:var(--mark);color:var(--sheet);font-size:12px;display:inline-grid;place-items:center;font-variant-numeric:tabular-nums}
+
+/* a day */
+.a1-day,.a1-book,.a1-words{background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:clamp(18px,3.2vw,32px);min-width:0;scroll-margin-top:16px}
+.a1-dh-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.a1-day h2{font-size:clamp(28px,4vw,40px);font-weight:700;margin:8px 0 18px}
+.a1-steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin-bottom:26px}
+.a1-step{display:flex;flex-direction:column;align-items:flex-start;gap:3px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--paper);cursor:pointer;text-align:left;min-width:0;color:var(--ink)}
+.a1-step:hover{border-color:var(--mark)}
+.a1-step .n{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font:700 12.5px var(--f-mono);border:1.5px solid var(--line);color:var(--ink-2);background:var(--sheet)}
+.a1-step .n .ic{width:14px;height:14px}
+.a1-step .l{font-weight:700;font-size:15px;line-height:1.2}
+.a1-step .m{font-size:12.5px;color:var(--ink-2)}
+.a1-step[aria-current="step"]{border-color:var(--mark);background:var(--mark-soft);box-shadow:inset 0 -3px 0 var(--mark)}
+.a1-step.done .n{background:var(--mark);border-color:var(--mark);color:var(--sheet)}
+.a1-sec{display:flex;flex-direction:column;gap:12px;min-width:0}
+.a1-sec-h{font-size:clamp(22px,3vw,28px);display:flex;flex-direction:column;gap:6px;margin-bottom:2px}
+.a1-sec-h .mono{color:var(--ink-2);font-family:var(--f-mono);font-weight:500}
+.a1-sec .sub{margin:18px 0 0}
+.a1-rule{background:var(--mark-soft);border-radius:14px;padding:20px 22px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.a1-rule>.mono{color:var(--mark)}
+.a1-r{font-size:18px}
+.a1-pat{font-family:var(--f-display);font-weight:600;font-size:clamp(18px,2.3vw,22px);line-height:1.35;padding:10px 14px;border-radius:10px;background:var(--sheet);border:1px solid var(--line-2);overflow-wrap:anywhere}
+.a1-ex{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.a1-ex li,.a1-exl{display:flex;gap:10px;align-items:center;font-size:17px;min-width:0}
+.a1-tip{font-size:16px;text-align:right;padding-top:10px;border-top:1px dashed var(--line);line-height:1.7}
+.a1-wkrules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.a1-chs{display:flex;flex-direction:column}
+.a1-ch{padding:16px 0;border-top:1px solid var(--line-2);min-width:0}
+.a1-ch:first-child{border-top:0;padding-top:4px}
+.a1-ch-q{font-size:19px;font-weight:700;display:flex;gap:10px;align-items:center;flex-wrap:wrap;line-height:1.5}
+.a1-gap{display:inline-block;min-width:3.2em;border-bottom:2px solid var(--ink-2);text-align:center;padding:0 4px;color:var(--ink-2);line-height:1.25}
+.a1-gap.ok{color:var(--ok);border-color:var(--ok)}
+.a1-gap.no{color:var(--bad);border-color:var(--bad);text-decoration:line-through}
+.a1-opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.a1-opt{border:1.5px solid var(--line);background:var(--sheet);border-radius:999px;padding:8px 18px;font-size:16px;cursor:pointer;line-height:1.3;color:var(--ink);min-height:40px}
+.a1-opt:hover:not([disabled]){border-color:var(--mark);background:var(--mark-soft)}
+.a1-opt.right{border-color:var(--ok);background:var(--ok-soft);color:var(--ok);font-weight:700}
+.a1-opt.wrong{border-color:var(--bad);background:var(--bad-soft);color:var(--bad);text-decoration:line-through}
+.a1-opt[disabled]{cursor:default}
+.a1-opt[disabled]:not(.right):not(.wrong){opacity:.5}
+.a1-ans{font-size:16px;margin-top:8px}
+.a1-from{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--mark);margin-bottom:6px}
+.a1-from a{color:inherit}
+.a1-video{display:flex;justify-content:space-between;align-items:center;gap:12px 18px;flex-wrap:wrap;margin-top:14px;padding:14px 16px;border-radius:12px;border:1px solid var(--line-2);background:var(--paper)}
+.a1-fxs{display:flex;flex-direction:column}
+.a1-fx{padding:18px 0;border-top:1px solid var(--line-2);display:flex;flex-direction:column;gap:10px;min-width:0}
+.a1-fx:first-child{border-top:0;padding-top:4px}
+.a1-ctx{color:var(--ink-2);display:flex;gap:8px;align-items:center;font-size:16px}
+.a1-wrong{font-size:19px;font-weight:700;display:flex;gap:10px;align-items:baseline}
+.a1-wrong .x{color:var(--bad);font-family:var(--f-mono);flex:none}
+.a1-fxrow{display:flex;gap:8px;align-items:center}
+.a1-fxrow .inp{flex:1;min-width:0}
+.a1-fx.ok .inp{border-color:var(--ok);background:var(--ok-soft)}
+.a1-fx.shown .inp{opacity:.7}
+.a1-fxres{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.a1-fxres:empty{display:none}
+.a1-fxres .res{display:inline-flex;gap:6px;align-items:center}
+.a1-diff{font-size:17px;padding:6px 10px;border-radius:8px;background:var(--paper)}
+.a1-diff mark{background:var(--bad-soft);color:var(--bad);border-bottom:2px solid var(--bad);border-radius:3px;padding:0 3px}
+.a1-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+.a1-card{border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--sheet);display:flex;flex-direction:column;gap:8px;min-height:132px;min-width:0}
+.a1-card.know{border-color:var(--ok)}.a1-card.not{border-color:var(--bad)}
+.a1-card-top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.a1-en{font-family:var(--f-display);font-weight:700;font-size:20px;line-height:1.15;overflow-wrap:break-word;min-width:0}
+.ar bdi{white-space:nowrap}
+.a1-cover{border:1px dashed var(--line);background:var(--paper);border-radius:8px;padding:10px;color:var(--ink-2);cursor:pointer;font-size:14px;flex:1}
+.a1-cover:hover{border-color:var(--mark);color:var(--ink)}
+.a1-card .a1-mean{font-size:18px;text-align:right;flex:1}
+.a1-rate{display:flex;gap:6px;margin-top:auto}
+.a1-rb{flex:1;border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:7px 4px;font-size:13.5px;cursor:pointer;color:var(--ink)}
+.a1-rb.on[data-v="1"]{border-color:var(--ok);background:var(--ok-soft);color:var(--ok);font-weight:700}
+.a1-rb.on[data-v="0"]{border-color:var(--bad);background:var(--bad-soft);color:var(--bad);font-weight:700}
+.a1-sens{display:flex;flex-direction:column;gap:10px}
+.a1-sen{display:grid;grid-template-columns:150px minmax(0,1fr) 22px;gap:10px;align-items:center}
+.a1-sen .w-en{font-weight:700;overflow-wrap:anywhere}
+.a1-use{color:var(--ok)}
+.a1-say{border-radius:14px;background:var(--mark-soft);padding:18px 20px;display:flex;flex-direction:column;gap:6px}
+.a1-say .mono{color:var(--mark)}
+.a1-task{font-family:var(--f-display);font-weight:600;font-size:clamp(21px,2.6vw,26px);line-height:1.25}
+.a1-qs{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;counter-reset:q}
+.a1-qs li{display:flex;gap:10px;align-items:center;padding:10px 12px;border:1px solid var(--line-2);border-radius:10px;font-weight:700}
+.a1-help{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.a1-help>div{padding:14px 16px;border-radius:12px;background:var(--paper);border:1px solid var(--line-2);display:flex;flex-direction:column;gap:8px;min-width:0}
+.a1-help .mono{color:var(--ink-2)}
+.a1-help .a1-pat{font-size:16.5px;padding:8px 10px}
+.a1-chips{display:flex;flex-wrap:wrap;gap:6px}
+.a1-chip{border:1px solid var(--line);background:var(--sheet);border-radius:999px;padding:5px 12px;font-size:15px;cursor:pointer;color:var(--ink)}
+.a1-chip:hover{border-color:var(--mark)}
+.a1-rec{display:flex;align-items:center;gap:14px 18px;flex-wrap:wrap;margin-top:6px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;min-width:0}
+.a1-recbtn{width:64px;height:64px;border-radius:50%;border:0;background:var(--hx-mark);color:#fff;display:grid;place-items:center;cursor:pointer;flex:none}
+.a1-recbtn .ic{width:26px;height:26px}
+.a1-recbtn.on{animation:pulse 1.2s infinite}
+.a1-rect{font-family:var(--f-display);font-weight:700;font-size:24px;font-variant-numeric:tabular-nums}
+.a1-take{display:flex;flex-direction:column;gap:6px;flex:1;min-width:min(240px,100%)}
+.a1-take .mono{color:var(--ink-2)}
+.a1-take audio{width:100%;max-width:440px}
+.a1-takes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.a1-takes .a1-take{padding:12px 14px;border:1px solid var(--line-2);border-radius:12px}
+.a1-checks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.a1-checks label{display:flex;gap:10px;align-items:flex-start;cursor:pointer;font-size:16.5px}
+.a1-checks input{width:20px;height:20px;accent-color:var(--mark);flex:none;margin:2px 0 0}
+.a1-lab{font-weight:700;margin-top:10px}
+.a1-score{display:flex;align-items:center;gap:16px;padding:14px 16px;border-radius:12px;background:var(--paper);border:1px solid var(--line-2)}
+.a1-score b{font-family:var(--f-display);font-size:32px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.a1-score div{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.a1-finish{margin-top:18px;padding:20px 22px;border-radius:14px;background:var(--mark-soft);display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.a1-finish h3{font-size:26px}
+.a1-foot{display:flex;justify-content:space-between;gap:10px;margin-top:26px;padding-top:18px;border-top:1px solid var(--line-2);flex-wrap:wrap}
+
+/* rule book + words */
+.a1-book,.a1-words{display:flex;flex-direction:column;gap:16px}
+.a1-book-h{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-end}
+.a1-book h2,.a1-words h2{font-size:clamp(28px,4vw,38px);margin-bottom:6px}
+.a1-golden{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.a1-golden div{padding:14px 16px;border-radius:12px;background:var(--mark-soft);display:flex;flex-direction:column;gap:4px;min-width:0}
+.a1-golden b{font-family:var(--f-display);font-size:18px}
+.a1-golden .ar{text-align:right;color:var(--ink-2);font-size:14.5px}
+.a1-bwk{font-size:22px;margin-top:8px}
+.a1-bgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.a1-bcard{background:var(--sheet);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.a1-bcard h4{font-family:var(--f-display);font-size:19px;margin:0;line-height:1.2}
+.a1-bcard .a1-pat{font-size:16px;padding:8px 10px}
+.a1-bcard .a1-ex li{font-size:15.5px}
+.a1-bcard .a1-tip{font-size:14.5px}
+.a1-bcard .btn{align-self:flex-start;margin-top:auto}
+.a1-wstats{grid-template-columns:repeat(3,minmax(0,1fr))}
+.a1-calm{display:flex;gap:8px;align-items:center;color:var(--ok);font-weight:700}
+.a1-fc{max-width:560px;width:100%;margin:4px auto;text-align:center;border:1px solid var(--line);border-radius:18px;padding:22px 22px 26px;background:var(--sheet);display:flex;flex-direction:column;gap:14px;align-items:center;box-shadow:0 18px 40px -26px var(--shade)}
+.a1-fc-top{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%}
+.a1-fc-front{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,6vw,48px);line-height:1.15;overflow-wrap:anywhere;padding:12px 0}
+.a1-fc-front.a1-arx{font-family:var(--f-ar);font-weight:500}
+.a1-fc-back{font-size:24px;padding-top:14px;border-top:1px dashed var(--line);width:100%;font-weight:700}
+.a1-fc-back.a1-arx{font-weight:500}
+.a1-wday{display:flex;flex-direction:column;gap:8px;padding-top:14px;border-top:1px solid var(--line-2)}
+.a1-wday-h{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.a1-wlist{display:flex;flex-wrap:wrap;gap:8px}
+.a1-w{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);background:var(--sheet);border-radius:10px;padding:5px 10px 5px 6px;font-size:15.5px;min-width:0;max-width:100%}
+.a1-w .a1-mean{font-size:15px;color:var(--ink-2)}
+.a1-w.due{border-color:var(--mark);background:var(--mark-soft)}
+.a1-dots{display:inline-flex;gap:2px}
+.a1-dots i{width:6px;height:6px;border-radius:50%;background:var(--line)}
+.a1-dots i.on{background:var(--mark)}
+
+@media (max-width:980px){
+  .a1-layout{grid-template-columns:minmax(0,1fr);gap:18px}
+  .a1-side{position:static}
+  .a1-how{display:none}
+  .a1-map{padding:14px}
+  .a1-map:not(.all) .a1-wk:not(.on){display:none}
+  .a1-maptog{display:inline-flex}
+  .a1-head{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:820px){
+  .a1-banner{grid-template-columns:minmax(0,1fr)}
+  .a1-bgrid,.a1-golden,.a1-help,.a1-wkrules,.a1-takes,.a1-qs{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:560px){
+  .a1-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .a1-wstats{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .a1-wstats .a1-stat{padding:10px}
+  .a1-steps{gap:4px}
+  .a1-step{padding:8px 2px;align-items:center;text-align:center}
+  .a1-step .m{display:none}
+  .a1-step .l{font-size:11.5px}
+  .a1-sen{grid-template-columns:minmax(0,1fr) 22px;gap:4px 8px}
+  .a1-sen .w-en{grid-column:1 / -1}
+  .a1-fxrow{flex-wrap:wrap}
+  .a1-fxrow .inp{flex-basis:100%}
+  .a1-fxrow .btn{flex:1;justify-content:center}
+  .a1-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .a1-card{padding:10px 11px}
+  .a1-card-top{flex-wrap:wrap;gap:4px 8px}
+  .a1-en{font-size:18px}
+  .a1-tab{padding:10px 10px;font-size:15px}
+  .a1-foot .btn{flex:1;justify-content:center}
+}
+@media print{
+  html.a1-printing body{background:#fff}
+  html.a1-printing .appbar,html.a1-printing .back,html.a1-printing .a1-head,html.a1-printing .a1-side,html.a1-printing .a1-tabs,html.a1-printing .a1-noprint,html.a1-printing .toast,html.a1-printing .say{display:none!important}
+  html.a1-printing .a1-layout{display:block}
+  html.a1-printing .a1-book{border:0;padding:0}
+  html.a1-printing .a1-bcard{break-inside:avoid}
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1119,16 +1364,46 @@ details.guide-d summary{cursor:pointer;color:var(--rx);font-weight:700}
         <li><b>Improve</b>Send your homework to your teacher and read her comments.</li>
       </ul>
     </section>
+    <a class="a1-banner" href="#a1-plan" id="a1-home" aria-label="Open my A1 plan"></a>
     <a class="hw-banner" href="#homework" id="hw-home" aria-label="Open my homework"></a>
     <a class="sh-banner" href="#shadowing" id="sh-home" aria-label="Open the Shadowing Studio"></a>
     <div class="shelf-h"><h2 style="font-size:24px">Topics</h2><span class="hint" id="home-stats"></span></div>
     <div class="topics" id="topics"></div>
   </div>
 
+  <!-- ============ A1 PLAN: 28 days ============ -->
+  <div class="view v-a1" id="v-a1" data-view="a1" hidden>
+    <a class="back" href="#home">All lessons</a>
+    <header class="a1-head">
+      <div>
+        <span class="mono kick">Level A1 · 28-day plan · Files 3 and 4</span>
+        <h1>28-Day A1 Plan</h1>
+        <p class="lead">One short lesson a day, about 30 minutes. Learn one rule, fix real mistakes, learn new words, speak, then check what you still remember from earlier days.</p>
+      </div>
+      <div class="a1-stats" id="a1-stats"></div>
+    </header>
+    <div class="a1-layout">
+      <aside class="a1-side" aria-label="The 28 days">
+        <nav class="a1-map" id="a1-map" aria-label="Days"></nav>
+        <div class="a1-how"><h3>Every day, 30 minutes</h3><ol>
+          <li><b>5 min</b>Read the rule and say the examples aloud.</li>
+          <li><b>10 min</b>Fix the mistakes. Say the answer before you check.</li>
+          <li><b>5 min</b>Learn the words and write a sentence with each one.</li>
+          <li><b>10 min</b>Speak, record yourself, then find 2 mistakes.</li>
+          <li><b>3 min</b>Remember check: earlier days come back.</li>
+        </ol></div>
+      </aside>
+      <div class="a1-main">
+        <nav class="a1-tabs" id="a1-tabs" aria-label="Plan sections"></nav>
+        <div id="a1-panel"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- ============ HOMEWORK (sent to the teacher) ============ -->
   <div class="view" id="v-homework" data-view="homework" hidden>
     <a class="back" href="#home">All lessons</a>
-    <header class="hw-head"><span class="mono" style="color:var(--mark)">Homework</span><h1>My homework</h1><p class="lead">Do your exams, workbook pages and assignments, then send them to your teacher. Her comments appear here.</p></header>
+    <header class="hw-head"><span class="mono" style="color:var(--mark)">Homework</span><h1>My homework</h1><p class="lead">Do your A1 plan, exams, workbook pages and assignments, then send them to your teacher. Her comments appear here.</p></header>
     <div id="hw-sync"></div>
     <div id="hw-list"></div>
   </div>
@@ -7118,6 +7393,599 @@ buildLesson({key:'ex2',p:'ex2-',hash:'exam-2',title:'Exam 2 · Units 2B–2C',st
 });
 
 /* =====================================================================
+   A1 PLAN — 28 days, one rule a day: rule, fix the mistakes, words,
+   speaking, then a check that brings back earlier days and weak words
+   ===================================================================== */
+const A1=(()=>{
+  /* the 28 days: t title, f book file, r rule, pat formula lines (**x** = highlight), ex examples, ar Arabic tip,
+     fx fix-the-mistake [wrong, right, alternatives, question it answers], ch choose [sentence, options, right index], w words, sp speaking, v video search */
+  const DAYS=[
+{t:"Simple present: I, you, we, they",f:"File 3A",r:"I / you / we / they + base verb. No 'am' before a verb: I work. We live in Cairo.",
+ pat:["I / you / we / they + **verb**","I **work** in a bank. Not: I am work."],ex:["I get up at seven.","We live in Cairo.","They play football on Friday."],
+ ar:"مع I و you و we و they الفعل بيفضل زي ما هو من غير s. وماتحطش am أو are قبل الفعل: I work مش I am work.",
+ fx:[["I am work in a bank.","I work in a bank."],["We are live in Egypt.","We live in Egypt."],["They plays football.","They play football."]],
+ ch:[["I ___ at seven every day.",["get up","am get up","gets up"],0],["We ___ in a big city.",["are live","live","lives"],1],["You ___ coffee in the morning.",["drink","drinks","are drink"],0],["They ___ work at five.",["finishes","finish","are finish"],1],["My friends and I ___ dinner at nine.",["have","has","are have"],0]],
+ w:"get up|يصحى؛ يستيقظ; have breakfast|يفطر; go to work|يروح الشغل; start|يبدأ; finish|يخلّص؛ ينتهي; go to bed|ينام",sp:"Say 5 sentences about your day.",v:"simple present english beginners lesson"},
+{t:"Simple present: he, she, it + s",f:"File 3A",r:"he / she / it + verb + s. go becomes goes, watch becomes watches, have becomes has.",
+ pat:["he / she / it + **verb-s**","go → **goes** · watch → **watches** · have → **has** · study → **studies**"],ex:["He works in a hospital.","She goes to school by bus.","My father watches TV in the evening."],
+ ar:"مع he و she و it لازم تزوّد s على الفعل. الأفعال اللي آخرها o أو ch أو sh بتاخد es، و have بتبقى has.",
+ fx:[["He work in a hospital.","He works in a hospital."],["She go to school.","She goes to school."],["My father watch TV.","My father watches TV."]],
+ ch:[["She ___ in a bank.",["work","works","is work"],1],["My brother ___ to the gym every day.",["go","goes","gos"],1],["He ___ two children.",["have","haves","has"],2],["My mother ___ dinner at eight.",["cooks","cook","is cook"],0],["Ali ___ English at night.",["studys","studies","study"],1]],
+ w:"goes|يروح؛ يذهب; watches|يتفرج؛ يشاهد; has|عنده؛ يمتلك; studies|يذاكر; cooks|يطبخ; drives|يسوق",sp:"Talk about your father or brother: 5 sentences.",v:"he she it s simple present english beginners"},
+{t:"Simple present: negative",f:"File 3A",r:"I / you / we / they: don't + verb. he / she / it: doesn't + verb (no s).",
+ pat:["I / you / we / they + **don't** + verb","he / she / it + **doesn't** + verb (no s)"],ex:["I don't like coffee.","She doesn't work on Friday.","We don't watch TV in the morning."],
+ ar:"النفي: don't مع I و you و we و they، و doesn't مع he و she و it. بعد doesn't الفعل بيرجع من غير s: She doesn't work.",
+ fx:[["I no like coffee.","I don't like coffee."],["He doesn't likes tea.","He doesn't like tea."],["She don't work.","She doesn't work."]],
+ ch:[["I ___ like fish.",["don't","doesn't","no"],0],["He ___ eat meat.",["don't","doesn't","isn't"],1],["She doesn't ___ tea.",["likes","like","liking"],1],["My parents ___ live in Cairo.",["doesn't","don't","aren't"],1],["It ___ rain in summer here.",["doesn't","don't","isn't"],0]],
+ w:"like|يحب; love|يحب جدًا؛ يعشق; hate|يكره; want|عايز؛ يريد; need|محتاج؛ يحتاج; prefer|يفضّل",sp:"Say 3 things you don't like and 2 things your friend doesn't like.",v:"simple present negative do not does not english"},
+{t:"Jobs: a / an",f:"File 3B",r:"Use a before a consonant sound and an before a vowel sound: a doctor, an engineer. Always use a / an with a job.",
+ pat:["**a** + consonant sound: a doctor · a teacher","**an** + vowel sound: an engineer · an actor"],ex:["He is a teacher.","She is an engineer.","I'm a driver."],
+ ar:"لما تقول وظيفة لازم a أو an قبلها: He is a teacher. و an قبل الكلمة اللي بتبدأ بصوت حرف متحرك زي engineer.",
+ fx:[["He is teacher.","He is a teacher."],["She is a engineer.","She is an engineer."],["I'm doctor.","I'm a doctor."]],
+ ch:[["My sister is ___ nurse.",["a","an","the"],0],["He is ___ engineer.",["a","an","the"],1],["I'm ___ doctor.",["an","a","the"],1],["She wants to be ___ actor.",["a","an","the"],1],["My uncle is ___ driver.",["an","the","a"],2]],
+ w:"teacher|مدرس; doctor|دكتور؛ طبيب; nurse|ممرض؛ ممرضة; engineer|مهندس; driver|سواق؛ سائق; chef|شيف؛ طبّاخ",sp:"Say what 5 people in your family do.",v:"jobs and occupations vocabulary english beginners"},
+{t:"Simple present: questions",f:"File 3B",r:"Do + I / you / we / they + verb? Does + he / she / it + verb? (no s on the verb).",
+ pat:["**Do** + I / you / we / they + verb?","**Does** + he / she / it + verb? (no s)"],ex:["Do you work in a bank?","Does she like her job?","Do they live near here?"],
+ ar:"السؤال بيبدأ بـ Do أو Does. مع Does الفعل بيرجع من غير s: Does he work? مش Does he works?",
+ fx:[["Do he work here?","Does he work here?"],["Does she works?","Does she work?"],["You work in a bank?","Do you work in a bank?"]],
+ ch:[["___ you like your job?",["Do","Does","Are"],0],["___ he work in a factory?",["Do","Is","Does"],2],["Does she ___ in an office?",["works","work","working"],1],["___ your parents live in Cairo?",["Does","Do","Are"],1],["Does your boss ___ English?",["speak","speaks","speaking"],0]],
+ w:"office|مكتب; hospital|مستشفى; factory|مصنع; company|شركة; salary|مرتب؛ راتب; boss|مدير",sp:"Ask your teacher 6 questions about her day.",v:"do does questions simple present english beginners"},
+{t:"Short answers",f:"File 3B",r:"Yes, I do. / No, he doesn't. Don't repeat the verb in a short answer.",
+ pat:["Do you…? → Yes, I **do**. / No, I **don't**.","Does he…? → Yes, he **does**. / No, he **doesn't**."],ex:["Do you like coffee? Yes, I do.","Does he work here? No, he doesn't.","Do they speak English? Yes, they do."],
+ ar:"في الإجابة القصيرة ماتكررش الفعل. بترد بـ do و don't أو does و doesn't بس.",
+ fx:[["Yes, I work.","Yes, I do.",[],"Do you work here?"],["No, he don't.","No, he doesn't.",[],"Does he like tea?"],["Yes, she is work.","Yes, she does.",[],"Does she work in a bank?"]],
+ ch:[["Do you have a car? Yes, I ___.",["do","have","does"],0],["Does she live here? No, she ___.",["don't","doesn't","isn't"],1],["Do they work on Friday? No, they ___.",["doesn't","aren't","don't"],2],["Does your father drive? Yes, he ___.",["drives","does","do"],1],["Do you speak French? No, I ___.",["don't","doesn't","not"],0]],
+ w:"lawyer|محامي; journalist|صحفي; police officer|ظابط شرطة؛ ضابط شرطة; receptionist|موظف استقبال; businessman|رجل أعمال; soldier|عسكري؛ جندي",sp:"Answer 6 questions from your teacher with short answers.",v:"short answers do does english beginners"},
+{t:"Review 1",f:"File 3A–3B",r:"Check: I work / she works, don't / doesn't, Do / Does, a / an, short answers.",
+ pat:[],ex:[],ar:"النهارده مراجعة للأسبوع. اقرا القواعد الست تاني، وقول كل مثال بصوت عالي قبل ما تبدأ.",
+ fx:[["She don't works in a bank.","She doesn't work in a bank."],["Do he is a teacher?","Is he a teacher?"],["My brother work in factory.","My brother works in a factory."]],
+ ch:[["My sister ___ in a hospital.",["work","works","is work"],1],["We ___ work on Friday.",["doesn't","don't","aren't"],1],["___ your brother play football?",["Do","Does","Is"],1],["She is ___ engineer.",["a","an","the"],1],["Do you like tea? No, I ___.",["don't","doesn't","like"],0]],
+ w:"review|مراجعة; mistake|غلطة؛ خطأ; correct|يصحّح؛ صح; practise|يتمرن; remember|يفتكر؛ يتذكر; easy|سهل",sp:"Record 1 minute: My day and my job.",v:"english beginners grammar review simple present"},
+{t:"Question word order",f:"File 3C",r:"Question word + do / does + subject + verb? Where do you live? What does he do?",
+ pat:["**Question word** + do / does + subject + verb?","Where **do** you live? · What **does** he do?"],ex:["Where do you live?","What does your father do?","When does the bank open?"],
+ ar:"ترتيب السؤال: كلمة السؤال، بعدها do أو does، بعدها الشخص، بعدها الفعل. Where do you work? مش Where you work?",
+ fx:[["Where you live?","Where do you live?"],["What he does?","What does he do?"],["When she goes to work?","When does she go to work?"]],
+ ch:[["Where ___ you work?",["do","does","are"],0],["What ___ your sister do?",["do","does","is"],1],["When does he ___ home?",["go","goes","going"],0],["Why ___ they like this café?",["does","do","are"],1],["How ___ you go to work?",["does","are","do"],2]],
+ w:"where|فين؛ أين; when|إمتى؛ متى; what|إيه؛ ماذا; who|مين؛ من; why|ليه؛ لماذا; how|إزاي؛ كيف",sp:"Ask your teacher 8 questions with Where, When, What, Who, Why and How.",v:"question word order english beginners"},
+{t:"What kind of…? What time…? How often…?",f:"File 3C",r:"What kind of music do you like? What time do you get up? How often do you play football?",
+ pat:["What kind **of** + noun + do / does…?","**What time** + do / does…? · **How often** + do / does…?"],ex:["What kind of music do you like?","What time does she get up?","How often do you play football?"],
+ ar:"What kind of يعني نوع إيه. What time يعني الساعة كام. How often يعني كل قد إيه. وبعدهم برضه do أو does.",
+ fx:[["What kind music you like?","What kind of music do you like?"],["What time you wake up?","What time do you wake up?"],["How often you play football?","How often do you play football?"]],
+ ch:[["What kind ___ films do you like?",["of","from","in"],0],["What time ___ you have lunch?",["are","do","does"],1],["How often ___ she go to the gym?",["do","is","does"],2],["What kind of music ___ your brother like?",["does","do","is"],0],["What time does the film ___?",["starts","start","starting"],1]],
+ w:"kind of|نوع من; movie|فيلم; comedy|كوميدي; action|أكشن; horror|رعب; cartoon|كرتون",sp:"Ask a friend 5 questions: What kind of…? What time…? How often…?",v:"what kind of what time how often english beginners"},
+{t:"Like + -ing",f:"File 3C",r:"like / love / hate / enjoy + verb-ing: I like swimming. She loves reading.",
+ pat:["like / love / hate / enjoy + **verb-ing**","read → read**ing** · swim → swim**ming** · dance → danc**ing**"],ex:["I like swimming.","She loves reading.","He doesn't like cooking."],
+ ar:"بعد like و love و hate و enjoy الفعل بياخد ing: I like swimming. لاحظ swim بتبقى swimming بحرفين m، و dance بتبقى dancing من غير e.",
+ fx:[["I like swim.","I like swimming."],["She love read.","She loves reading."],["He doesn't like cook.","He doesn't like cooking."]],
+ ch:[["I love ___.",["read","reading","reads"],1],["She hates ___ the house.",["cleaning","clean","cleans"],0],["They don't like ___.",["shop","shopping","shops"],1],["He enjoys ___ in the sea.",["swiming","swim","swimming"],2],["Do you like ___?",["dancing","danceing","dance"],0]],
+ w:"swimming|عوم؛ سباحة; reading|قراية؛ قراءة; cooking|طبخ; shopping|شوبينج؛ تسوق; painting|رسم بالألوان; fishing|صيد السمك",sp:"Say 6 sentences about hobbies you like and don't like.",v:"like + ing hobbies english beginners lesson"},
+{t:"Telling the time",f:"Practical English",r:"It's seven o'clock. half past six = 6:30. quarter past = :15. quarter to = :45.",
+ pat:["7:00 → It's seven **o'clock**.","6:15 → **quarter past** six · 6:30 → **half past** six · 6:45 → **quarter to** seven"],ex:["It's seven o'clock.","It's half past six.","It's quarter to nine."],
+ ar:"half past يعني ونص، quarter past يعني وربع، و quarter to يعني إلا ربع، يعني 6:45 = quarter to seven. ودايمًا ابدأ بـ It's.",
+ fx:[["It's six and half.","It's half past six."],["It's quarter for seven.","It's quarter to seven.",["It's a quarter to seven."]],["The time is eight hour.","It's eight o'clock."]],
+ ch:[["3:30 → It's half ___ three.",["past","to","and"],0],["8:45 → It's quarter ___ nine.",["past","to","for"],1],["10:00 → It's ten ___.",["o'clock","hour","hours"],0],["4:15 → It's quarter ___ four.",["to","past","after"],1],["12:45 → It's quarter to ___.",["twelve","one","eleven"],1]],
+ w:"o'clock|بالظبط (الساعة); half past|ونص; quarter past|وربع; quarter to|إلا ربع; noon|الضهر؛ الظهر; midnight|نص الليل",sp:"Say 10 different times aloud.",v:"telling the time english beginners lesson"},
+{t:"At a coffee shop",f:"Practical English",r:"Can I have…? / I'd like… / How much is it? Use please and thank you.",
+ pat:["**Can I have** + thing, please?","**I'd like** + thing, please. · **How much is** it?"],ex:["Can I have a coffee, please?","I'd like a sandwich, please.","How much is it?"],
+ ar:"في الكافيه ماتقولش I want أو Give me لأنها بتبان قليلة الذوق. قول Can I have…? أو I'd like… وزوّد please.",
+ fx:[["I want a coffee.","Can I have a coffee, please?",["I'd like a coffee, please."]],["How much it is?","How much is it?"],["Give me a sandwich.","I'd like a sandwich, please.",["Can I have a sandwich, please?"]]],
+ ch:[["___ I have a tea, please?",["Can","Do","Am"],0],["I'd ___ a large coffee, please.",["want","like","likes"],1],["How much ___ the cake?",["are","is","it"],1],["How much ___ these sandwiches?",["is","are","do"],1],["Here you are. — ___!",["Thank you","Please","Sorry"],0]],
+ w:"menu|المنيو؛ قائمة الطعام; order|يطلب; small|صغير; large|كبير; to go|تيك أواي; bill|الحساب؛ الفاتورة",sp:"Role-play with your teacher: order a coffee and a sandwich.",v:"ordering food coffee shop english beginners"},
+{t:"Polite English",f:"Practical English",r:"Please, thank you, sorry, excuse me. Use them every time.",
+ pat:["**Excuse me** → before you ask or pass someone","**Sorry** → for a mistake · **Thank you** → **You're welcome**"],ex:["Excuse me, where is the bank?","Sorry I'm late.","Thank you! You're welcome."],
+ ar:"Excuse me قبل ما تسأل حد أو تعدّي. Sorry لما تغلط أو تتأخر. ولما حد يقولك Thank you رد بـ You're welcome.",
+ fx:[["Thanks you.","Thank you.",["Thanks."]],["Excuse, where is the toilet?","Excuse me, where is the restroom?",["Excuse me, where is the toilet?","Excuse me, where is the bathroom?"]],["Sorry for I am late.","Sorry I'm late.",["I'm sorry I'm late."]]],
+ ch:[["___, where is the station?",["Excuse me","Sorry me","Please me"],0],["Thank you! — You're ___.",["welcome","well","good"],0],["Can I sit here, ___?",["please","thanks","sorry"],0],["___ I'm late. The bus was slow.",["Excuse","Sorry","Please"],1],["Thank you very ___.",["many","much","lot"],1]],
+ w:"please|من فضلك; thank you|شكرًا; sorry|آسف; excuse me|لو سمحت؛ عن إذنك; you're welcome|العفو; no problem|ولا يهمك",sp:"Say 6 polite sentences for 6 situations.",v:"polite english phrases beginners please thank you"},
+{t:"Review 2",f:"File 3C · Practical English",r:"Check: question order, What kind of, like + -ing, the time, polite requests.",
+ pat:[],ex:[],ar:"مراجعة الأسبوع التاني: ترتيب السؤال، like + ing، الساعة، والطلب بأدب. اقرا القواعد الأول.",
+ fx:[["Where he works?","Where does he work?"],["I like play football.","I like playing football."],["It's quarter for five.","It's quarter to five.",["It's a quarter to five."]]],
+ ch:[["Where ___ your brother work?",["do","does","is"],1],["I love ___ films.",["watch","watching","watches"],1],["9:30 → It's half past ___.",["nine","ten","half"],0],["___ I have the bill, please?",["Do","Can","Am"],1],["How often ___ you visit your parents?",["do","does","are"],0]],
+ w:"quarter|ربع; half|نص; ask|يسأل; answer|يرد؛ يجاوب; ready|جاهز; late|متأخر",sp:"Record 1 minute: 5 questions and 5 answers.",v:"english beginners review questions time"},
+{t:"Family words",f:"File 4A",r:"Learn family words in groups: parents, brothers and sisters, uncles and aunts, cousins. Use plural -s for more than one.",
+ pat:["one brother → two brother**s** · one cousin → three cousin**s**","my parents **are** · my cousin **is**"],ex:["I have two brothers and a sister.","My parents are from Alexandria.","He is my cousin."],
+ ar:"لو أكتر من واحد زوّد s: two brothers. و parents جمع، فبنقول My parents are مش is.",
+ fx:[["I have three brother.","I have three brothers."],["My parents is old.","My parents are old."],["He are my cousin.","He is my cousin."]],
+ ch:[["I have three ___.",["sister","sisters","sisteres"],1],["My parents ___ teachers.",["is","are","am"],1],["My aunt ___ two children.",["have","has","is"],1],["My uncle's son is my ___.",["cousin","nephew","brother"],0],["My grandparents ___ in a village.",["lives","live","is live"],1]],
+ w:"parents|الأب والأم؛ الوالدين; cousin|ابن أو بنت العم أو الخال; uncle|عم أو خال; aunt|عمة أو خالة; grandparents|الجد والجدة; married|متجوز",sp:"Draw your family tree and say who is who.",v:"family members vocabulary english beginners"},
+{t:"Possessive 's",f:"File 4A",r:"One person: my brother's car. More than one person: my parents' house.",
+ pat:["one person + **'s**: my brother**'s** car · Sara**'s** bag","plural + **'**: my parents**'** house"],ex:["This is my brother's car.","Sara's bag is red.","My parents' house is big."],
+ ar:"عشان تقول حاجة بتاعة حد زوّد 's بعد اسمه: my brother's car يعني عربية أخويا. ولو الكلمة جمع وآخرها s زوّد ' بس: my parents' house.",
+ fx:[["This is my brother car.","This is my brother's car."],["Sara bag is red.","Sara's bag is red."],["My parents house is big.","My parents' house is big."]],
+ ch:[["This is ___ phone.",["Ahmed's","Ahmed","Ahmeds"],0],["My ___ car is new.",["father's","fathers","father"],0],["This is my ___ house. They live here.",["parents'","parent's","parents"],0],["___ husband is a doctor.",["Mona's","Mona","Monas"],0],["Is this your ___ bag?",["sister's","sisters","sister"],0]],
+ w:"husband|جوز؛ زوج; wife|مراتي؛ زوجة; son|ابن; daughter|بنت؛ ابنة; grandfather|جد; grandmother|جدة؛ تيتة",sp:"Say 8 sentences about your family's things.",v:"possessive s apostrophe english beginners"},
+{t:"Whose…? and my / mine",f:"File 4A",r:"Whose bag is this? It's my bag. / It's mine. mine, yours, his, hers, ours and theirs stand alone, with no noun after them.",
+ pat:["**Whose** + noun + is this?","my bag → **mine** · your → **yours** · her → **hers** · our → **ours** · their → **theirs**"],ex:["Whose bag is this?","It's my bag. It's mine.","This book is hers."],
+ ar:"Whose يعني بتاع مين. my و your و her بييجي بعدها اسم: my bag. لكن mine و yours و hers بتيجي لوحدها: It's mine. وماتلخبطش Whose مع Who's يعني who is.",
+ fx:[["Who's bag is this?","Whose bag is this?"],["It's mine bag.","It's my bag.",["It's mine."]],["This book is her.","This book is hers.",["This is her book."]]],
+ ch:[["___ phone is this?",["Whose","Who's","Who"],0],["It isn't my pen. It's ___.",["your","yours","you"],1],["This is ___ car.",["our","ours","us"],0],["Is this bag ___?",["her","hers","she"],1],["These keys are ___.",["their","theirs","them"],1]],
+ w:"mine|بتاعي؛ ملكي; yours|بتاعك؛ ملكك; his|بتاعه؛ ملكه; hers|بتاعها؛ ملكها; ours|بتاعنا؛ ملكنا; theirs|بتاعهم؛ ملكهم",sp:"Point to 6 things and ask Whose…? Answer each one.",v:"whose possessive pronouns mine yours english"},
+{t:"Everyday activities",f:"File 4B",r:"get up, take a shower, have breakfast, do homework. Learn each verb with its noun: have breakfast, do homework, take a shower.",
+ pat:["**have** breakfast / lunch / dinner","**do** homework · **take** a shower · **get** up · **go** to bed"],ex:["I get up at six.","I have breakfast at seven.","I do my homework in the evening."],
+ ar:"في الإنجليزي كل فعل ليه كلمة بتيجي معاه: have breakfast مش make أو do، و do homework مش make، و take a shower.",
+ fx:[["I make homework.","I do my homework.",["I do homework."]],["I do breakfast at 7.","I have breakfast at 7."],["I take up at 6.","I get up at 6."]],
+ ch:[["I ___ a shower every morning.",["take","do","make"],0],["We ___ lunch at two.",["make","do","have"],2],["She ___ her homework after school.",["makes","does","has"],1],["I ___ up at half past six.",["get","take","go"],0],["He ___ the house on Saturday.",["cleans","clean","cleaning"],0]],
+ w:"brush your teeth|يغسل سنانه; take a shower|ياخد دش؛ يستحمى; have lunch|يتغدى; do homework|يعمل الواجب; watch TV|يتفرج على التلفزيون; clean the house|ينضّف البيت",sp:"Say your morning routine with 8 verbs.",v:"daily routines vocabulary english beginners"},
+{t:"Prepositions of time",f:"File 4B",r:"at + time (at 7:00). in + part of the day (in the morning). on + day (on Monday).",
+ pat:["**at** + time: at 7 o'clock · at night","**in** + part of the day: in the morning · **on** + day: on Monday"],ex:["I wake up at seven.","I study in the evening.","I don't work on Friday."],
+ ar:"at مع الساعة: at 7. و in مع الصبح والضهر والمسا: in the morning. و on مع أيام الأسبوع: on Monday. واستثناء: at night.",
+ fx:[["I wake up in 7 o'clock.","I wake up at 7 o'clock."],["I work in Monday.","I work on Monday."],["I study at the morning.","I study in the morning."]],
+ ch:[["I have lunch ___ two o'clock.",["in","on","at"],2],["We go to the park ___ Friday.",["on","in","at"],0],["She reads ___ the evening.",["at","in","on"],1],["I sleep ___ night.",["in","on","at"],2],["The class starts ___ Monday ___ nine.",["on … at","in … on","at … in"],0]],
+ w:"morning|الصبح؛ صباح; afternoon|بعد الضهر; evening|بالليل بدري؛ المسا; night|الليل; weekend|الويك إند؛ آخر الأسبوع; every day|كل يوم",sp:"Say 8 sentences about your week with at, in and on.",v:"prepositions of time at in on english beginners"},
+{t:"Prepositions of place",f:"File 4B",r:"at home / at work / at school. go to work, but go home (no 'to' before home). by bus / on foot.",
+ pat:["**at** home · at work · at school · **in** bed","go **to** work · go **home** (no to) · **by** bus · **on** foot"],ex:["I go home at five.","She is at work now.","He goes to school by bus."],
+ ar:"بنقول at home و at work. ومع go بنقول go to work، بس go home من غير to. والمواصلات بـ by: by bus، والمشي on foot.",
+ fx:[["I go to home.","I go home."],["She is in work.","She is at work."],["He goes at school by bus.","He goes to school by bus."]],
+ ch:[["I go ___ at six.",["home","to home","at home"],0],["My father is ___ work now.",["in","at","on"],1],["She goes to school ___ bus.",["with","by","on"],1],["I walk to work. I go ___ foot.",["by","on","in"],1],["The children are ___ bed.",["in","at","on"],0]],
+ w:"at home|في البيت; at work|في الشغل; at school|في المدرسة; in bed|في السرير; by bus|بالأتوبيس; on foot|مشي؛ على رجليه",sp:"Say where you are at 6 different times of the day.",v:"prepositions of place at in to english beginners"},
+{t:"Review 3",f:"File 4A–4B",r:"Check: family words, 's, Whose…?, daily routine, at / in / on / to.",
+ pat:[],ex:[],ar:"مراجعة الأسبوع التالت: العيلة، 's، Whose، الروتين اليومي، و at و in و on. اقرا القواعد الأول.",
+ fx:[["This is my sister husband.","This is my sister's husband."],["I go to home at 5 in the evening.","I go home at 5 in the evening."],["Who's phone is this?","Whose phone is this?"]],
+ ch:[["This is my ___ car.",["brother's","brothers","brother"],0],["___ pen is this?",["Who's","Whose","Who"],1],["I ___ breakfast at seven.",["do","make","have"],2],["I work ___ Sunday.",["in","on","at"],1],["I go ___ at five.",["home","to home","in home"],0]],
+ w:"neighbour|جار; friend|صاحب؛ صديق; house|بيت; room|أوضة؛ غرفة; street|شارع; city|مدينة",sp:"Record 1 minute: My family and my day.",v:"english beginners review family routine"},
+{t:"Adverbs of frequency",f:"File 4C",r:"always, usually, often, sometimes and never go before the verb but after be: I always go. I'm usually tired.",
+ pat:["subject + **always / usually / often / sometimes / never** + verb","be + adverb: I'm **usually** tired · She is **never** late"],ex:["I always go to work by bus.","He sometimes plays football.","I'm usually tired in the evening."],
+ ar:"كلمات زي always و never بتيجي قبل الفعل العادي: I always go. لكن بتيجي بعد am و is و are: I'm always late.",
+ fx:[["I go always to work by bus.","I always go to work by bus."],["He plays sometimes football.","He sometimes plays football."],["I usually am tired.","I'm usually tired."]],
+ ch:[["I ___ coffee in the morning.",["always drink","drink always","always drinks"],0],["She is ___.",["never late","late never","never is late"],0],["They ___ to the cinema.",["go often","often go","often goes"],1],["He ___ breakfast.",["never has","has never","never have"],0],["We ___ at home on Friday.",["are usually","usually are","usual are"],0]],
+ w:"always|دايمًا; usually|عادةً; often|كتير؛ غالبًا; sometimes|أحيانًا; hardly ever|نادرًا; never|أبدًا",sp:"Say 8 sentences about your habits.",v:"adverbs of frequency english beginners lesson"},
+{t:"How often…?",f:"File 4C",r:"How often do you…? Answer with once, twice or three times + a week / a month.",
+ pat:["**How often** + do / does + subject + verb?","**once** · **twice** · three **times** + a day / a week / a month"],ex:["How often do you play football?","Twice a week.","I visit my grandparents once a month."],
+ ar:"How often يعني كل قد إيه. once يعني مرة، twice يعني مرتين، ومن تلاتة ورايح three times. وبعدها a week يعني في الأسبوع.",
+ fx:[["How often you go?","How often do you go?"],["Two time a week.","Twice a week."],["Three time a month.","Three times a month."]],
+ ch:[["How often ___ you go to the gym?",["do","does","are"],0],["I go to the gym ___ a week.",["two times","twice","two time"],1],["She calls her mother ___ a day.",["once","one time","one"],0],["We eat fish three ___ a month.",["time","times","twice"],1],["How often ___ he play tennis?",["do","is","does"],2]],
+ w:"once|مرة واحدة; twice|مرتين; three times|تلات مرات; every week|كل أسبوع; once a month|مرة في الشهر; every year|كل سنة",sp:"Ask 5 'How often do you…?' questions and answer them.",v:"how often twice a week english beginners"},
+{t:"Healthy habits",f:"File 4C",r:"a lot of + noun, enough after the verb: I eat a lot of vegetables. I don't sleep enough.",
+ pat:["**a lot of** + noun: a lot of water · a lot of fast food","verb + **enough**: I don't sleep enough"],ex:["I eat a lot of vegetables.","I don't sleep enough.","She drinks a lot of water."],
+ ar:"a lot of يعني كتير، وبتيجي قبل الاسم. enough يعني كفاية، وبتيجي بعد الفعل: I don't sleep enough.",
+ fx:[["I eat many fast food.","I eat a lot of fast food."],["He sleeps eight hour.","He sleeps eight hours.",["He sleeps for eight hours."]],["I do exercises every day for health.","I exercise every day."]],
+ ch:[["I drink ___ water.",["a lot of","a lot","many"],0],["You don't sleep ___.",["enough","a lot of","many"],0],["He eats ___ fast food.",["a lot","a lot of","much of"],1],["I walk for an ___ every day.",["hour","hours","time"],0],["She sleeps seven ___ a night.",["hour","hours","time"],1]],
+ w:"healthy|صحي; unhealthy|مش صحي; exercise|يتمرن؛ رياضة; vegetables|خضار; fast food|أكل جاهز؛ وجبات سريعة; sleep|ينام؛ نوم",sp:"Say 6 healthy and unhealthy habits you have.",v:"healthy habits english beginners vocabulary"},
+{t:"Linking my day",f:"Files 3–4 writing",r:"first, then, after that and finally join your sentences into a story.",
+ pat:["**First**, … **Then** … **After that**, … **Finally**, …","Put a comma after First, After that and Finally."],ex:["First, I get up at six.","Then I have breakfast.","After that, I go to work. Finally, I go to bed at eleven."],
+ ar:"استخدم First وبعدين Then وبعدين After that وفي الآخر Finally عشان تحكي يومك بالترتيب. وماتكررش and then كتير.",
+ fx:[["I wake up and then and then I go.","I wake up and then I go."],["After that, I am go to work.","After that, I go to work."],["Finally I am go to bed.","Finally, I go to bed."]],
+ ch:[["___, I get up and have a shower.",["First","Finally","After"],0],["___ I have breakfast with my family.",["Then","Finally","First of"],0],["After ___, I take the bus to work.",["then","that","first"],1],["___, I go to bed at eleven.",["Finally","First","Then that"],0],["I wash my hands ___ I eat.",["before","after that","finally"],0]],
+ w:"first|الأول؛ أولًا; then|بعدين؛ ثم; after that|بعد كده; later|بعدين؛ لاحقًا; finally|في الآخر؛ أخيرًا; before|قبل",sp:"Tell your whole day in 8 sentences with first, then, after that and finally.",v:"first then after that daily routine english beginners"},
+{t:"Mixed practice",f:"Files 3 and 4",r:"All the grammar from this month in one lesson.",
+ pat:["he / she / it + **s** · **don't / doesn't** + verb","question word + **do / does** + subject + verb · **always / never** before the verb"],ex:["He doesn't work on Friday.","Where do you go every Friday?","I'm always at home at the weekend."],
+ ar:"النهارده كل القواعد مع بعض. ركّز على الـ s مع he و she، و do و does في السؤال، ومكان always و never.",
+ fx:[["He don't works on Friday.","He doesn't work on Friday."],["Where you go every Friday?","Where do you go every Friday?"],["I always am at home at the weekend.","I'm always at home at the weekend."]],
+ ch:[["She ___ to the gym on Friday.",["go","goes","is go"],1],["Where ___ your parents live?",["does","do","are"],1],["I ___ late for work.",["am never","never am","never"],0],["They go to the beach ___ the summer.",["in","on","at"],0],["Is this your phone? No, it's ___.",["her","hers","she"],1]],
+ w:"Saturday|السبت; Friday|الجمعة; family|العيلة؛ عائلة; visit|يزور; relax|يرتاح؛ يسترخي; together|مع بعض",sp:"Talk about your weekend for 1 minute.",v:"english beginners grammar practice mixed A1"},
+{t:"Mock speaking test",f:"Files 3 and 4",r:"6 questions: Who are you? What do you do? Where do you live? What's your day like? Tell me about your family. How often do you…?",
+ pat:["Answer in **full sentences**: I work in a bank. Not: bank.","Add **one more detail**: I work in a bank. I like my job."],ex:["My name is Ali. I'm from Egypt.","I work in a bank in Cairo.","I usually go to the gym twice a week."],
+ ar:"في الامتحان الشفوي جاوب بجملة كاملة وزوّد تفصيلة واحدة كمان. ماتجاوبش بكلمة واحدة.",
+ fx:[["I am work in bank.","I work in a bank."],["She don't have brother.","She doesn't have a brother."],["Where you from?","Where are you from?"]],
+ ch:[["What ___ you do? — I'm an engineer.",["do","are","does"],0],["Where ___ you from?",["do","are","is"],1],["Tell me about your family. — I ___ two sisters.",["have","has","am have"],0],["What's your day like? — I usually ___ up at six.",["get","gets","getting"],0],["How often do you see your friends? — ___ a week.",["Two time","Twice","Two"],1]],
+ w:"introduce|يعرّف (نفسه); describe|يوصف؛ يصف; explain|يشرح; improve|يتحسن؛ يحسّن; confident|واثق من نفسه; proud|فخور",sp:"Answer all 6 questions, 30 seconds each. Record yourself and play it to your teacher in your next class.",v:"english speaking test practice A1 beginners",
+ qs:["Who are you?","What do you do?","Where do you live?","What's your day like?","Tell me about your family.","How often do you go out with your friends?"]},
+{t:"Final review",f:"Files 3 and 4",r:"Redo Day 1 and Day 8, then compare with your first recordings. Count your mistakes and the new words you used.",
+ pat:[],ex:[],ar:"آخر يوم: اسمع تسجيلاتك القديمة من اليوم الأول واليوم التامن، وقارنها بتسجيل النهارده. هتلاحظ الفرق.",
+ fx:[["She go to work at 8.","She goes to work at 8."],["Do he work here?","Does he work here?"],["I go always by bus.","I always go by bus."]],
+ ch:[["My mother ___ in a school.",["work","works","working"],1],["___ he like football?",["Do","Does","Is"],1],["I ___ go by bus.",["always","am always","always am"],0],["What time ___ the shop open?",["do","does","is"],1],["This is my ___ house. They live here.",["parents'","parent","parents"],0]],
+ w:"progress|تقدّم; better|أحسن؛ أفضل; vocabulary|الكلمات؛ مفردات; grammar|القواعد؛ جرامر; speaking|الكلام؛ التحدث; keep going|كمّل",sp:"Record 1 minute: what I can say now that I couldn't say a month ago.",v:"how to improve english speaking beginners"}
+  ];
+  /* 12 topics, 10 words each: every lesson day gets 5 of them */
+  const TOPICS=[["Food and drinks","bread|عيش; rice|رز؛ أرز; chicken|فراخ; fish|سمك; eggs|بيض; cheese|جبنة; apple|تفاح; water|مية؛ مياه; juice|عصير; salad|سلطة"],["The house","kitchen|مطبخ; bedroom|أوضة نوم; bathroom|حمّام; living room|الصالة؛ أوضة المعيشة; door|باب; window|شباك; table|ترابيزة; chair|كرسي; bed|سرير; sofa|كنبة"],["Clothes","shirt|قميص; T-shirt|تي شيرت; trousers|بنطلون; dress|فستان; skirt|جيبة؛ جونلة; jacket|جاكيت; shoes|جزمة؛ حذاء; socks|شرابات؛ جوارب; hat|طاقية؛ قبعة; glasses|نضارة"],["Weather and seasons","sunny|مشمس; rainy|ممطر؛ بيمطر; cloudy|غايم؛ فيه سحاب; windy|فيه هوا جامد؛ عاصف; hot|حر؛ حار; cold|برد؛ بارد; summer|الصيف; winter|الشتا؛ الشتاء; spring|الربيع; autumn|الخريف"],["Places in the city","bank|بنك; hospital|مستشفى; supermarket|سوبر ماركت; pharmacy|صيدلية; restaurant|مطعم; cinema|سينما; airport|مطار; post office|مكتب بريد؛ بوستة; park|جنينة؛ حديقة; library|مكتبة"],["Transport","car|عربية؛ سيارة; bus|أتوبيس; train|قطر؛ قطار; taxi|تاكسي; plane|طيارة؛ طائرة; bike|عجلة؛ دراجة; metro|مترو; ticket|تذكرة; station|محطة; road|طريق؛ شارع"],["Body and health","head|راس؛ رأس; eyes|عينين؛ عيون; ears|ودان؛ آذان; nose|مناخير؛ أنف; mouth|بق؛ فم; hand|إيد؛ يد; leg|رجل؛ ساق; back|ضهر؛ ظهر; stomach|معدة؛ بطن; sick|عيّان؛ مريض"],["Opposites","big|كبير; small|صغير; new|جديد; old|قديم؛ كبير في السن; easy|سهل; difficult|صعب; cheap|رخيص; expensive|غالي; fast|سريع; slow|بطيء"],["Useful verbs","open|يفتح; close|يقفل؛ يغلق; buy|يشتري; sell|يبيع; ask|يسأل; answer|يرد؛ يجاوب; help|يساعد; wait|يستنى؛ ينتظر; learn|يتعلم; teach|يعلّم؛ يدرّس"],["Shopping and money","shop|محل; customer|زبون; money|فلوس؛ نقود; cash|كاش؛ نقدي; credit card|كريدت كارد؛ بطاقة ائتمان; discount|خصم؛ تخفيض; pay|يدفع; change|الباقي; receipt|إيصال؛ فاتورة; bag|شنطة؛ كيس"],["Countries and nationalities","Egypt|مصر; Egyptian|مصري; Saudi Arabia|السعودية; Saudi|سعودي; America|أمريكا; American|أمريكي; France|فرنسا; French|فرنساوي؛ فرنسي; Italy|إيطاليا; Italian|إيطالي"],["Free time","music|مزيكا؛ موسيقى; film|فيلم; football|كورة؛ كرة قدم; game|لعبة؛ ماتش; book|كتاب; friends|أصحاب؛ أصدقاء; party|حفلة؛ بارتي; travel|يسافر; walk|يتمشى; sleep in|يصحى متأخر"]];
+  const WEEKS=[{t:"My day and my job",f:"File 3A–3B"},{t:"Questions, free time and going out",f:"File 3C · Practical English"},{t:"My family and my routine",f:"File 4A–4B"},{t:"Habits, health and speaking",f:"File 4C · review"}];
+  const STEPS=[{k:'rule',t:'Rule',d:'Learn the rule',min:5},{k:'fix',t:'Fix',d:'Fix the mistakes',min:10},{k:'words',t:'Words',d:'Learn the words',min:5},{k:'speak',t:'Speak',d:'Speak and record',min:10},{k:'check',t:'Remember',d:'Check from memory',min:3}];
+  const INT=[0,1,2,4,7,14];   // days until a word comes back, by box
+  const CHK=['I recorded myself for 30 to 60 seconds',"I used today's grammar 3 times",'I used 2 new words','I listened again and found 2 mistakes'];
+  const GOLD=[['Say full sentences','"I work in a bank", not "work bank".','قول جملة كاملة دايمًا.'],['he / she / it + s','she works · he doesn\'t work · does she work?','مع he و she و it الفعل بياخد s.'],['One word, one sentence','Every new word goes in your notebook with a sentence.','كل كلمة جديدة اكتبها في جملة.']];
+  const ST=makeStore('a1-plan-v1',{day:null,tab:'day',d:{},words:{},act:{},dir:'en',book:'mine',mapAll:false});
+  const S=ST.S;
+  const E0={step:0,ch:{},fx:{},rate:{},sen:{},sp:{c:[]},rm:{},rq:null,done:null};
+  const gd=i=>S.d[i]||E0;
+  const dd=i=>{const d=S.d[i]||(S.d[i]=clone(E0));for(const k in E0)if(d[k]===undefined)d[k]=clone(E0[k]);return d;};
+  const isRev=i=>(i+1)%7===0;
+  const wkOf=i=>Math.floor(i/7);
+  const iso=d=>{const z=n=>String(n).padStart(2,'0');return d.getFullYear()+'-'+z(d.getMonth()+1)+'-'+z(d.getDate());};
+  const today=()=>iso(new Date());
+  const plus=n=>{const d=new Date();d.setDate(d.getDate()+n);return iso(d);};
+  const touch=()=>{S.act[today()]=1;};
+  const hl=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b class="hl">$1</b>');
+  const arH=s=>String(s).split(/([A-Za-z][A-Za-z'’+-]*(?:\s+[A-Za-z][A-Za-z'’+-]*)*)/).map((x,k)=>k%2?`<bdi>${esc(x)}</bdi>`:esc(x)).join('');
+  const fmt=s=>Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
+  const seedOrder=(n,seed)=>{const a=[...Array(n).keys()];let x=(seed*2654435761+1)>>>0;for(let k=n-1;k>0;k--){x=(Math.imul(x,1103515245)+12345)>>>0;const j=(x>>>8)%(k+1);[a[k],a[j]]=[a[j],a[k]];}return a;};
+  function words(str){const out=[];String(str).split(/\s*[;؛]\s*/).forEach(p=>{if(!p)return;const k=p.indexOf('|');if(k<0){if(out.length)out[out.length-1].ar+='، '+p;return;}out.push({en:p.slice(0,k).trim(),ar:p.slice(k+1).trim()});});return out;}
+  function topicOf(i){
+    if(isRev(i)){const names=[],ws=[];for(let j=i-6;j<i;j++){const t=topicOf(j);if(!names.includes(t.name))names.push(t.name);ws.push(...t.ws);}return {name:names.join(', '),ws};}
+    const k=i-wkOf(i),T=TOPICS[Math.floor(k/2)],s=(k%2)*5;return {name:T[0],ws:words(T[1]).slice(s,s+5)};
+  }
+  const NW=DAYS.map(d=>words(d.w)),TW=DAYS.map((d,i)=>topicOf(i));
+  const deckOf=i=>isRev(i)?NW[i]:NW[i].concat(TW[i].ws);
+  const wkey=en=>String(en).toLowerCase();
+
+  /* ---------- answers: contractions count, but the possessive apostrophe matters (parents' ≠ parents) ---------- */
+  const NORM=s=>{let t=String(s==null?'':s).toLowerCase().replace(/[’‘`]/g,"'").replace(/[“”"]/g,' ');
+    t=t.replace(/\bcan't\b/g,'cannot').replace(/\bwon't\b/g,'will not').replace(/n't\b/g,' not').replace(/\bi'm\b/g,'i am').replace(/'re\b/g,' are').replace(/'ve\b/g,' have').replace(/'ll\b/g,' will')
+      .replace(/\b(i|you|he|she|we|they)'d\b/g,'$1 would').replace(/\b(it|he|she|that|what|where|who|there|here|how|this)'s\b/g,'$1 is');
+    return t.replace(/[^a-z0-9' ]+/g,' ').replace(/\s+/g,' ').trim();};
+  const fxAnswers=it=>[it[1]].concat(it[2]||[]);
+  const fxOk=(it,v)=>fxAnswers(it).some(a=>NORM(a)===NORM(v));
+  function diff(v,answers){
+    const ws=String(v).trim().split(/\s+/).filter(Boolean),tt=[],own=[];
+    ws.forEach((w,k)=>NORM(w).split(' ').filter(Boolean).forEach(x=>{tt.push(x);own.push(k);}));
+    let best=null;
+    answers.forEach(a=>{const B=NORM(a).split(' ').filter(Boolean),n=tt.length,m=B.length;
+      const L=Array.from({length:n+1},()=>new Array(m+1).fill(0));
+      for(let i=n-1;i>=0;i--)for(let j=m-1;j>=0;j--)L[i][j]=tt[i]===B[j]?L[i+1][j+1]+1:Math.max(L[i+1][j],L[i][j+1]);
+      if(!best||L[0][0]>best.L[0][0])best={L,B};});
+    const {L,B}=best,hit=new Array(tt.length).fill(false);let i=0,j=0;
+    while(i<tt.length&&j<B.length){if(tt[i]===B[j]){hit[i]=true;i++;j++;}else if(L[i+1][j]>=L[i][j+1])i++;else j++;}
+    const bad=ws.map((_,k)=>own.some((o,q)=>o===k&&!hit[q]));
+    return {html:ws.map((w,k)=>bad[k]?`<mark>${esc(w)}</mark>`:esc(w)).join(' '),bad:bad.filter(Boolean).length,miss:B.length-hit.filter(Boolean).length};
+  }
+  const fill=(s,opt)=>{const b=String(opt).split(' … ');let k=0;return s.replace(/___/g,()=>b[Math.min(k++,b.length-1)]);};
+  const sentHTML=(s,opt,cls)=>{const b=opt==null?null:String(opt).split(' … ');let k=0;return esc(s).replace(/___/g,()=>`<span class="a1-gap ${cls||''}">${b?esc(b[Math.min(k++,b.length-1)]):'…'}</span>`);};
+
+  /* ---------- word bank: a word comes back after 0, 1, 2, 4, 7, 14 days ---------- */
+  function bankAdd(w,i){const k=wkey(w.en);return S.words[k]||(S.words[k]={en:w.en,ar:w.ar,d:i,b:0,due:today()});}
+  function meet(w,i,knew){const o=bankAdd(w,i);if(knew){o.b=Math.max(o.b,1);o.due=plus(INT[o.b]);}else{o.b=0;o.due=today();}}
+  function grade(k,knew){const o=S.words[k];if(!o)return;if(knew){o.b=Math.min(5,o.b+1);o.due=plus(INT[o.b]);}else{o.b=0;o.due=today();}}
+  const dueKeys=()=>{const t=today();return Object.keys(S.words).filter(k=>S.words[k].due<=t).sort((a,b)=>S.words[a].b-S.words[b].b||(S.words[a].due<S.words[b].due?-1:1));};
+
+  /* ---------- progress ---------- */
+  function rq(i){return gd(i).rq||[];}
+  const DONE={
+    rule:i=>[0,1,2].every(j=>gd(i).ch[j]!=null),
+    fix:i=>DAYS[i].fx.every((_,j)=>{const f=gd(i).fx[j];return !!(f&&(f.ok||f.shown));}),
+    words:i=>NW[i].concat(isRev(i)?[]:TW[i].ws).every(w=>gd(i).rate[w.en]!=null),
+    speak:i=>!!(gd(i).sp&&gd(i).sp.c&&gd(i).sp.c[0]),
+    check:i=>{const q=rq(i);return !!q.length&&q.every((_,k)=>gd(i).rm[k]!=null);}
+  };
+  const stepsDone=i=>STEPS.filter(s=>DONE[s.k](i)).length;
+  const dayP=i=>gd(i).done?1:stepsDone(i)/STEPS.length;
+  const doneCount=()=>DAYS.reduce((n,_,i)=>n+(gd(i).done?1:0),0);
+  function current(){if(S.day!=null&&!gd(S.day).done)return S.day;for(let i=0;i<28;i++)if(!gd(i).done)return i;return 27;}
+  function streak(){let n=0;const d=new Date();if(!S.act[iso(d)])d.setDate(d.getDate()-1);while(S.act[iso(d)]){n++;d.setDate(d.getDate()-1);}return n;}
+
+  /* ---------- the remember check: today's rule, spaced days back (1, 3, 7, 14, 21), and the weakest words ---------- */
+  function buildRQ(i){
+    const q=[{t:'g',d:i,j:3},{t:'g',d:i,j:4}];
+    [1,3,7,14,21].map(g=>i-g).filter(x=>x>=0).slice(0,2).forEach((x,k)=>q.push({t:'g',d:x,j:(i+k)%5}));
+    const t=today(),seen=[];
+    for(let x=0;x<i;x++)deckOf(x).forEach(w=>{const o=S.words[wkey(w.en)];if(o&&!seen.some(s=>s.w.en===w.en))seen.push({w,d:x,o});});
+    seen.sort((a,b)=>(a.o.due<=t?0:1)-(b.o.due<=t?0:1)||a.o.b-b.o.b);
+    const pick=seen.slice(0,2).map(s=>({w:s.w,d:s.d}));
+    const fresh=seedOrder(NW[i].length,i+50).map(k=>NW[i][k]);
+    while(pick.length<2&&fresh.length){const w=fresh.shift();if(!pick.some(p=>p.w.en===w.en))pick.push({w,d:i});}
+    pick.forEach((p,k)=>{
+      const pool=deckOf(p.d).filter(w=>w.en!==p.w.en&&w.ar!==p.w.ar),wrong=seedOrder(pool.length,i*7+k).slice(0,2).map(n=>pool[n].en);
+      const opts=[p.w.en].concat(wrong),ord=seedOrder(opts.length,i*13+k);
+      q.push({t:'w',d:p.d,en:p.w.en,ar:p.w.ar,o:ord.map(n=>opts[n])});
+    });
+    return q;
+  }
+
+  /* ---------- recordings: kept in this browser (IndexedDB), never uploaded ---------- */
+  const MEMREC={};
+  const IDB=(()=>{let dbp=null;
+    const open=()=>dbp||(dbp=new Promise((res,rej)=>{try{const r=indexedDB.open('a1-plan-audio',1);r.onupgradeneeded=()=>r.result.createObjectStore('takes');r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);}catch(e){rej(e);}}));
+    const run=(mode,f)=>open().then(db=>new Promise((res,rej)=>{const tx=db.transaction('takes',mode),r=f(tx.objectStore('takes'));tx.oncomplete=()=>res(r?r.result:null);tx.onerror=()=>rej(tx.error);}));
+    return {get:k=>run('readonly',s=>s.get(k)).then(v=>v||MEMREC[k]||null).catch(()=>MEMREC[k]||null),
+      put:(k,v)=>run('readwrite',s=>s.put(v,k)).catch(()=>{MEMREC[k]=v;}),
+      del:k=>run('readwrite',s=>s.delete(k)).catch(()=>{}).then(()=>{delete MEMREC[k];})};
+  })();
+  const CANREC=typeof MediaRecorder!=='undefined'&&!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia);
+  let RC=null;const URLS=[];
+  const mkURL=b=>{const u=URL.createObjectURL(b);URLS.push(u);return u;};
+  const freeURLs=()=>URLS.splice(0).forEach(u=>{try{URL.revokeObjectURL(u);}catch(e){}});
+  const recMax=i=>DAYS[i].qs?200:90;
+  async function recStart(i){
+    if(RC){recStop();return;}
+    stopPlayback();
+    let stream;try{stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true}});}catch(e){toast('The microphone is blocked. Allow it for this site, or record on your phone.');return;}
+    let mr;try{mr=new MediaRecorder(stream);}catch(e){stream.getTracks().forEach(t=>t.stop());toast('Recording does not work in this browser.');return;}
+    const R={i,mr,chunks:[],t0:Date.now(),tick:null};RC=R;
+    mr.ondataavailable=e=>{if(e.data&&e.data.size)R.chunks.push(e.data);};
+    mr.onstop=async()=>{
+      stream.getTracks().forEach(t=>t.stop());clearInterval(R.tick);RC=null;
+      const secs=Math.max(1,Math.round((Date.now()-R.t0)/1000));
+      if(R.chunks.length){await IDB.put('day-'+i,{blob:new Blob(R.chunks,{type:mr.mimeType||'audio/webm'}),at:new Date().toISOString(),secs});const d=dd(i);d.sp.rec=secs;d.sp.c[0]=true;touch();changed();}
+      if(CUR==='a1'&&S.tab==='day'&&S.day===i&&curStep(i)===3){paintRec(i);const c=$('#a1-chk-0');if(c)c.checked=!!dd(i).sp.c[0];}
+    };
+    mr.start();
+    R.tick=setInterval(()=>{const s=Math.round((Date.now()-R.t0)/1000),el=$('#a1-rect');if(el)el.textContent=fmt(s)+' / '+fmt(recMax(i));if(s>=recMax(i))recStop();},250);
+    paintRec(i);
+  }
+  function recStop(){if(RC){try{RC.mr.stop();}catch(e){RC=null;}}}
+  async function paintRec(i){
+    const box=$('#a1-rec');if(!box)return;
+    if(!CANREC){box.innerHTML=`<p class="hint">Recording does not work in this browser. Record yourself with your phone's voice recorder, then tick the first box below.</p>`;return;}
+    if(RC){box.innerHTML=`<button type="button" class="a1-recbtn on" data-a1rec aria-label="Stop recording">${icon('stop')}</button><div><span class="a1-rect" id="a1-rect">0:00 / ${fmt(recMax(i))}</span><p class="hint">Recording… press the button again to stop.</p></div>`;return;}
+    const tk=await IDB.get('day-'+i);
+    if(RC||!$('#a1-rec'))return;
+    box.innerHTML=`<button type="button" class="a1-recbtn" data-a1rec aria-label="${tk?'Record again':'Start recording'}">${icon('mic')}</button>`+
+      (tk&&tk.blob?`<div class="a1-take"><span class="mono">Your recording · ${tk.secs||'?'} s</span><audio controls preload="metadata" src="${mkURL(tk.blob)}"></audio><div class="c-row"><span class="hint">Listen and find 2 mistakes.</span><button type="button" class="btn quiet" data-a1recdel>Delete</button></div></div>`
+        :`<div><b>Press to record</b><p class="hint">Up to ${fmt(recMax(i))}. Your voice stays in this browser. Nothing is uploaded.</p></div>`);
+  }
+  async function paintEarlier(i){
+    const box=$('#a1-earlier');if(!box)return;
+    const days=i===27?[0,7,21,22,23,24,25,26]:isRev(i)?[i-6,i-5,i-4,i-3,i-2,i-1]:[];
+    const got=[];for(const x of days){const tk=await IDB.get('day-'+x);if(tk&&tk.blob)got.push({x,tk});}
+    if(!$('#a1-earlier'))return;
+    box.innerHTML=got.length?`<h3 class="sub">${i===27?'Compare with your first recordings':'Your recordings this week'}</h3><p class="hint">${i===27?'Listen to Day 1 and Day 8, then to today. What can you say now that you couldn\'t say then?':'Listen to how you sounded this week.'}</p><div class="a1-takes">${got.map(g=>`<div class="a1-take"><span class="mono">Day ${g.x+1} · ${esc(DAYS[g.x].t)}</span><audio controls preload="metadata" src="${mkURL(g.tk.blob)}"></audio></div>`).join('')}</div>`:'';
+  }
+
+  /* ---------- pieces ---------- */
+  function choiceHTML(c,ref,a,seed,from){
+    const [s,o,r]=c,done=a!=null,ord=seedOrder(o.length,seed),right=fill(s,o[r]);
+    return `<div class="a1-ch">${from||''}<p class="a1-ch-q"><span>${sentHTML(s,done?o[a]:null,done?(a===r?'ok':'no'):'')}</span>${done?sayBtn(right):''}</p>
+      <div class="a1-opts" role="group" aria-label="Choose the right words">${ord.map(k=>`<button type="button" class="a1-opt${done&&k===r?' right':''}${done&&k===a&&a!==r?' wrong':''}" data-a1c="${ref}" data-o="${k}"${done?' disabled':''}>${esc(o[k])}</button>`).join('')}</div>
+      ${done&&a!==r?`<p class="a1-ans">Right: <b>${esc(right)}</b></p>`:''}</div>`;
+  }
+  function wordQHTML(x,ref,a,from){
+    const done=a!=null;
+    return `<div class="a1-ch">${from||''}<p class="a1-ch-q"><span>What's the English for <span class="a1-arx">${esc(x.ar)}</span>?</span>${done?sayBtn(x.en):''}</p>
+      <div class="a1-opts" role="group" aria-label="Choose the English word">${x.o.map((w,k)=>`<button type="button" class="a1-opt${done&&w===x.en?' right':''}${done&&w===a&&a!==x.en?' wrong':''}" data-a1c="${ref}" data-o="${k}"${done?' disabled':''}>${esc(w)}</button>`).join('')}</div></div>`;
+  }
+  function fxResHTML(i,j){
+    const it=DAYS[i].fx[j],f=gd(i).fx[j]||{};
+    if(f.ok)return `<p class="res ok">${icon('check')} Correct. ${sayBtn(it[1])}</p>`;
+    if(f.shown)return `<p class="a1-ans">The right sentence: <b>${esc(it[1])}</b> ${sayBtn(it[1])}</p><p class="hint">Say it aloud 3 times. It comes back in your Remember check.</p>`;
+    if(!f.n)return '';
+    const v=String(f.v||'').trim();
+    if(!v)return `<p class="res no">Type the sentence first.</p>`;
+    if(NORM(v)===NORM(it[0]))return `<p class="res no">That's the sentence with the mistake. Change it.</p><button type="button" class="btn quiet" data-a1fxs="${j}">Show the answer</button>`;
+    const df=diff(v,fxAnswers(it));
+    const tip=df.bad&&df.miss>df.bad?'Look at the marked words. A word is missing too.':df.bad?(df.bad>1?'The marked words are wrong or in the wrong place.':'The marked word is wrong or in the wrong place.'):df.miss?'A word is missing.':"Check the spelling and the apostrophe ( ' ).";
+    return `<p class="res no">Not yet. ${tip}</p><p class="a1-diff">${df.html}</p><button type="button" class="btn quiet" data-a1fxs="${j}">Show the answer</button>`;
+  }
+  function fixHTML(i,j){
+    const it=DAYS[i].fx[j],f=gd(i).fx[j]||{},lock=f.ok||f.shown;
+    return `<div class="a1-fx${f.ok?' ok':f.shown?' shown':''}" id="a1-fx-${j}">
+      ${it[3]?`<p class="a1-ctx">${sayBtn(it[3])}<span>${esc(it[3])}</span></p>`:''}
+      <p class="a1-wrong"><span class="x" aria-hidden="true">✗</span><span>${esc(it[0])}</span></p>
+      <div class="a1-fxrow"><label class="sr" for="a1-fxin-${j}">The correct sentence</label>
+        <input class="inp" id="a1-fxin-${j}" data-a1fx="${j}" value="${esc(f.v||'')}" placeholder="Type the correct sentence" autocomplete="off" autocapitalize="sentences" spellcheck="false" enterkeyhint="done"${lock?' readonly':''}>
+        ${lock?'':`<button type="button" class="ib mic" data-mic="a1-fxin-${j}" aria-label="Say the sentence">${icon('mic')}</button><button type="button" class="btn primary" data-a1fxc="${j}">Check</button>`}</div>
+      <div class="a1-fxres" id="a1-fxr-${j}" aria-live="polite">${fxResHTML(i,j)}</div></div>`;
+  }
+  function cardHTML(i,w){
+    const r=gd(i).rate[w.en],open=r!=null||OPEN.has(i+':'+w.en);
+    return `<div class="a1-card${r===1?' know':r===0?' not':''}">
+      <div class="a1-card-top"><span class="a1-en">${esc(w.en)}</span>${sayBtn(w.en)}</div>
+      ${open?`<p class="a1-mean" lang="ar">${esc(w.ar)}</p><div class="a1-rate" role="group" aria-label="Do you know it?"><button type="button" class="a1-rb${r===1?' on':''}" data-a1rate="${esc(w.en)}" data-v="1" aria-pressed="${r===1}">I know it</button><button type="button" class="a1-rb${r===0?' on':''}" data-a1rate="${esc(w.en)}" data-v="0" aria-pressed="${r===0}">Not yet</button></div>`
+        :`<button type="button" class="a1-cover" data-a1open="${esc(w.en)}">Say it, then tap to see the meaning</button>`}</div>`;
+  }
+  const OPEN=new Set();
+  const usesWord=(s,en)=>{const t=' '+NORM(s)+' ';return NORM(en).split(' ').filter(x=>x.length>1&&!['a','an','the','to','at','in','on','of','your','my'].includes(x)).every(x=>t.includes(' '+x)||t.includes(' '+x.replace(/(es|s|ing)$/,'')));};
+  const ruleLines=D=>D.pat.length?D.pat.map(p=>`<p class="a1-pat">${hl(p)}</p>`).join(''):`<p class="a1-r">${esc(D.r)}</p>`;
+
+  /* ---------- the five steps ---------- */
+  function stepRule(i){
+    const D=DAYS[i],d=gd(i);
+    let h=`<div class="a1-rule"><span class="mono">The rule · ${esc(D.f)}</span><p class="a1-r">${esc(D.r)}</p>`;
+    if(D.pat.length)h+=D.pat.map(p=>`<p class="a1-pat">${hl(p)}</p>`).join('')+`<ul class="a1-ex">${D.ex.map(e=>`<li>${sayBtn(e)}<span>${esc(e)}</span></li>`).join('')}</ul>`;
+    h+=`<p class="ar a1-tip">${arH(D.ar)}</p></div>`;
+    if(isRev(i)){
+      const from=i===27?21:i-6;
+      h+=`<h3 class="sub">This week's rules</h3><p class="hint">Read each one aloud. Tap a sentence to hear it.</p><div class="a1-wkrules">${DAYS.slice(from,i).map((x,k)=>`<div class="a1-bcard"><span class="mono kick">Day ${from+k+1}</span><h4>${esc(x.t)}</h4>${ruleLines(x)}<p class="a1-exl">${sayBtn(x.ex[0]||x.r)}<span>${esc(x.ex[0]||'')}</span></p></div>`).join('')}</div>`;
+    }
+    h+=`<h3 class="sub">Try it</h3><p class="hint">Choose the right words, then say the whole sentence aloud.</p><div class="a1-chs">${[0,1,2].map(j=>choiceHTML(D.ch[j],'ch-'+i+'-'+j,d.ch[j]!=null?d.ch[j]:null,i*10+j)).join('')}</div>`;
+    h+=`<div class="a1-video"><div><b>Want more?</b><p class="hint">Watch one short video about today's rule.</p></div><a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${encodeURIComponent(D.v)}">Find a video${icon('right')}</a></div>`;
+    return h;
+  }
+  function stepFix(i){
+    return `<p class="hint">Each sentence has a mistake. Say the right sentence aloud first, then type it (or press the mic and say it) and check.</p><div class="a1-fxs">${DAYS[i].fx.map((_,j)=>fixHTML(i,j)).join('')}</div>`;
+  }
+  function stepWords(i){
+    const d=gd(i);
+    let h=`<p class="hint">Say each word aloud. Tap the card to see the meaning, then choose <b>I know it</b> or <b>Not yet</b>. Every word comes back in <a href="#a1-words">My words</a> until you know it well.</p>`;
+    h+=`<h3 class="sub">6 new words</h3><div class="a1-cards">${NW[i].map(w=>cardHTML(i,w)).join('')}</div>`;
+    if(!isRev(i))h+=`<h3 class="sub">Topic words: ${esc(TW[i].name)}</h3><div class="a1-cards">${TW[i].ws.map(w=>cardHTML(i,w)).join('')}</div>`;
+    else h+=`<div class="a1-video"><div><b>Review the whole week</b><p class="hint">${TW[i].ws.length+NW.slice(i-6,i).reduce((n,x)=>n+x.length,0)} words from Days ${i-5}–${i}. The ones you know least come first.</p></div><button type="button" class="btn primary" data-a1deck="${wkOf(i)}">Review the week's words${icon('right')}</button></div>`;
+    h+=`<h3 class="sub">Write a sentence with each new word</h3><p class="hint">Your teacher sees these when you send this week to her.</p><div class="a1-sens">${NW[i].map(w=>{const v=d.sen[w.en]||'';return `<label class="a1-sen"><span class="w-en">${esc(w.en)}</span><input class="inp" data-a1sen="${esc(w.en)}" value="${esc(v)}" placeholder="A sentence with “${esc(w.en)}”" autocomplete="off" autocapitalize="sentences"><span class="a1-use" title="You used the word"${v&&usesWord(v,w.en)?'':' hidden'}>${icon('check')}</span></label>`;}).join('')}</div>`;
+    return h;
+  }
+  function stepSpeak(i){
+    const D=DAYS[i],sp=gd(i).sp||{c:[]},c=sp.c||[];
+    let h=`<div class="a1-say"><span class="mono">Your speaking task</span><p class="a1-task">${esc(D.sp)}</p><p class="hint">Talk for 30 to 60 seconds. Use today's grammar 3 times and 2 new words.</p></div>`;
+    if(D.qs)h+=`<ol class="a1-qs">${D.qs.map(q=>`<li>${sayBtn(q,'d','ib sm','Hear the question')}<span>${esc(q)}</span></li>`).join('')}</ol>`;
+    h+=`<div class="a1-help"><div><span class="mono">Keep in mind</span>${isRev(i)?`<p class="a1-r">${esc(D.r)}</p>`:ruleLines(D)}</div><div><span class="mono">Words to use</span><div class="a1-chips">${NW[i].map(w=>`<button type="button" class="a1-chip" data-say="${esc(w.en)}">${esc(w.en)}</button>`).join('')}</div></div></div>`;
+    h+=`<div class="a1-rec" id="a1-rec"></div>`;
+    h+=`<h3 class="sub">Check yourself</h3><ul class="a1-checks">${CHK.map((l,k)=>`<li><label><input type="checkbox" id="a1-chk-${k}" data-a1chk="${k}"${c[k]?' checked':''}><span>${esc(l)}</span></label></li>`).join('')}</ul>`;
+    h+=`<label class="a1-lab" for="a1-note">My mistakes: write the 2 things you want to fix</label><textarea id="a1-note" data-a1note placeholder="I said “she work”. It's “she works”.">${esc(sp.note||'')}</textarea>`;
+    h+=`<div id="a1-earlier"></div>`;
+    return h;
+  }
+  function stepCheck(i){
+    const d=dd(i);if(!d.rq){d.rq=buildRQ(i);ST.save();}
+    const q=d.rq,n=q.filter((_,k)=>d.rm[k]!=null).length;
+    const okAt=k=>{const x=q[k],v=d.rm[k];return x.t==='g'?v===DAYS[x.d].ch[x.j][2]:v===x.en;};
+    const ok=q.filter((_,k)=>d.rm[k]!=null&&okAt(k)).length;
+    const from=x=>x.t==='w'?`<span class="a1-from">Word · Day ${x.d+1}</span>`:x.d===i?`<span class="a1-from">Today's rule</span>`:`<span class="a1-from">From <a href="#a1-day-${x.d+1}">Day ${x.d+1} · ${esc(DAYS[x.d].t)}</a></span>`;
+    let h=`<p class="hint">From memory, without looking back: today's rule, rules from earlier days, and your words. This is what makes them stick.</p>`;
+    if(n===q.length){
+      const msg=ok===q.length?'Excellent. You remember everything.':ok>=q.length/2?'Good. Read the rule again for the ones you missed.':'Read the rules again, then try again tomorrow.';
+      h+=`<div class="a1-score"><b>${ok} / ${q.length}</b><div><p>${msg}</p><button type="button" class="btn quiet" data-a1rmreset>Try again</button></div></div>`;
+    }
+    h+=`<div class="a1-chs">${q.map((x,k)=>x.t==='g'?choiceHTML(DAYS[x.d].ch[x.j],'rm-'+i+'-'+k,d.rm[k]!=null?d.rm[k]:null,i*31+k+7,from(x)):wordQHTML(x,'rm-'+i+'-'+k,d.rm[k]!=null?d.rm[k]:null,from(x))).join('')}</div>`;
+    const nx=i<27?i+1:null;
+    h+=d.done?`<div class="a1-finish"><span class="mono kick">Day ${i+1} · done ${esc(d.done)}</span><h3>Well done.</h3>${nx!=null?`<p>Next: <b>Day ${nx+1} · ${esc(DAYS[nx].t)}</b></p><a class="btn primary" href="#a1-day-${nx+1}">Open Day ${nx+1}${icon('right')}</a>`:'<p>You finished all 28 days. Keep reviewing your words every day.</p>'}<button type="button" class="btn quiet" data-a1undo>Mark as not done</button></div>`
+      :`<div class="a1-finish"><h3>Finish Day ${i+1}</h3><p class="hint">${stepsDone(i)===5?'All five steps are done.':'You can finish now, or go back to the steps that are not ticked yet.'} Tomorrow, your words come back for review.</p><button type="button" class="btn primary" data-a1finish>${icon('check')}Finish Day ${i+1}</button></div>`;
+    return h;
+  }
+  const STEPHTML=[stepRule,stepFix,stepWords,stepSpeak,stepCheck];
+  const curStep=i=>Math.min(4,Math.max(0,gd(i).step||0));
+
+  /* ---------- paint ---------- */
+  function stepsHTML(i){
+    const at=curStep(i);
+    return STEPS.map((s,k)=>{const ok=DONE[s.k](i);return `<button type="button" class="a1-step${ok?' done':''}" data-a1step="${k}"${k===at?' aria-current="step"':''}><span class="n">${ok?icon('check'):k+1}</span><span class="l">${s.t}</span><span class="m">${s.min} min</span></button>`;}).join('');
+  }
+  function renderDay(){
+    const i=S.day,D=DAYS[i],at=curStep(i),d=gd(i);
+    freeURLs();
+    $('#a1-panel').innerHTML=`<article class="a1-day">
+      <div class="a1-dh-top"><span class="mono kick">Day ${i+1} of 28 · Week ${wkOf(i)+1}${isRev(i)?' · Review day':''}</span>${d.done?`<span class="hw-chip done">Done ${esc(d.done)}</span>`:''}</div>
+      <h2>${esc(D.t)}</h2>
+      <nav class="a1-steps" id="a1-steps" aria-label="Steps for today">${stepsHTML(i)}</nav>
+      <section class="a1-sec" id="a1-sec" aria-labelledby="a1-sec-h"><h3 class="a1-sec-h" id="a1-sec-h"><span class="mono">Step ${at+1} of 5 · about ${STEPS[at].min} minutes</span>${STEPS[at].d}</h3>${STEPHTML[at](i)}</section>
+      <footer class="a1-foot">${at>0?`<button type="button" class="btn" data-a1step="${at-1}">${icon('left')}${STEPS[at-1].d}</button>`:`<span></span>`}${at<4?`<button type="button" class="btn primary" data-a1step="${at+1}">Next: ${STEPS[at+1].d}${icon('right')}</button>`:''}</footer>
+    </article>`;
+    if(at===3){paintRec(i);paintEarlier(i);}
+  }
+  function renderBook(){
+    const mine=S.book==='mine',seen=DAYS.map((_,i)=>!!S.d[i]),any=seen.some(Boolean),only=mine&&any;
+    let h=`<div class="a1-book" id="a1-book"><div class="a1-book-h"><div><h2>My rule book</h2><p class="hint">Every rule from the plan in one place. Read it before class, and tap any sentence to hear it.</p></div>
+      <div class="c-row a1-noprint"><div class="seg" role="group" aria-label="Which rules"><button type="button" data-a1book="mine" aria-pressed="${mine}">Days I studied</button><button type="button" data-a1book="all" aria-pressed="${!mine}">All 28 days</button></div><button type="button" class="btn" data-a1print>Print</button></div></div>`;
+    if(mine&&!any)h+=`<p class="hint a1-noprint">You haven't started a day yet, so here are all of them.</p>`;
+    h+=`<div class="a1-golden">${GOLD.map(g=>`<div><span class="mono kick">Golden rule</span><b>${esc(g[0])}</b><span>${esc(g[1])}</span><span class="ar">${arH(g[2])}</span></div>`).join('')}</div>`;
+    WEEKS.forEach((w,k)=>{
+      const ds=[];for(let i=k*7;i<k*7+7;i++)if(!isRev(i)&&(!only||seen[i]))ds.push(i);
+      if(!ds.length)return;
+      h+=`<h3 class="a1-bwk">Week ${k+1} · ${esc(w.t)}</h3><div class="a1-bgrid">${ds.map(i=>{const D=DAYS[i];return `<div class="a1-bcard"><span class="mono kick">Day ${i+1} · ${esc(D.f)}${gd(i).done?' · done':''}</span><h4>${esc(D.t)}</h4>${D.pat.map(p=>`<p class="a1-pat">${hl(p)}</p>`).join('')}<ul class="a1-ex">${D.ex.map(e=>`<li>${sayBtn(e)}<span>${esc(e)}</span></li>`).join('')}</ul><p class="ar a1-tip">${arH(D.ar)}</p><a class="btn quiet a1-noprint" href="#a1-day-${i+1}">Open Day ${i+1}${icon('right')}</a></div>`;}).join('')}</div>`;
+    });
+    $('#a1-panel').innerHTML=h+'</div>';
+  }
+  let FC=null;
+  function startFC(keys,title){keys=keys.slice(0,30);if(!keys.length){toast('Nothing to review right now.');return;}FC={keys,k:0,flip:false,ok:0,n:keys.length,title};paintPanel();}
+  function fcHTML(){
+    if(FC.k>=FC.keys.length){const h=`<div class="a1-fc"><span class="mono kick">${esc(FC.title)} · finished</span><div class="a1-fc-front">${FC.ok} / ${FC.n}</div><p>You knew ${FC.ok} of ${FC.n} words the first time. The others come back today until you know them.</p><button type="button" class="btn primary" data-a1fcx>Done</button></div>`;return h;}
+    const o=S.words[FC.keys[FC.k]],enF=S.dir!=='ar';
+    const front=enF?`<div class="a1-fc-front">${esc(o.en)}</div>`:`<div class="a1-fc-front a1-arx">${esc(o.ar)}</div>`;
+    const back=enF?`<div class="a1-fc-back a1-arx">${esc(o.ar)}</div>`:`<div class="a1-fc-back">${esc(o.en)}</div>`;
+    return `<div class="a1-fc" aria-live="polite"><div class="a1-fc-top"><span class="mono kick">${esc(FC.title)} · card ${FC.k+1} of ${FC.keys.length}</span><button type="button" class="btn quiet" data-a1fcx>Stop</button></div>
+      ${front}${enF||FC.flip?sayBtn(o.en,'','ib','Listen'):''}
+      ${FC.flip?`${back}<span class="hint">From Day ${o.d+1} · ${esc(DAYS[o.d].t)}</span><div class="c-row"><button type="button" class="btn" data-a1g="0">Again <kbd>1</kbd></button><button type="button" class="btn primary" data-a1g="1">I knew it <kbd>2</kbd></button></div>`
+        :`<button type="button" class="btn primary" data-a1flip>Show the answer <kbd>Space</kbd></button><p class="hint">${enF?'Say what it means first.':'Say the English word first.'}</p>`}</div>`;
+  }
+  function renderWords(){
+    const all=Object.values(S.words),due=dueKeys().length,well=all.filter(o=>o.b>=4).length,t=today();
+    let h=`<div class="a1-words"><div class="a1-book-h"><div><h2>My words</h2><p class="hint">Words come back on a schedule: today, tomorrow, then after 2, 4, 7 and 14 days. Each time you know a word, it waits longer.</p></div>
+      <div class="seg" role="group" aria-label="Card front"><button type="button" data-a1dir="en" aria-pressed="${S.dir!=='ar'}">English first</button><button type="button" data-a1dir="ar" aria-pressed="${S.dir==='ar'}">Arabic first</button></div></div>
+      <div class="a1-stats a1-wstats"><div class="a1-stat"><b>${all.length}</b>words so far</div><div class="a1-stat hot"><b>${due}</b>to review today</div><div class="a1-stat"><b>${well}</b>known well</div></div>
+      <div id="a1-fcbox">${FC?fcHTML():due?`<div class="a1-video"><div><b>${due} ${due===1?'word is':'words are'} waiting</b><p class="hint">About ${Math.max(1,Math.round(Math.min(due,30)*8/60))} minutes.</p></div><button type="button" class="btn primary" data-a1fc="due">Review now${icon('right')}</button></div>`:all.length?`<p class="a1-calm">${icon('check')} Nothing to review today. Come back tomorrow.</p>`:''}</div>`;
+    if(!all.length)h+=`<p class="hint">Your words appear here when you do step 3 of a day.</p>`;
+    const by={};all.forEach(o=>(by[o.d]||(by[o.d]=[])).push(o));
+    Object.keys(by).map(Number).sort((a,b)=>b-a).forEach(x=>{
+      h+=`<div class="a1-wday"><div class="a1-wday-h"><span class="mono kick">Day ${x+1}</span><b>${esc(DAYS[x].t)}</b></div><div class="a1-wlist">${by[x].map(o=>`<span class="a1-w${o.due<=t?' due':''}">${sayBtn(o.en)}<b>${esc(o.en)}</b><span class="a1-mean" lang="ar">${esc(o.ar)}</span><span class="a1-dots" role="img" aria-label="Strength ${o.b} of 5">${[1,2,3,4,5].map(n=>`<i${n<=o.b?' class="on"':''}></i>`).join('')}</span></span>`).join('')}</div></div>`;
+    });
+    $('#a1-panel').innerHTML=h+'</div>';
+  }
+  function paintPanel(){if(S.tab==='rules')renderBook();else if(S.tab==='words')renderWords();else renderDay();applyMic();}
+  function paintTabs(){
+    const due=dueKeys().length;
+    $('#a1-tabs').innerHTML=`<a class="a1-tab" href="#a1-day-${S.day+1}"${S.tab==='day'?' aria-current="page"':''}>Day ${S.day+1}</a><a class="a1-tab" href="#a1-rules"${S.tab==='rules'?' aria-current="page"':''}>Rule book</a><a class="a1-tab" href="#a1-words"${S.tab==='words'?' aria-current="page"':''}>My words${due?`<span class="a1-badge" aria-label="${due} to review">${due}</span>`:''}</a>`;
+  }
+  function paintStats(){
+    const n=doneCount(),due=dueKeys().length,sk=streak();
+    $('#a1-stats').innerHTML=`<div class="a1-stat"><b>${n}<small> / 28</small></b>days done</div><div class="a1-stat"><b>${Object.keys(S.words).length}</b>words so far</div><a class="a1-stat${due?' hot':''}" href="#a1-words"><b>${due}</b>to review today</a><div class="a1-stat"><b>${sk}</b>${sk===1?'day':'days'} in a row</div>`;
+  }
+  function paintMap(){
+    const cw=wkOf(S.day);
+    $('#a1-map').className='a1-map'+(S.mapAll?' all':'');
+    $('#a1-map').innerHTML=WEEKS.map((w,k)=>`<div class="a1-wk${k===cw?' on':''}"><div class="a1-wk-h"><span class="mono">Week ${k+1} · ${esc(w.f)}</span><b>${esc(w.t)}</b></div><div class="a1-tiles">${[0,1,2,3,4,5,6].map(x=>{const i=k*7+x,p=dayP(i);return `<a class="a1-tile${gd(i).done?' done':''}${isRev(i)?' rev':''}" href="#a1-day-${i+1}" style="--p:${p.toFixed(2)}" title="Day ${i+1} · ${esc(DAYS[i].t)}"${S.tab==='day'&&i===S.day?' aria-current="page"':''} aria-label="Day ${i+1}: ${esc(DAYS[i].t)}${gd(i).done?', done':''}">${gd(i).done?icon('check'):i+1}</a>`;}).join('')}</div></div>`).join('')
+      +`<button type="button" class="btn quiet a1-maptog" data-a1map>${S.mapAll?'Show this week only':'Show all 4 weeks'}</button>`;
+  }
+  function changed(){ST.save();if(CUR!=='a1')return;paintStats();paintMap();paintTabs();const s=$('#a1-steps');if(s&&S.tab==='day')s.innerHTML=stepsHTML(S.day);}
+  function renderAll(){paintStats();paintMap();paintTabs();paintPanel();}
+  function fromHash(){
+    const h=(location.hash||'').slice(1),m=/^a1-day-(\d+)$/.exec(h);
+    if(S.day==null)S.day=current();
+    if(h==='a1-rules')S.tab='rules';else if(h==='a1-words')S.tab='words';
+    else{S.tab='day';S.day=m?Math.min(27,Math.max(0,+m[1]-1)):current();}
+    ST.save();
+  }
+  function goStep(k){recStop();const d=dd(S.day);d.step=k;ST.save();renderDay();applyMic();const a=$('#a1-panel');if(a)a.scrollIntoView({behavior:RM()?'auto':'smooth',block:'start'});}
+
+  /* ---------- events ---------- */
+  const view=$('#v-a1');
+  view.addEventListener('click',e=>{
+    const t=e.target,i=S.day;let b;
+    if((b=t.closest('[data-a1c]'))){
+      const [kind,ds,ks]=b.dataset.a1c.split('-'),x=+ds,k=+ks,o=+b.dataset.o,d=dd(x);touch();
+      if(kind==='ch'){if(d.ch[k]!=null)return;d.ch[k]=o;const c=DAYS[x].ch[k];b.closest('.a1-ch').outerHTML=choiceHTML(c,b.dataset.a1c,o,x*10+k);if(o===c[2])speak(fill(c[0],c[1][c[2]]),'');}
+      else{if(d.rm[k]!=null)return;const q=d.rq[k];
+        if(q.t==='g'){d.rm[k]=o;const c=DAYS[q.d].ch[q.j];if(o===c[2])speak(fill(c[0],c[1][c[2]]),'');}
+        else{d.rm[k]=q.o[o];const w=deckOf(q.d).find(w=>w.en===q.en);if(w)bankAdd(w,q.d);grade(wkey(q.en),q.o[o]===q.en);if(q.o[o]===q.en)speak(q.en,'');}
+        const keep=window.scrollY;renderDay();window.scrollTo(0,keep);}
+      changed();return;
+    }
+    if((b=t.closest('[data-a1fxc]'))){checkFix(+b.dataset.a1fxc);return;}
+    if((b=t.closest('[data-a1fxs]'))){const j=+b.dataset.a1fxs,f=dd(i).fx[j]||(dd(i).fx[j]={});f.shown=true;touch();$('#a1-fx-'+j).outerHTML=fixHTML(i,j);applyMic();speak(DAYS[i].fx[j][1],'');changed();return;}
+    if((b=t.closest('[data-a1open]'))){OPEN.add(i+':'+b.dataset.a1open);const w=deckOf(i).find(w=>w.en===b.dataset.a1open);if(w){b.closest('.a1-card').outerHTML=cardHTML(i,w);speak(w.en,'');}return;}
+    if((b=t.closest('[data-a1rate]'))){const en=b.dataset.a1rate,v=+b.dataset.v,w=deckOf(i).find(w=>w.en===en);if(!w)return;dd(i).rate[en]=v;meet(w,i,v===1);touch();b.closest('.a1-card').outerHTML=cardHTML(i,w);changed();return;}
+    if((b=t.closest('[data-a1step]'))){goStep(+b.dataset.a1step);return;}
+    if(t.closest('[data-a1finish]')){const d=dd(i);d.done=today();touch();ST.save();toast(`Day ${i+1} is done. See you tomorrow!`);renderAll();return;}
+    if(t.closest('[data-a1undo]')){dd(i).done=null;ST.save();renderAll();return;}
+    if(t.closest('[data-a1rmreset]')){const d=dd(i);d.rm={};d.rq=buildRQ(i);ST.save();renderDay();changed();return;}
+    if(t.closest('[data-a1rec]')){recStart(i);return;}
+    if(t.closest('[data-a1recdel]')){IDB.del('day-'+i).then(()=>{const d=dd(i);delete d.sp.rec;ST.save();paintRec(i);});return;}
+    if((b=t.closest('[data-a1book]'))){S.book=b.dataset.a1book;ST.save();renderBook();return;}
+    if(t.closest('[data-a1print]')){document.documentElement.classList.add('a1-printing');const off=()=>{document.documentElement.classList.remove('a1-printing');window.removeEventListener('afterprint',off);};window.addEventListener('afterprint',off);window.print();setTimeout(off,1500);return;}
+    if((b=t.closest('[data-a1dir]'))){S.dir=b.dataset.a1dir;ST.save();renderWords();return;}
+    if(t.closest('[data-a1fc]')){startFC(dueKeys(),'Review');const fb=$('#a1-fcbox');if(fb)fb.scrollIntoView({behavior:RM()?'auto':'smooth',block:'center'});return;}
+    if((b=t.closest('[data-a1deck]'))){const k=+b.dataset.a1deck,keys=[];for(let x=k*7;x<k*7+7;x++)deckOf(x).forEach(w=>{const kk=wkey(w.en);if(S.words[kk]&&!keys.includes(kk))keys.push(kk);});
+      if(!keys.length){toast('Do step 3 (Words) of this week\'s days first.');return;}
+      const mix=seedOrder(keys.length,k+3).map(n=>keys[n]).sort((a,c)=>S.words[a].b-S.words[c].b);
+      S.tab='words';ST.save();try{history.pushState(null,'','#a1-words');}catch(err){}changed();startFC(mix,'Week '+(k+1));const fb=$('#a1-fcbox');if(fb)fb.scrollIntoView({behavior:RM()?'auto':'smooth',block:'center'});return;}
+    if(t.closest('[data-a1flip]')){FC.flip=true;renderWords();return;}
+    if((b=t.closest('[data-a1g]'))){fcGrade(b.dataset.a1g==='1');return;}
+    if(t.closest('[data-a1fcx]')){FC=null;renderWords();return;}
+    if(t.closest('[data-a1map]')){S.mapAll=!S.mapAll;ST.save();paintMap();return;}
+  });
+  function fcGrade(knew){const k=FC.keys[FC.k];if(knew&&FC.k<FC.n)FC.ok++;grade(k,knew);if(!knew)FC.keys.push(k);touch();FC.k++;FC.flip=false;renderWords();changed();}
+  function checkFix(j){
+    const i=S.day,it=DAYS[i].fx[j],inp=$('#a1-fxin-'+j),f=dd(i).fx[j]||(dd(i).fx[j]={});
+    f.v=inp?inp.value:f.v||'';f.n=(f.n||0)+1;touch();
+    if(fxOk(it,f.v)){f.ok=true;speak(it[1],'');}
+    $('#a1-fx-'+j).outerHTML=fixHTML(i,j);applyMic();changed();
+    if(!f.ok){const n=$('#a1-fxin-'+j);if(n)n.focus();}
+    else{const nx=$('#a1-fxin-'+(j+1));if(nx&&!nx.readOnly)nx.focus({preventScroll:false});}
+  }
+  view.addEventListener('input',e=>{
+    const t=e.target,i=S.day;
+    if(t.dataset.a1fx!=null){const f=dd(i).fx[+t.dataset.a1fx]||(dd(i).fx[+t.dataset.a1fx]={});f.v=t.value;ST.save();return;}
+    if(t.dataset.a1sen!=null){const en=t.dataset.a1sen;dd(i).sen[en]=t.value;touch();const u=t.parentNode.querySelector('.a1-use');if(u)u.hidden=!(t.value.trim()&&usesWord(t.value,en));ST.save();return;}
+    if(t.dataset.a1note!=null){dd(i).sp.note=t.value;touch();ST.save();return;}
+  });
+  view.addEventListener('change',e=>{const t=e.target;if(t.dataset.a1chk!=null){dd(S.day).sp.c[+t.dataset.a1chk]=t.checked;touch();changed();}});
+  view.addEventListener('keydown',e=>{const t=e.target;if(t.dataset&&t.dataset.a1fx!=null&&e.key==='Enter'&&!t.readOnly){e.preventDefault();checkFix(+t.dataset.a1fx);}});
+  document.addEventListener('keydown',e=>{
+    if(CUR!=='a1'||S.tab!=='words'||!FC||FC.k>=FC.keys.length)return;
+    if(e.target.closest&&e.target.closest('input,textarea,select,[contenteditable]'))return;
+    if(!FC.flip&&(e.key===' '||e.key==='Enter')){e.preventDefault();FC.flip=true;renderWords();}
+    else if(FC.flip&&(e.key==='1'||e.key==='2')){e.preventDefault();fcGrade(e.key==='2');}
+  });
+
+  /* ---------- homework: one report per week, sent to the teacher ---------- */
+  function dayReport(i){
+    const D=DAYS[i],d=gd(i),items=[];
+    D.ch.slice(0,3).forEach((c,j)=>{const v=d.ch[j];items.push({n:'Try '+(j+1),p:c[0]+' ('+c[1].join(' / ')+')',a:v==null?'':c[1][v],ok:v==null?null:v===c[2],x:c[1][c[2]]});});
+    D.fx.forEach((f,j)=>{const s=d.fx[j]||{},v=String(s.v||'').trim();items.push({n:'Fix '+(j+1),p:(f[3]?f[3]+' → ':'')+f[0],a:v||(s.shown?'(looked at the answer)':''),ok:s.ok?true:(s.shown||(s.n&&v))?false:null,x:f[1]});});
+    NW[i].forEach((w,k)=>{const v=String(d.sen[w.en]||'').trim();items.push({n:'Word '+(k+1),p:'A sentence with “'+w.en+'”',a:v,ok:null,x:'',open:true});});
+    const sp=d.sp||{},c=sp.c||[],bits=[];if(sp.rec)bits.push('Recorded '+sp.rec+' s');CHK.forEach((l,k)=>{if(k&&c[k])bits.push(l);});if(c[0]&&!sp.rec)bits.unshift('Recorded on another device');
+    items.push({n:'Speak',p:D.sp,a:[bits.join(' · '),sp.note&&sp.note.trim()?'My mistakes: '+sp.note.trim():''].filter(Boolean).join('\n'),ok:null,x:'',open:true});
+    (d.rq||[]).forEach((x,k)=>{const v=d.rm[k];
+      if(x.t==='g'){const c=DAYS[x.d].ch[x.j];items.push({n:'Check '+(k+1),p:(x.d!==i?'Day '+(x.d+1)+': ':'')+c[0]+' ('+c[1].join(' / ')+')',a:v==null?'':c[1][v],ok:v==null?null:v===c[2],x:c[1][c[2]]});}
+      else items.push({n:'Check '+(k+1),p:'English for: '+x.ar,a:v==null?'':v,ok:v==null?null:v===x.en,x:x.en});});
+    return {id:'a1-d'+(i+1),title:'Day '+(i+1)+' · '+D.t+(d.done?' (done '+d.done+')':''),items};
+  }
+  WEEKS.forEach((w,k)=>HW.push({id:'a1-week-'+(k+1),title:'Week '+(k+1)+' · '+w.t,lesson:'A1 plan',lessonKey:'a1',anchor:null,kind:'A1 plan',
+    get hash(){for(let i=k*7;i<k*7+7;i++)if(!gd(i).done)return 'a1-day-'+(i+1);return 'a1-day-'+(k*7+1);},
+    report:()=>{const out=[];for(let i=k*7;i<k*7+7;i++)out.push(dayReport(i));return out;}}));
+
+  LESSONS.a1={hash:'a1-plan',title:'A1 plan · 28 days',store:ST,lookup:null,card:null,
+    progress:()=>doneCount()/28,
+    onShow:()=>{fromHash();renderAll();},
+    onHide:()=>{recStop();FC=null;freeURLs();}};
+
+  /* ---------- home banner ---------- */
+  function banner(){
+    const c=current(),D=DAYS[c],n=doneCount(),due=dueKeys().length,sk=streak(),started=!!S.d[c];
+    return `<div><span class="mono kick">Level A1 · 28-day plan</span><h2>Day ${c+1}: ${esc(D.t)}</h2><p>About 30 minutes a day. Learn one rule, fix 3 mistakes, learn new words, speak, then check what you remember.</p>
+      <div class="c-row a1-bn-cta"><span class="btn primary cta">${started?'Continue':'Start'} Day ${c+1}${icon('right')}</span>${due?`<span class="hint"><b>${due}</b> ${due===1?'word':'words'} to review</span>`:''}</div></div>
+      <div class="a1-bn-r"><div class="a1-mini" aria-hidden="true">${DAYS.map((_,i)=>`<i class="${gd(i).done?'done':''}${i===c?' cur':''}" style="--p:${dayP(i).toFixed(2)}"></i>`).join('')}</div>
+      <div class="a1-bn-n"><span><b>${n}</b>/ 28 days</span><span><b>${Object.keys(S.words).length}</b>words</span><span><b>${sk}</b>${sk===1?'day':'days'} in a row</span></div></div>`;
+  }
+  return {banner,href:()=>'#a1-day-'+(current()+1)};
+})();
+
+/* =====================================================================
    HOMEWORK — send workbook pages and assignments to the teacher, read her comments
    ===================================================================== */
 const HWAPI=window.HW_API||null;
@@ -7165,7 +8033,7 @@ function hwComments(s){
 function hwRender(){
   const box=$('#hw-list');if(!box)return;
   $('#hw-sync').innerHTML=!HWAPI?'<p class="hw-off">Sending homework works on your own website (your Vercel link). Here you can still do the exercises.</p>':HWS.err?`<p class="hw-off">${esc(HWS.err)} <button type="button" class="btn quiet" data-hwreload>Try again</button></p>`:!HWS.loaded?'<p class="pending">Loading your homework…</p>':'';
-  const groups=[['Exam','Exams'],['Workbook','Workbook pages'],['Assignment','Assignments from the lessons']];
+  const groups=[['A1 plan','A1 plan · one report a week'],['Exam','Exams'],['Workbook','Workbook pages'],['Assignment','Assignments from the lessons']];
   box.innerHTML=groups.map(([k,h])=>{const us=HW.filter(u=>u.kind===k);if(!us.length)return '';
     return `<h2 class="hw-gh">${h}</h2><div class="hw-grid">${us.map(u=>{const rep=u.report(),st=hwStats(rep),sub=HWS.subs[u.id],ss=hwState(u,rep),busy=!!HWS.busy[u.id];
       return `<article class="hw-card t-${u.lessonKey}"><div class="hw-top"><span class="mono" style="color:var(--mark)">${u.kind==='Assignment'?'Assignment · '+esc(u.lesson):u.kind}</span><span class="hw-chip ${ss.k}">${esc(ss.t)}</span></div>
@@ -7181,7 +8049,7 @@ function hwBanner(){
   const el=$('#hw-home');if(!el)return;
   let toSend=0,fresh=0,waiting=0;
   HW.forEach(u=>{const rep=u.report(),st=hwStats(rep),ss=hwState(u,rep);if((ss.k==='new'&&st.a)||ss.changed)toSend++;if(ss.k==='fresh')fresh++;if(ss.k==='sent'&&!ss.changed)waiting++;});
-  el.innerHTML=`<div><span class="mono" style="color:var(--mark)">Homework · for your teacher</span><h2>My homework</h2><p>${HW.length} exams, workbook pages and assignments. Send your answers and read your teacher's comments.</p></div>
+  el.innerHTML=`<div><span class="mono" style="color:var(--mark)">Homework · for your teacher</span><h2>My homework</h2><p>${HW.length} A1 plan weeks, exams, workbook pages and assignments. Send your answers and read your teacher's comments.</p></div>
     <div class="hw-nums"><span><b>${fresh}</b>new comments</span><span><b>${waiting}</b>waiting for review</span><span><b>${toSend}</b>ready to send</span></div>`;
 }
 document.addEventListener('click',e=>{
@@ -7198,10 +8066,12 @@ hwLoad().then(hwBanner);
    HOME + ROUTER
    ===================================================================== */
 const ORDER=['ex1','ex2','fe','sb','w3','wr','w2','mf','pr','ld','oy','hw','health','weekend','can','nn','wx'];
-const ROUTES={'':'home','home':'home','health-illness':'health','last-weekend':'weekend','can-cant':'can','noisy-neighbours':'nn','seasons-weather':'wx','arriving-in-london':'ld','open-your-books':'oy','workbook':'hw','writers-room':'wr','workbook-2a':'w2','how-much':'pr','mid-feedback':'mf','stars-and-stripes':'sb','feelings':'fe','workbook-2b':'w3','exam-1':'ex1','exam-2':'ex2','homework':'homework','shadowing':'studio'};
+const ROUTES={'':'home','home':'home','health-illness':'health','last-weekend':'weekend','can-cant':'can','noisy-neighbours':'nn','seasons-weather':'wx','arriving-in-london':'ld','open-your-books':'oy','workbook':'hw','writers-room':'wr','workbook-2a':'w2','how-much':'pr','mid-feedback':'mf','stars-and-stripes':'sb','feelings':'fe','workbook-2b':'w3','exam-1':'ex1','exam-2':'ex2','homework':'homework','shadowing':'studio','a1-plan':'a1','a1-rules':'a1','a1-words':'a1'};
+for(let i=1;i<=28;i++)ROUTES['a1-day-'+i]='a1';
 function renderHome(){
   if(STUDIO)$('#sh-home').innerHTML=STUDIO.banner();
   hwBanner();
+  const a1=$('#a1-home');a1.innerHTML=A1.banner();a1.href=A1.href();
   $('#topics').innerHTML=ORDER.map(k=>{
     const L=LESSONS[k],c=L.card,p=L.progress(),pc=Math.round(p*100);
     return `<a class="topic t-${k}" href="#${L.hash}">
