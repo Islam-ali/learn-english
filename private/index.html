@@ -1020,6 +1020,36 @@ details.guide-d summary{cursor:pointer;color:var(--rx);font-weight:700}
 .x-pics img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:10px;display:block;border:1px solid var(--line);background:var(--line-2)}
 .x-pics figcaption{position:absolute;left:8px;top:8px;background:rgba(255,255,255,.92);color:#13283E;font-family:var(--f-mono);font-size:11px;padding:1px 6px;border-radius:4px}
 @media (max-width:620px){.x-pics{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* ============ Level 2 · lecture 1: 3A things I love about the US, workbook 3A, initial feedback ============ */
+:root{--us-mark:#B4232F;--us-mark-soft:#FCE7E8}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--us-mark:#FF8F96;--us-mark-soft:#3A1B1E}}
+:root[data-theme="dark"]{--us-mark:#FF8F96;--us-mark-soft:#3A1B1E}
+.lesson-us,.t-us{--mark:var(--us-mark);--mark-soft:var(--us-mark-soft)}
+.lesson-w4,.t-w4{--mark:var(--hw-mark);--mark-soft:var(--hw-mark-soft)}
+.lesson-if,.t-if{--mark:var(--mf-mark);--mark-soft:var(--mf-mark-soft)}
+.x-hl{background:var(--mark-soft);border-radius:4px;padding:0 3px;box-shadow:inset 0 -2px 0 var(--mark)}
+.us-pics{grid-template-columns:repeat(5,minmax(0,1fr))}
+.us-two .form-card img{width:100%;max-width:200px;aspect-ratio:1;object-fit:cover;border-radius:10px;border:1px solid var(--line-2);margin-bottom:4px}
+.x-chart{border-collapse:separate;border-spacing:0;width:100%;max-width:420px;font-size:16px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--sheet)}
+.x-chart th,.x-chart td{padding:8px 12px;border-bottom:1px solid var(--line-2);text-align:left}
+.x-chart thead th{background:var(--mark-soft);font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.x-chart tbody tr:last-child th,.x-chart tbody tr:last-child td{border-bottom:0}
+.x-chart td{text-align:center;font-weight:700;font-size:18px}
+.x-chart td.yes{color:var(--ok)}.x-chart td.no{color:var(--bad)}
+.if-list{list-style:none;margin:0 0 6px;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.if-list li{display:flex;flex-direction:column;gap:4px;padding:12px 14px;border-radius:12px;background:var(--paper);border:1px solid var(--line-2);font-size:16.5px;min-width:0}
+.if-list .mono{color:var(--mark);font-size:11px}
+.if-list s{color:var(--bad);text-decoration-thickness:1.5px}.if-list b{color:var(--ok)}
+.if-list .hint{font-size:14px}
+.if-list .ar{text-align:right;color:var(--ink-2);font-size:14.5px}
+.x-says{list-style:none;margin:0 0 10px;padding:12px 14px;border-radius:12px;background:var(--paper);border:1px solid var(--line-2);display:flex;flex-direction:column;gap:8px}
+.x-says li{display:flex;gap:10px;align-items:center;font-size:17px;min-width:0}
+.x-says-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.x-says-grid .mono{color:var(--mark);display:block;margin-bottom:6px}
+.x-says-grid .x-says{margin:0;height:calc(100% - 26px)}
+@media (max-width:820px){.x-says-grid{grid-template-columns:minmax(0,1fr)}.x-says-grid .x-says{height:auto}}
+@media (max-width:820px){.us-pics{grid-template-columns:repeat(3,minmax(0,1fr))}.if-list{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.us-pics{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* ============ homework screen (sent to the teacher) ============ */
 .hw-head{margin-bottom:10px;--mark:var(--mf-mark)}
 .hw-head h1{font-size:clamp(44px,6.4vw,72px);font-weight:800;letter-spacing:-.035em;margin:8px 0 10px}
@@ -1353,6 +1383,10 @@ a.a1-stat:hover{border-color:var(--mark)}
 .lec-dot{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font:700 17px var(--f-display);background:var(--paper);border:2px solid var(--line);color:var(--ink-2);font-variant-numeric:tabular-nums}
 .lec-dot .ic{width:20px;height:20px}
 .lec.mile .lec-dot{border-radius:12px;background:var(--ex-mark-soft);border-color:var(--ex-mark);color:var(--ex-mark)}
+.lec.extra .lec-dot{border-style:dashed;background:var(--sheet)}
+.lv-plan{margin-top:30px;padding-top:24px;border-top:1px solid var(--line-2);display:flex;flex-direction:column;gap:14px}
+.lv-plan-h h3{font-size:24px;margin-top:4px}
+.lv-plan-h .mono{color:var(--a1-mark)}
 .lec.done .lec-dot{background:var(--ok);border-color:var(--ok);color:var(--sheet)}
 .lec.now .lec-dot{border-color:var(--rx);color:var(--rx);background:var(--sheet);box-shadow:0 0 0 4px var(--rx-soft)}
 .lec-h{display:flex;align-items:center;gap:4px 12px;flex-wrap:wrap;min-height:44px}
@@ -1482,7 +1516,7 @@ a.a1-stat:hover{border-color:var(--mark)}
   <div class="view" id="v-home" data-view="home">
     <section class="home-top">
       <div>
-        <span class="mono">My English · Level 5 now</span>
+        <span class="mono">My English · Level 2 now</span>
         <h1>My English Lessons</h1>
         <p class="lead">Every class lesson in order, by level and lecture. Start with today, then pick up where you left off.</p>
       </div>
@@ -1499,7 +1533,7 @@ a.a1-stat:hover{border-color:var(--mark)}
     <a class="back" href="#home">All lessons</a>
     <header class="a1-head">
       <div>
-        <span class="mono kick">Level 6 · A1 plan · Files 3 and 4</span>
+        <span class="mono kick">Level 2 · A1 plan · Files 3 and 4</span>
         <h1>28-Day A1 Plan</h1>
         <p class="lead">One short lesson a day, about 30 minutes. Learn one rule, fix real mistakes, learn new words, speak, then check what you still remember from earlier days.</p>
       </div>
@@ -7516,6 +7550,239 @@ buildLesson({key:'ex2',p:'ex2-',hash:'exam-2',title:'Exam 2 · Units 2B–2C',st
 });
 
 /* =====================================================================
+   LEVEL 2 · LECTURE 1 — 3A THINGS I LOVE ABOUT THE US: verb phrases, simple present + and −, third person -s
+   ===================================================================== */
+const US_TRUE=[["Americans eat fast food every day.","Pei from China","It's true that Americans <span class=\"x-hl\">eat</span> a lot of fast food, but they <span class=\"x-hl\">don't eat</span> fast food every day. I share an apartment with an American woman, and she <span class=\"x-hl\">cooks</span> all the time. She only <span class=\"x-hl\">eats</span> fast food on some days—with me!"],
+  ["The sun shines a lot in Southern California.","Alberto from Mexico","The weather <span class=\"x-hl\">changes</span> quickly in many places in the US, but not in Southern California. The sun <span class=\"x-hl\">shines</span> a lot there. It <span class=\"x-hl\">doesn't shine</span> every day, but be careful when it <span class=\"x-hl\">shines</span>. It <span class=\"x-hl\">gets</span> very hot! I always <span class=\"x-hl\">wear</span> sunglasses when I <span class=\"x-hl\">go out</span>."],
+  ["Americans like animals.","Naomi from Japan","I <span class=\"x-hl\">have</span> a lot of friends here and many of them <span class=\"x-hl\">have</span> a dog, a cat, or a bird. One American family that I know <span class=\"x-hl\">has</span> a dog, a cat, and two birds. American people <span class=\"x-hl\">love</span> animals!"],
+  ["Americans are always loud.","Gianni from Italy","Some Americans are very loud, but I <span class=\"x-hl\">work</span> with an American man at a coffee shop, and he's really quiet and polite. He <span class=\"x-hl\">doesn't talk</span> very much. But he's a very nice guy!"]];
+const US_PARKS=[["Coffee","American cups of coffee are very big! A small cup of coffee in the US is like a large cup of coffee in Australia. If you're in a hurry, you go to a drive-through and buy coffee from your car. It's so easy!"],
+  ["State Parks","California has 278 state parks, and they are beautiful. On the weekends, I bring my family to a state park in my area. We explore the forest, find small animals, and enjoy the tall redwood trees."],
+  ["Malls","I love shopping, and in the US, the malls are very big. People walk around and shop for hours. US malls have many different stores, and the salespeople are friendly and help you find things."],
+  ["Fall","I love the fall weather in the US. A good fall day in California is cool, but not too cold. I also love the trees. They change from green to yellow, red, and brown."],
+  ["Freeways","I prefer the roads in the US. The freeways are very fast, and in California they have a lot of car lanes. It's really easy to drive from one place to another."],
+  ["Theme Parks","Theme parks are very popular in the US, and we live near the Great America Theme Park. My children like the rides and water slides. Sometimes the lines for the rides are long, but that's OK. We need rest!"],
+  ["Red Robin","Red Robin is a restaurant that has great hamburgers. I don't eat meat, but I like the French fries and lemonade at Red Robin. I think the fried cheese sticks are fantastic, but sometimes they aren't on the menu. Maybe that's because they aren't very healthy!"]];
+const US_S=[["/s/",["She speaks Spanish.","He drinks coffee.","She cooks every day."]],["/z/",["It rains a lot.","He has a cat.","She does homework.","He goes to the movies on Friday night."]],["/ɪz/",["He watches TV.","The movie finishes in a minute.","The weather changes a lot."]]];
+const US_SAYS=(a,who)=>`<ul class="x-says">${a.map(t=>`<li>${sayBtn(t,who||'')}<span>${esc(t)}</span></li>`).join('')}</ul>`;
+const US_ED=["I wake up at six every day.","I take a shower and eat breakfast at half past six.","In the evening, I study."];
+const US_AMY=["Amy wakes up at half past seven.","She eats breakfast at eight and she goes to work.","In the evening, she watches TV."];
+const US_FORM=`<div class="x-uk"><div class="form-card"><span class="mono" style="color:var(--mark)">+ affirmative</span><span class="e">I work. You work. We work. They work. ${sayBtn('I work. You work. We work. They work.','','ib sm')}</span><span class="e">He works. She works. It works. ${sayBtn('He works. She works. It works.','','ib sm')}</span><span class="ar">مع he و she و it بنزوّد s على الفعل</span></div>
+  <div class="form-card"><span class="mono" style="color:var(--mark)">− negative</span><span class="e">I don't work. You don't work. They don't work. ${sayBtn("I don't work. You don't work. They don't work.",'','ib sm')}</span><span class="e">He doesn't work. She doesn't work. ${sayBtn("He doesn't work. She doesn't work.",'','ib sm')}</span><span class="ar">النفي: don't أو doesn't + الفعل من غير s</span></div></div>
+  <ul class="rules"><li><span>Spelling for <b>he / she / it</b>: most verbs <b>+ s</b> (works, plays, lives) · after <b>ch, sh, s, x, o</b> <b>+ es</b> (watches, finishes, goes, does) · consonant + <b>y → ies</b> (studies).</span><span class="ar">نفس قواعد الجمع: watches و goes و studies</span></li>
+  <li><span>Be careful: <b>have → has</b> (NOT haves) · <b>go → goes</b> /goʊz/ · <b>do → does</b> /dʌz/ · <b>say → says</b> /sɛz/.</span><span class="ar">has و does و says ليهم نطق خاص</span></li>
+  <li><span><b>don't</b> = do not · <b>doesn't</b> = does not. After them, the verb has no s: <b>He doesn't work.</b> NOT <s>He doesn't works.</s></span><span class="ar">بعد doesn't الفعل بيرجع من غير s</span></li>
+  <li><span>We use the simple present for things that are <b>generally true</b> or that <b>happen every day</b> (routines and habits).</span><span class="ar">المضارع البسيط للحاجات اللي بتحصل على طول</span></li></ul>`;
+const US_ROUT=`<div class="x-uk us-two"><div class="form-card"><img src="img/us-ed.jpg" alt="A cartoon of Ed, a smiling young man holding a cup of coffee" loading="lazy"><span class="mono" style="color:var(--mark)">This is Ed · I…</span>${US_ED.map(t=>`<span class="e">“${esc(t)}” ${sayBtn(t,'d','ib sm')}</span>`).join('')}</div>
+  <div class="form-card"><img src="img/us-amy.jpg" alt="A cartoon of Amy, a woman walking to work in the city with a coffee and a bag" loading="lazy"><span class="mono" style="color:var(--mark)">This is Amy · She…</span>${US_AMY.map(t=>`<span class="e">“${esc(t)}” ${sayBtn(t,'p','ib sm')}</span>`).join('')}</div></div>
+  <p class="rule"><b>Present simple = routine.</b> It's about <b>every day</b>, not one day, and not the past. Ed and Amy don't wake up at the same time: <b>Ed wakes up</b> at six, <b>Amy wakes up</b> at half past seven.</p>`;
+buildLesson({key:'us',p:'us-',hash:'things-i-love',title:'Things I Love About the US',storeKey:'things-i-love-3a-lesson-v1',cal:'♥',
+  topic:'3A Things I love about the US (verb phrases, simple present + and −, third person -s)',
+  focus:'verb phrases (read a newspaper, listen to the radio, have children, go to the movies, work in an office), the simple present for routines and facts: I work / she works, I don\'t work / he doesn\'t work, he / she / it spelling (watches, goes, studies, has), and the three sounds of final -s',
+  fbHint:'This student\'s teacher says he must work on the present simple. Check the he / she / it + s (she works, NOT she work), don\'t / doesn\'t + base verb (he doesn\'t work, NOT he doesn\'t works), "I feel" (NOT "I feeling"), "is" with singular nouns ("The company is…"), "has" for possession, and the right preposition of time (on Friday, for hours).',
+  hero:{badge:'he / she + s',kicker:'Lesson 3A · Vocabulary &amp; grammar',h1:'Things I love <span class="amp">about the US</span>',lead:'Talk about your day and other people\'s days with the <b>simple present</b>: verb phrases, <b>I work / she works</b>, <b>don\'t / doesn\'t</b>, and the three sounds of final <b>-s</b>.',meta:['<b>8</b> tasks','<b>1</b> class recording','Listen · Speak · Write'],img:'img/us-hero.jpg',alt:'Red rock canyon and snowy mountains in the US at sunset',cap:['Level 2 · Session 1','Lesson 3A']},
+  card:{img:'img/us-hero.jpg',alt:'Red rock canyon and snowy mountains in the US',tag:'Session 1',kicker:'Lesson 3A · Simple present',desc:'Verb phrases, the simple present + and −, Ed and Amy\'s routines, final -s sounds, and Jenny\'s favourite things about the US.',meta:['<b>8</b> tasks','<b>1</b> recording','Voice-note assignment']},
+  foot:'Built from the lesson slides “P6 · Session 1”, the 3A pages of your book and the “Present Simple · Daily Routines” slides.',notesPh:'Do I say “She watch TV” or “She watches TV”?',
+  sections:[
+   {id:'us-warm',short:'Warm-up',name:'Let\'s speak',label:'Warm-up',title:'Two truths and a lie',brief:'Answer in full sentences. <span class="ai-only">Press <b>Check my English</b> and the teacher corrects you and asks you something back.</span><span class="no-ai">Save your answer, then compare it with the model answer.</span>',body:[
+     {t:'q',items:[["us-w1","Tell me two true things about you and one lie. Can your teacher find the lie?","I have three children. I work in a bank. I play the guitar every day. (The lie: I don't work in a bank. I'm a software engineer.)"],["us-w2","Tell me about your favorite country. Why do you love it?","My favorite country is Egypt because my family lives there. I love the food, the people and the old places in Cairo."],["us-w3","What do you think people love about the US?","I think people love the big cities, the national parks and the freedom. Many people love American movies and music, too."]]}
+   ]},
+   {id:'us-verbs',short:'Verb phrases',name:'Verb phrases',label:'Vocabulary',title:'Verb phrases',brief:'a · Complete the phrases with a verb from the list. Tap a speaker to hear the phrase after you check.',body:[
+     `<div class="x-pics us-pics">${[['us-v-paper','1','An old man reading a newspaper in a café'],['us-v-radio','2','A girl listening to an old radio'],['us-v-kids','3','A father with many smiling children'],['us-v-movies','4','An empty movie theater with red seats'],['us-v-office','5','People working at desks in an office']].map(x=>`<figure><img src="img/${x[0]}.jpg" alt="${esc(x[2])}" loading="lazy"><figcaption>${x[1]}</figcaption></figure>`).join('')}</div>`,
+     {t:'gaps',id:'a',box:['go','read','work','have','listen'],items:[[{a:['read']},' a newspaper'],[{a:['listen']},' to the radio'],[{a:['have']},' children'],[{a:['go']},' to the movies'],[{a:['work']},' in an office']]},
+     {t:'sub',x:'b · Vocabulary Bank: verb phrases'},
+     {t:'hint',x:'Look at the pictures. Write the verb that goes with each word. <b>do</b> and <b>play</b> are used two times.'},
+     {t:'img',src:'img/us-vb1.jpg',alt:'Pictures 1 to 6: 1 a man on a sofa in an apartment, 2 a woman in an office, 3 a mother and her children, 4 a woman studying economics, 5 a German man saying Guten Tag, 6 a man dreaming of a new car'},
+     {t:'two',a:{t:'img',src:'img/us-vb2.jpg',alt:'Pictures 7 to 12: 7 a man reading a newspaper, 8 a woman with a cat and a dog, 9 people at the movies, 10 a couple watching TV, 11 a girl listening to music, 12 a boy playing tennis'},b:{t:'img',src:'img/us-vb3.jpg',alt:'Pictures 13 to 21: 13 a man with an umbrella, 14 children doing homework, 15 a woman playing the guitar, 16 a boy saying sorry with a flower, 17 a man drinking water, 18 a man eating fast food, 19 a grandmother and child cooking dinner, 20 women doing exercise, 21 a man wearing glasses'}},
+     {t:'gaps',id:'b',box:['cook','do','drink','eat','go','have','like','listen','live','play','read','say','speak','study','take','want','watch','wear','work'],ex:'1 <u>live</u> in an apartment',exn:'e.g.',start:2,items:[[{a:['work']},' in an office'],[{a:['have']},' children'],[{a:['study']},' economics'],[{a:['speak']},' German'],[{a:['want']},' a new car'],[{a:['read']},' a newspaper'],[{a:['like']},' animals'],[{a:['go']},' to the movies'],[{a:['watch']},' TV'],[{a:['listen']},' to music'],[{a:['play']},' tennis'],[{a:['take']},' an umbrella'],[{a:['do']},' homework / housework'],[{a:['play']},' the guitar'],[{a:['say']},' sorry'],[{a:['drink']},' water'],[{a:['eat']},' fast food'],[{a:['cook']},' dinner'],[{a:['do']},' exercise'],[{a:['wear']},' glasses']]},
+     {t:'sub',x:'c · Say the phrase'},
+     {t:'hint',x:'Look at the word and say the whole phrase first: <b>TV</b> → <i>watch TV</i>. Then tap to check.'},
+     {t:'say',groups:[["Say the phrase",[["TV","watch TV"],["the guitar","play the guitar"],["sorry","say sorry"],["glasses","wear glasses"],["dinner","cook dinner"],["German","speak German"],["an umbrella","take an umbrella"],["in an apartment","live in an apartment"]]]]}
+   ]},
+   {id:'us-true',short:'Is it true?',name:'Americans — is it true?',label:'Reading',title:'Americans — is it true?',brief:'a · Four people say things about Americans. Do you think they are true? Choose, then read the text and check.',body:[
+     {t:'img',src:'img/us-true.jpg',alt:'Americans — is it true? Four speech bubbles: Americans eat fast food every day. The sun shines a lot in Southern California. Americans like animals. Americans are always loud.',size:'sm'},
+     {t:'tf',id:'tr',labels:['True','Not true'],items:[{s:'Americans eat fast food every day.',a:false,why:'Pei says they eat a lot of fast food, but they don\'t eat it every day.'},{s:'The sun shines a lot in Southern California.',a:true,why:'Alberto says the sun shines a lot there, but not every day.'},{s:'Americans like animals.',a:true,why:'Naomi says American people love animals.'},{s:'Americans are always loud.',a:false,why:'Some are loud, but Gianni\'s American colleague is quiet and polite.'}]},
+     `<div class="x-read"><h3>Four foreigners who live in the US talk about the things people say about Americans… ${sayBtn(US_TRUE.map(x=>x[0]+' '+x[1]+'. '+x[2].replace(/<[^>]+>/g,'')).join(' '),'','ib sm','Listen to the text')}</h3>${US_TRUE.map(x=>`<p><b style="color:var(--mark)">${esc(x[0])}</b> <i>${esc(x[1])}</i><br>${x[2]}</p>`).join('')}</div>`,
+     {t:'sub',x:'b · Look at the highlighted verbs'},
+     {t:'mcq',id:'why',items:[{q:'Why do some verbs end in -s (cooks, eats, shines, has)?',o:['Because they are with he, she or it','Because they are plural','Because they are in the past'],a:0,why:'he / she / it = third person singular: she cooks, it shines.'}]},
+     {t:'hint',x:'Write the <b>he / she / it</b> form of these verbs.'},
+     {t:'gaps',id:'heit',items:[['change → ',{a:['changes']}],['have → ',{a:['has']}],['talk → ',{a:['talks']}],['go → ',{a:['goes']}],['cook → ',{a:['cooks']}],['eat → ',{a:['eats']}]]},
+     {t:'hint',x:'Find the two negative verbs in the text.'},
+     {t:'gaps',id:'neg',loose:true,items:[['Pei: but they ',{a:['don\'t eat','do not eat'],w:12},' fast food every day.'],['Alberto: It ',{a:['doesn\'t shine','does not shine'],w:14},' every day.']]},
+     {t:'rule',x:'How are negatives different? <b>he / she / it</b>: <b>doesn\'t</b> + verb (it doesn\'t shine). <b>All other persons</b>: <b>don\'t</b> + verb (they don\'t eat).'}
+   ]},
+   {id:'us-gram',short:'Grammar',name:'Simple present + and −',label:'Grammar',title:'Simple present + and −',brief:'Grammar Bank 3A. Listen to the examples, learn the rules, then practise.',body:[
+     {t:'audio',src:'img/us-gb3a.mp3',lbl:'Class recording · 2.4 · Grammar Bank 3A'},
+     US_SAYS(["Americans like fast food.","They live in houses with yards.","My husband works from nine to five.","Ann has three children."]),
+     US_FORM,
+     {t:'sub',x:'Meet Ed and Amy'},
+     US_ROUT,
+     {t:'sub',x:'Complete the sentences about Ed and Amy'},
+     {t:'gaps',id:'ea',items:[['Ed ',{a:['wakes']},' up at 6:00.'],['He ',{a:['eats','has']},' breakfast at 6:30.'],['Amy ',{a:['wakes']},' up at 7:30.'],['She ',{a:['goes']},' to work.'],['Ed ',{a:['studies']},' in the evening.'],['Amy ',{a:['watches']},' TV.']]},
+     {t:'sub',x:'a · Change the sentences'},
+     {t:'typed',id:'ch',ph:'Write the new sentence',items:[{src:'I go to the movies.',task:'She',ans:['She goes to the movies.']},{src:'We live in an apartment.',task:'He',ans:['He lives in an apartment.']},{src:'She has two children.',task:'They',ans:['They have two children.']},{src:'My dad doesn\'t like cats.',task:'I',ans:['I don\'t like cats.']},{src:'The stores close at 9:30 p.m.',task:'The supermarket',ans:['The supermarket closes at 9:30 p.m.','The supermarket closes at 9:30 pm.','The supermarket closes at 9:30.']},{src:'We don\'t study French.',task:'My sister',ans:['My sister doesn\'t study French.'],hint:'My sister = she: doesn\'t + study.',ar:'my sister يعني she، فبنقول doesn\'t'},{src:'I do housework.',task:'My husband',ans:['My husband does housework.']},{src:'I want a guitar.',task:'My son',ans:['My son wants a guitar.']},{src:'I don\'t work on Saturdays.',task:'My friend',ans:['My friend doesn\'t work on Saturdays.']},{src:'Our classes finish at 5 o\'clock.',task:'Our English class',ans:['Our English class finishes at 5 o\'clock.','Our English class finishes at five o\'clock.']}]},
+     {t:'sub',x:'b · Complete with a + or − verb'},
+     {t:'gaps',id:'pm',box:['eat','have','listen','play','read','speak','study','wear','work'],ex:'(+) They <u>study</u> economics.',exn:'e.g.',items:[['(−) Pedro ',{a:['doesn\'t work','does not work'],w:15},' in an office.'],['(+) Eva ',{a:['reads']},' books in English.'],['(+) You ',{a:['speak']},' Arabic very well.'],['(−) I ',{a:['don\'t play','do not play'],w:13},' games on my phone.'],['(+) Paolo ',{a:['wears']},' glasses.'],['(+) We ',{a:['listen']},' to music on the bus.'],['(−) They ',{a:['don\'t eat','do not eat'],w:12},' fast food.'],['(+) Julia ',{a:['has']},' two children.']]},
+     {t:'sub',x:'Fix the sentences'},
+     {t:'typed',id:'fx',ph:'Write the correct sentence',items:[{src:'Ed wake up at 6:00.',ans:['Ed wakes up at 6:00.','Ed wakes up at six.']},{src:'She eat breakfast at 8:00.',ans:['She eats breakfast at 8:00.','She eats breakfast at eight.']},{src:'I goes to work at 9:00.',ans:['I go to work at 9:00.','I go to work at nine.'],hint:'With I, no s: I go.',ar:'مع I الفعل من غير s'},{src:'Amy watch TV in the evening.',ans:['Amy watches TV in the evening.']}]},
+     {t:'sub',x:'Choose the correct form'},
+     {t:'opts',id:'cf',items:[['She ',{o:['wake','wakes'],a:1},' up at 7:30.'],['I ',{o:['study','studies'],a:0},' in the evening.'],['He ',{o:['watch','watches'],a:1},' TV.'],['I ',{o:['go','goes'],a:0},' to work at 9:00.'],['My brother ',{o:['don\'t','doesn\'t'],a:1},' wear glasses.'],['We ',{o:['need','needs'],a:0},' a new computer.']]}
+   ]},
+   {id:'us-sound',short:'Final -s',name:'Third person -s',label:'Pronunciation',title:'Third person -s',brief:'Always say the <b>-s</b>. Don\'t drop it! It has three sounds, like the plural.',body:[
+     {t:'say',groups:[["Plural nouns",["books","keys","watches"]]]},
+     `<ul class="rules"><li><span><b>/s/</b> after p, t, k, f: <b>wakes, stops, works, eats</b></span><span class="ar">/s/ بعد p و t و k و f</span></li><li><span><b>/ɪz/</b> after s, sh, ch, x, ce, ge: <b>brushes, watches, finishes, changes, dances</b>. It's an extra syllable.</span><span class="ar">/ɪz/ بتزوّد مقطع: watch-es</span></li><li><span><b>/z/</b> after everything else: <b>goes, gives, plays, rains, has</b></span><span class="ar">/z/ في باقي الحالات</span></li></ul>`,
+     {t:'sub',x:'b · Listen and repeat'},
+     `<div class="x-says-grid">${US_S.map(g=>`<div><span class="mono">${esc(g[0])}</span>${US_SAYS(g[1])}</div>`).join('')}</div>`,
+     {t:'sub',x:'Which sound?'},
+     {t:'picks',id:'snd',opts:['/s/','/z/','/ɪz/'],rows:[{t:'wakes',a:'/s/',lock:true},{t:'stops',a:'/s/'},{t:'goes',a:'/z/'},{t:'watches',a:'/ɪz/'},{t:'works',a:'/s/'},{t:'lives',a:'/z/'},{t:'finishes',a:'/ɪz/'},{t:'eats',a:'/s/'},{t:'plays',a:'/z/'},{t:'dances',a:'/ɪz/'},{t:'gives',a:'/z/'},{t:'changes',a:'/ɪz/'}]},
+     {t:'sub',x:'c · Change the sentence'},
+     {t:'hint',x:'Say the new sentence first, then write it.'},
+     {t:'typed',id:'cs',ph:'Write the new sentence',items:[{src:'I live in an apartment.',task:'She',ans:['She lives in an apartment.']},{src:'I work in an office.',task:'He',ans:['He works in an office.']},{src:'I watch TV every night.',task:'My sister',ans:['My sister watches TV every night.']},{src:'I have two children.',task:'She',ans:['She has two children.'],hint:'have → has (NOT haves).',ar:'have مع she بتبقى has'},{src:'I go to the gym on Fridays.',task:'My brother',ans:['My brother goes to the gym on Fridays.']},{src:'I study English at night.',task:'Ali',ans:['Ali studies English at night.']}]},
+     {t:'sub',x:'d · Six true things about you'},
+     {t:'hint',x:'Use the verb phrases from Task 2. Say three <b>+</b> sentences and three <b>−</b> sentences. <i>I play the guitar. I don\'t wear glasses.</i>'},
+     {t:'q',items:[["us-s1","Three + sentences about you.","I live in an apartment in Riyadh. I work in an office. I drink a lot of coffee."],["us-s2","Three − sentences about you.","I don't play the guitar. I don't watch TV in the morning. I don't eat fast food every day."],["us-s3","Now tell me six things about a friend or someone in your family. Use he or she.","My brother lives in Cairo. He works in a bank. He plays football on Fridays. He doesn't drink coffee. He doesn't wear glasses. He doesn't like fast food."]]}
+   ]},
+   {id:'us-parks',short:'Reading',name:'State parks, freeways…',label:'Reading &amp; speaking',title:'State parks, freeways, and other things I love about the US',brief:'Jenny Clark is an Australian mom and college student who lives in California. She says the US isn\'t just OK, it\'s paradise.',body:[
+     {t:'two',cls:'wide-l',a:{t:'img',src:'img/us-parks.jpg',alt:'The article with five photos: 1 a car at a drive-through window, 2 a redwood forest, 3 a freeway with car lanes, 4 a hamburger, fries and a soda, 5 a roller coaster at a theme park'},
+       b:[{t:'hint',x:'a · Look at the photos. In which one can you see…?'},{t:'picks',id:'ph',nosay:false,opts:['1','2','3','4','5'],rows:[{t:'a drive-through',a:'1',lock:true},{t:'a car lane',a:'3'},{t:'a cup of coffee',a:'1'},{t:'a ride',a:'5'},{t:'a redwood forest',a:'2'},{t:'a theme park',a:'5'},{t:'a hamburger',a:'4'}]}]},
+     `<div class="x-read"><h3>Jenny's reasons ${sayBtn(US_PARKS.map(x=>x[0]+'. '+x[1]).join(' '),'p','ib sm','Listen to the article')}</h3>${US_PARKS.map(x=>`<p><b style="color:var(--mark)">${esc(x[0])}</b> ${sayBtn(x[1],'p','ib sm','Listen')}<br>${esc(x[1])}</p>`).join('')}</div>`,
+     {t:'sub',x:'b · True or false?'},
+     {t:'hint',x:'Read again. For the false ones, read why.'},
+     {t:'tf',id:'tf',items:[{s:'A large cup of coffee in Australia is the same as a small cup of coffee in the US.',a:true,why:'A small cup in the US is like a large cup in Australia.'},{s:'California doesn\'t have a lot of state parks.',a:false,why:'California has 278 state parks.'},{s:'Jenny doesn\'t like the salespeople in shopping malls.',a:false,why:'She says they are friendly and help you find things.'},{s:'The fall is very cold in California.',a:false,why:'A good fall day is cool, but not too cold.'},{s:'It\'s easy to drive in the US.',a:true,why:'The freeways are fast and there are a lot of car lanes.'},{s:'Jenny doesn\'t like the long lines for rides at theme parks.',a:false,why:'She says the lines are long, but that\'s OK: they need rest.'},{s:'Jenny eats hamburgers and French fries at Red Robin.',a:false,why:'She doesn\'t eat meat. She likes the French fries and the lemonade.'}]},
+     {t:'sub',x:'c · Verbs in the text'},
+     {t:'gaps',id:'vb',box:['buy','bring','explore','find','enjoy','walk','help','prefer','drive','need','think'],items:[['You go to a drive-through and ',{a:['buy']},' coffee from your car.'],['On the weekends, I ',{a:['bring']},' my family to a state park.'],['We ',{a:['explore']},' the forest, ',{a:['find']},' small animals, and ',{a:['enjoy']},' the tall redwood trees.'],['People ',{a:['walk']},' around and shop for hours.'],['The salespeople are friendly and ',{a:['help']},' you find things.'],['I ',{a:['prefer']},' the roads in the US.'],['It\'s really easy to ',{a:['drive']},' from one place to another.'],['We ',{a:['need']},' rest!'],['I ',{a:['think']},' the fried cheese sticks are fantastic.']]},
+     {t:'sub',x:'d · Is it the same in your country or city?'},
+     `<div class="fixit"><span>Useful words: <b>Why?</b> and <b>because</b>. <i>Why are the freeways good?</i> → <i>Because they are very fast.</i></span></div>`,
+     {t:'q',items:[["us-r1","Coffee, malls and freeways: are they the same or different in your city? Why?","Coffee in Riyadh is very good. We have a lot of drive-throughs and good coffee shops. The malls are very big, too, because it's very hot outside."],["us-r2","What do you love about the city where you live? Give two reasons with because.","I love Riyadh because my job is great and the roads are big. I also love the restaurants because the food is delicious."]]}
+   ]},
+   {id:'us-fb',short:'Feedback',name:'From the feedback',label:'Feedback',title:'From the teacher\'s feedback',brief:'The feedback slide from this session. There is more practice in <a href="#initial-feedback">My Initial Feedback</a>.',body:[
+     {t:'fix',items:[['I feeling…','I feel…','الفعل في المضارع: I feel'],['The company … better than any company.','The company is better than any other company.','the company مفرد: is'],['America is freedom.','America has freedom.','has يعني عنده'],['In Friday.','On Friday.','on مع الأيام'],['At hours.','For hours.','for مع المدة'],['End work.','Finish work.','قول finish work']]},
+     {t:'q',items:[["us-f1","Write three true sentences: one with I feel, one with The company is, and one with on + a day.","I feel happy when I finish work early. The company is very big. I visit my parents on Friday."]]}
+   ]},
+   {id:'us-assign',short:'Assignment',name:'Assignment',label:'Assignment',title:'Your assignment',brief:'From the last slide: answer pages 17 and 18 in your workbook, and talk about yourself in a voice note.',body:[
+     {t:'links',items:[['Workbook','Workbook 3A','Pages 17 and 18: verb phrases, simple present, -s sounds, reading.','#workbook-3a'],['Speaking','Shadowing Studio','Practise the -s sentences out loud.','#shadowing']]},
+     {t:'sub',x:'Voice note: talk about yourself'},
+     {t:'hint',x:'Use these verbs: <b>eat, have, listen, play, read, speak, study, wear, work</b>. Record your voice note on your phone for your teacher, and write what you say here. Press the mic to say it.'},
+     {t:'q',items:[["us-a1","Talk about yourself with the verbs: eat, have, listen, play, read, speak, study, wear, work.","I work in an office in Riyadh. I have two children. I speak Arabic and English. I read the news on my phone every morning. I listen to podcasts in the car. I study English three times a week. I don't play video games. I don't wear glasses, and I don't eat fast food every day.",{rows:5,ph:'I work… I have… I don\'t…'}]]}
+   ]}
+  ],
+  tracks:[{id:'us-s',title:'Third person -s',desc:'/s/, /z/ and /ɪz/ sentences.',lines:US_S.flatMap(g=>g[1]).map(t=>({t}))},{id:'us-ea',title:'Ed and Amy',desc:'Two daily routines.',lines:US_ED.concat(US_AMY).map(t=>({t}))}]
+});
+
+/* =====================================================================
+   HOMEWORK — WORKBOOK 3A (pages 17 and 18)
+   ===================================================================== */
+const W4_KOREA=[["D","In South Korea, the customer is really important. When you walk into a store, the salespeople greet you with a smile and say, “Hello.” As you shop, they ask you if you need help. If you can't find something you want, the salespeople try to find it for you. They want you to be happy."],
+  ["A","I love restaurants that serve South Korean meat. It's so delicious. The servers grill the meat, and then they cut it for you! They also serve banchan—little side dishes of vegetables. The servers are very busy in South Korean restaurants. They don't talk as much as servers in the US, but they make sure that you have a great meal!"],
+  ["B","There are so many places to shop in South Korea! People sell things like clothes and jewelry on the street. There are shopping booths in the subway stations, too! When I take the subway to work, I often buy a pretty bracelet or necklace because they're so cheap. It's really nice!"],
+  ["C","The transportation system is great here! It's easy to get around because there are signs, and a lot of them are in English! You can use your cell phone on the subway here, too. You can't do that in the US!"]];
+const W4_HL=s=>esc(s).replace(/\b(grill|side dishes|shopping booths|get around)\b/g,'<span class="x-hl">$1</span>');
+const W4_CHART=`<table class="x-chart"><thead><tr><th></th><th>Ryan</th><th>Kim</th></tr></thead><tbody>${[['eat fast food',1,0],['wear jeans',0,1],['drink water',1,1],['do housework',1,0],['play the guitar',0,0]].map(r=>`<tr><th scope="row">${r[0]}</th>${[r[1],r[2]].map(v=>`<td class="${v?'yes':'no'}" aria-label="${v?'yes':'no'}">${v?'✓':'✗'}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+buildLesson({key:'w4',p:'w4-',hash:'workbook-3a',title:'Workbook 3A',storeKey:'workbook-3a-v1',cal:'✓',
+  topic:'Workbook 3A homework',focus:'verb phrases (cook dinner, study economics, wear glasses), the simple present + and − (has / have, doesn\'t rain, shines), the third person -s, vowel sounds and a reading about South Korea',
+  hero:{badge:'Homework',kicker:'Workbook · pages 17 and 18',h1:'Workbook <span class="amp">3A</span>',lead:'Your homework pages for lesson 3A. Write your answers here, check them right away, then send them to your teacher.',meta:['<b>4</b> exercises','Answer keys','Check · Show · Retry'],img:'img/w4-page.jpg',alt:'Workbook page 17: 3A Things I love about the US, with the verb phrases and simple present exercises',cap:['Homework','simple present']},
+  card:{img:'img/w4-page.jpg',alt:'Workbook page 17 for 3A',tag:'Homework',kicker:'Workbook · Unit 3A',desc:'Verb phrases, has / have, don\'t / doesn\'t, Ryan and Kim\'s chart, -s sounds, and Things I love about South Korea.',meta:['<b>4</b> exercises','Answer keys','Instant check']},
+  foot:'Built from the workbook pages 17 and 18 for 3A.',notesPh:'Is it “It don\'t rain” or “It doesn\'t rain”?',
+  sections:[
+   {id:'w4-voc',short:'Vocabulary',name:'1 Vocabulary',label:'1 · Vocabulary',title:'Verb phrases',brief:'Complete the verb phrases with a word from the list.',body:[
+     {t:'gaps',id:'v',box:['animals','dinner','economics','homework','German','glasses','a new car','a newspaper','sorry','an umbrella'],ex:'cook <u>dinner</u>',exn:'1',start:2,items:[['study ',{a:['economics']}],['speak ',{a:['German'],cs:true}],['read ',{a:['a newspaper']}],['say ',{a:['sorry']}],['wear ',{a:['glasses']}],['do ',{a:['homework']}],['like ',{a:['animals']}],['want ',{a:['a new car']}],['take ',{a:['an umbrella']}]]}
+   ]},
+   {id:'w4-gram',short:'Grammar',name:'2 Grammar',label:'2 · Grammar',title:'Simple present + and −',brief:'a · Circle the correct words.',body:[
+     {t:'opts',id:'a',ex:'A lot of American people <u>have</u> pets.',start:2,items:[['It ',{o:['don\'t rain','doesn\'t rain'],a:1},' a lot in my country.'],['You ',{o:['live','lives'],a:0},' in a beautiful house.'],['The sun ',{o:['shine','shines'],a:1},' a lot in Southern California.'],['My father ',{o:['don\'t cook','doesn\'t cook'],a:1},'.'],['My brother ',{o:['don\'t wear','doesn\'t wear'],a:1},' glasses.'],['Americans ',{o:['don\'t eat','doesn\'t eat'],a:0},' fast food every day.'],['We ',{o:['need','needs'],a:0},' a new computer.'],['My Canadian friend ',{o:['make','makes'],a:1},' good coffee.'],['I ',{o:['don\'t do','doesn\'t do'],a:0},' housework.']]},
+     {t:'sub',x:'b · Look at the chart and complete the sentences'},
+     {t:'two',a:W4_CHART,b:{t:'gaps',id:'b',loose:true,ex:'Ryan <u>eats</u> fast food.',exn:'1',start:2,items:[['Ryan ',{a:['doesn\'t wear','does not wear'],w:14},' jeans.'],['Ryan and Kim ',{a:['drink']},' water.'],['Kim ',{a:['doesn\'t do','does not do'],w:13},' housework.'],['Ryan and Kim ',{a:['don\'t play','do not play'],w:13},' the guitar.'],['Kim ',{a:['doesn\'t eat','does not eat'],w:13},' fast food.'],['Kim ',{a:['wears']},' jeans.'],['Ryan ',{a:['does']},' housework.']]}},
+     {t:'sub',x:'c · Complete the sentences'},
+     {t:'gaps',id:'c',loose:true,ex:'I <u>don\'t play</u> (not play) tennis.',exn:'1',start:2,items:[['They ',{a:['don\'t go','do not go'],w:12},' (not go) to the movies.'],['She ',{a:['has']},' (have) two children.'],['Her father ',{a:['doesn\'t work','does not work'],w:14},' (not work) in an office.'],['It ',{a:['rains']},' (rain) a lot.'],['We ',{a:['live']},' (live) in a big apartment.'],['My friend ',{a:['doesn\'t speak','does not speak'],w:15},' (not speak) English.'],['My friends ',{a:['study']},' (study) at Tufts University.'],['You ',{a:['don\'t do','do not do'],w:12},' (not do) your homework.']]}
+   ]},
+   {id:'w4-sound',short:'Pronunciation',name:'3 Pronunciation',label:'3 · Pronunciation',title:'Vowel sounds, third person -s',brief:'a · Say the words. Is the vowel sound the same or different? Tap a speaker to hear the two words.',body:[
+     {t:'picks',id:'sa',opts:['S','D'],rows:[{t:'say · take',a:'S',lock:true},{t:'do · go',a:'D',lock:true},{t:'drink · live',a:'S'},{t:'want · have',a:'D'},{t:'give · drive',a:'D'},{t:'call · walk',a:'S'},{t:'read · eat',a:'S'},{t:'feel · wear',a:'D'},{t:'play · watch',a:'D'},{t:'buy · like',a:'S'}].map((r,i)=>Object.assign(r,{L:String(i+1),say:r.t.replace(' · ',', ')}))},
+     {t:'rule',x:'<b>S</b> = same sound, <b>D</b> = different. <b>drink, live</b> /ɪ/ · <b>call, walk</b> /ɔ/ · <b>read, eat</b> /i/ · <b>buy, like</b> /aɪ/. But <b>want</b> /ɑ/ ≠ <b>have</b> /æ/, <b>give</b> /ɪ/ ≠ <b>drive</b> /aɪ/.'},
+     {t:'sub',x:'c · Choose the word which ends in /ɪz/'},
+     {t:'opts',id:'sc',ex:'likes · works · <u>dances</u>',start:2,items:[[{o:['lives','drinks','watches'],a:2}],[{o:['drives','finishes','plays'],a:1}],[{o:['uses','takes','speaks'],a:0}],[{o:['studies','listens','kisses'],a:2}],[{o:['changes','gives','wears'],a:0}]]},
+     {t:'say',groups:[["Listen and repeat",["dances","watches","finishes","uses","kisses","changes"]]]}
+   ]},
+   {id:'w4-read',short:'Reading',name:'4 Reading',label:'4 · Reading',title:'Things I love about South Korea',brief:'Carly Hamilton is American, but she lives in Seoul, South Korea. Here are some things she loves about living there.',body:[
+     {t:'two',cls:'wide-l',a:`<div class="x-read"><h3>Things I love about South Korea ${sayBtn(W4_KOREA.map(x=>x[1]).join(' '),'p','ib sm','Listen to the text')}</h3>${W4_KOREA.map((x,i)=>`<p><b style="color:var(--mark)">${i+1}</b> ${W4_HL(x[1])}</p>`).join('')}</div>`,
+       b:{t:'img',src:'img/w4-korea.jpg',alt:'The workbook reading Things I love about South Korea with the South Korean flag and a photo of people on the subway',size:'xs'}},
+     {t:'sub',x:'a · Match the headings (A–D) to the paragraphs'},
+     {t:'picks',id:'ra',opts:['A','B','C','D'],legend:{A:'Enjoy your dinner.',B:'Shopping on the street',C:'Traveling is so easy!',D:'We can find that for you.'},rows:W4_KOREA.map((x,i)=>({L:String(i+1),t:'Paragraph '+(i+1),h:'Paragraph '+(i+1)+': '+esc(x[1].split('. ')[0])+'…',say:x[1].split('. ')[0],a:x[0]}))},
+     {t:'sub',x:'b · Guess the meaning of the highlighted words'},
+     {t:'mcq',id:'rb',items:[{q:'The servers grill the meat.',o:['cook it over a fire or hot metal','put it in the fridge','buy it at a store'],a:0},{q:'banchan, little side dishes of vegetables',o:['small extra plates of food with the main meal','big plates for one person','sweet food after dinner'],a:0},{q:'There are shopping booths in the subway stations.',o:['small shops or stands','long trains','ticket machines'],a:0},{q:'It\'s easy to get around.',o:['travel from place to place','stay at home','find a job'],a:0}]},
+     {t:'sub',x:'Your turn'},
+     {t:'q',items:[["w4-r1","What do you love about the city where you live? Write three sentences in the simple present.","I love Riyadh. The restaurants serve great food, and the malls stay open late. It's easy to get around by car."]]}
+   ]}
+  ]
+});
+
+/* =====================================================================
+   INITIAL FEEDBACK — Level 2 (Level 6, Pioneer): the teacher's notes, turned into practice
+   ===================================================================== */
+const IF_MIS=[["Present simple: the correct verb form","I feeling …","I feel …","Use the present simple “feel” for emotions and opinions: I feel happy.","قول I feel مش I feeling"],
+  ["Present simple: the verb be","The company … better than any company.","The company is better than any other company.","Use “is” with a singular subject like “the company”. Compare with “any other company”.","the company مفرد، فبنقول is"],
+  ["Present simple: the correct verb","America is freedom.","America has freedom.","Use “has” to say a place or a person possesses something.","has يعني عنده"],
+  ["Vocabulary: the correct word","Politics gain money.","Politicians gain money.","Politics = the activity. Politicians = the people.","politics السياسة، politicians السياسيين"],
+  ["Vocabulary: talking about age","Upper 50.","Above 50.","Say “above 50” or “over 50” for a number higher than 50.","قول above 50 أو over 50"],
+  ["Vocabulary: the correct noun","Most works.","Most jobs.","A job is a position. Work is the activity, and it's usually uncountable.","job وظيفة، work الشغل نفسه"],
+  ["Prepositions of time: days","In Friday.","On Friday.","Use “on” with days of the week: on Monday, on Friday.","on مع أيام الأسبوع"],
+  ["Prepositions of time: how long","At hours.","For hours.","Use “for” with a period of time: for two hours, for hours.","for مع المدة"],
+  ["Prepositions of time: months","In months. (how long)","For months.","How long → for months. When → in June.","for months للمدة، in June للميعاد"],
+  ["Dates","On 18th of June.","On the 18th of June.","Put “the” before an ordinal date: on the 18th of June.","on the 18th of June"],
+  ["Vocabulary: natural verbs","End work.","Finish work.","“Finish work” is the natural way to say you complete your working day.","قول finish work"]];
+const IF_NOTES=`<div class="x-notes"><div class="form-card"><span class="mono">Areas for development</span><ul>${["Islam can communicate simple ideas and express his opinions.","He needs to improve his grammatical accuracy, especially the present simple, the correct verb form, and prepositions of time.","He should choose accurate vocabulary and make complete, natural sentences.","Regular practice of the present simple will help him become more accurate and confident."].map(n=>`<li><span>${esc(n)} ${sayBtn(n,'p','ib sm')}</span></li>`).join('')}</ul></div>
+  <div class="form-card"><span class="mono">Main targets</span><ul>${[["Practise the present simple, especially “I feel” and “the company is”.","I feel و the company is"],["Use “has” correctly to talk about possession.","has للملكية"],["Know the difference between “politics” and “politicians”.","politics و politicians"],["Use “jobs” for positions of employment.","jobs للوظايف"],["Use “on” with days and “on the” with ordinal dates.","on Friday · on the 18th"],["Use “for” for periods of time.","for hours · for months"],["Use natural expressions such as “finish work”.","finish work"]].map(n=>`<li><span>${esc(n[0])} ${sayBtn(n[0].replace(/[“”]/g,''),'p','ib sm')}</span><span class="ar">${esc(n[1])}</span></li>`).join('')}</ul></div></div>
+  <p class="rule"><b>Overall feedback.</b> Islam is able to express simple ideas and share his opinions. His main area for improvement is grammatical accuracy, particularly the present simple. He should practise making short sentences every day, paying attention to the subject and the verb (for example, “I feel”, “America has”, and “the company is”). He should also review prepositions of time and learn new vocabulary in complete phrases. With regular, focused practice, he will be able to produce clearer and more accurate sentences.</p><p class="x-sig">Eman Mohamed · your teacher · Level 6 (Pioneer) · A1+</p>`;
+buildLesson({key:'if',p:'if-',hash:'initial-feedback',title:'My Initial Feedback',storeKey:'initial-feedback-l6-v1',cal:'★',
+  topic:'My initial feedback (Level 6, Pioneer, A1+)',
+  focus:'the present simple (I feel, the company is, America has), politics vs politicians, above / over 50, jobs vs work, on + days, on the + dates, for + periods of time, and finish work',
+  fbHint:'This student\'s teacher asked them to: use the present simple correctly ("I feel", not "I feeling"; "The company is…"), use "has" for possession ("America has freedom"), say "politicians" for people, "above 50" or "over 50", "jobs" for positions, "on Friday", "on the 18th of June", "for hours / for months" for duration, and "finish work". Point out any of these mistakes first.',
+  hero:{badge:'Level 2',kicker:'Initial feedback · Pioneer · A1+',h1:'My initial <span class="amp">feedback</span>',lead:'Your teacher\'s first notes for the new level, turned into practice: the present simple, the right words, and prepositions of time.',meta:['<b>6</b> tasks','<b>11</b> corrections','Speaking practice'],img:'img/if-hero.jpg',alt:'A cartoon student with glasses and a bow tie listens carefully, with a book on the desk',cap:['Initial feedback','Level 2 · Pioneer']},
+  card:{img:'img/if-hero.jpg',alt:'A cartoon student listening carefully',tag:'Feedback',kicker:'Initial feedback · Level 2',desc:'Your teacher\'s 11 corrections: I feel, the company is, America has, politicians, jobs, on Friday, for hours, finish work.',meta:['<b>6</b> tasks','<b>11</b> corrections','Fix it']},
+  foot:'Built from the initial feedback by Eman Mohamed (Level 6, Pioneer) and the feedback slide from session 1.',notesPh:'When do I say “for months” and when “in June”?',
+  sections:[
+   {id:'if-notes',short:'Feedback',name:'What my teacher says',label:'Feedback',title:'What my teacher says',brief:'Your teacher\'s notes for the new level. Tap a speaker to hear each one.',body:[
+     IF_NOTES,
+     {t:'sub',x:'Your plan'},
+     {t:'q',items:[["if-n1","Which target do you want to work on first? Why?","I want to work on the present simple first, because I sometimes say “I feeling” instead of “I feel”."]]}
+   ]},
+   {id:'if-fix',short:'Fix it',name:'My 11 mistakes',label:'Accuracy',title:'My 11 mistakes',brief:'These are the mistakes from your feedback, with the rule. Learn the right version, then test yourself.',body:[
+     `<ol class="if-list">${IF_MIS.map(m=>`<li><span class="mono">${esc(m[0])}</span><span><s>${esc(m[1])}</s> → <b>${esc(m[2])}</b> ${sayBtn(m[2].replace(/…/g,''),'','ib sm')}</span><span class="hint">${esc(m[3])}</span><span class="ar">${esc(m[4])}</span></li>`).join('')}</ol>`,
+     {t:'sub',x:'Right or wrong?'},
+     {t:'tf',id:'rw',rw:true,labels:['Right','Wrong'],items:[{s:'I feeling tired after work.',a:false,fix:'I feel tired after work.',why:'Present simple: I feel.',ar:'I feel'},{s:'The company is better than any other company.',a:true,why:'the company → is, and any other company.'},{s:'America is freedom.',a:false,fix:'America has freedom.',why:'has = possess.',ar:'has'},{s:'Politicians gain a lot of money.',a:true,why:'Politicians are the people.'},{s:'My father is upper 50.',a:false,fix:'My father is above 50.',why:'above 50 or over 50.',ar:'above 50'},{s:'There are a lot of jobs in Riyadh.',a:true,why:'jobs = positions.'},{s:'I play football in Friday.',a:false,fix:'I play football on Friday.',why:'on + a day.',ar:'on Friday'},{s:'I work for hours every day.',a:true,why:'for + a period of time.'},{s:'My birthday is on 18th of June.',a:false,fix:'My birthday is on the 18th of June.',why:'on the + an ordinal date.',ar:'on the 18th'},{s:'I end work at five.',a:false,fix:'I finish work at five.',why:'finish work is natural.',ar:'finish work'}]},
+     {t:'sub',x:'Correct the sentences'},
+     {t:'typed',id:'cor',ph:'Write the correct sentence',items:[{src:'I feeling happy in my new job.',ans:['I feel happy in my new job.'],hint:'Present simple: I feel.',ar:'I feel مش I feeling'},{src:'My company better than any company.',ans:['My company is better than any other company.'],hint:'Two things: is, and any other company.',ar:'ناقصة is و other'},{src:'Egypt is a lot of history.',ans:['Egypt has a lot of history.'],hint:'Possession: has.',ar:'has'},{src:'Politics in my country gain money.',ans:['Politicians in my country gain money.']},{src:'Most works in my company are in IT.',ans:['Most jobs in my company are in IT.']},{src:'I start work in Sunday.',ans:['I start work on Sunday.']},{src:'I end work at five o\'clock.',ans:['I finish work at five o\'clock.','I finish work at 5 o\'clock.']}]}
+   ]},
+   {id:'if-ps',short:'Present simple',name:'The present simple',label:'Grammar',title:'I feel · the company is · America has',brief:'Look at the subject first, then choose the verb.',body:[
+     `<div class="x-uk"><div class="form-card"><span class="mono" style="color:var(--mark)">feelings and opinions</span><span class="e">I feel happy. I feel tired today. ${sayBtn('I feel happy. I feel tired today.','','ib sm')}</span><span class="ar">مش I feeling</span></div><div class="form-card"><span class="mono" style="color:var(--mark)">one thing → is · has</span><span class="e">The company is big. America has freedom. ${sayBtn('The company is big. America has freedom.','','ib sm')}</span><span class="ar">المفرد: is و has</span></div></div>`,
+     {t:'sub',x:'Choose the right verb'},
+     {t:'opts',id:'v',items:[['I ',{o:['feel','feeling'],a:0},' happy when I finish work early.'],['The company ',{o:['is','are'],a:0},' better than any other company.'],['America ',{o:['is','has'],a:1},' freedom.'],['My city ',{o:['has','have'],a:0},' a lot of big malls.'],['My parents ',{o:['has','have'],a:1},' a house in Cairo.'],['She ',{o:['feel','feels'],a:1},' tired on Sundays.'],['My job ',{o:['is','has'],a:0},' interesting.'],['Riyadh ',{o:['is','has'],a:1},' great restaurants.']]},
+     {t:'sub',x:'Complete with is, has or feel'},
+     {t:'gaps',id:'g',items:[['I ',{a:['feel']},' confident when I speak English slowly.'],['My company ',{a:['is']},' in Riyadh.'],['Egypt ',{a:['has']},' a lot of history.'],['The new office ',{a:['is']},' bigger than the old one.'],['My team ',{a:['has']},' six people.']]}
+   ]},
+   {id:'if-prep',short:'on · for · in',name:'Prepositions of time',label:'Grammar',title:'on Friday · for hours · in June',brief:'<b>on</b> + a day or a date · <b>for</b> + how long · <b>in</b> + a month or a year (when).',body:[
+     `<ul class="rules"><li><span><b>on</b> + day: on Monday, <b>on Friday</b> · <b>on the</b> + date: <b>on the 18th of June</b></span><span class="ar">on مع الأيام، و on the مع التاريخ</span></li><li><span><b>for</b> + a period of time (how long): <b>for hours</b>, for two hours, <b>for months</b>, for three years</span><span class="ar">for مع المدة: قد إيه</span></li><li><span><b>in</b> + a month or a year (when): in June, in 2024 · <b>at</b> + a time: at five o'clock</span><span class="ar">in مع الشهر والسنة، at مع الساعة</span></li></ul>`,
+     {t:'sub',x:'Choose the preposition'},
+     {t:'opts',id:'p',items:[['I don\'t work ',{o:['in','on'],a:1},' Friday.'],['We worked on the project ',{o:['for','at'],a:0},' hours.'],['My birthday is ',{o:['on the','in'],a:0},' 18th of June.'],['I studied English ',{o:['in','for'],a:1},' months.'],['My holiday starts ',{o:['in','on'],a:0},' June.'],['I finish work ',{o:['at','for'],a:0},' five o\'clock.'],['I sleep ',{o:['for','on'],a:0},' seven hours a night.'],['The meeting is ',{o:['on','in'],a:0},' Sunday morning.']]},
+     {t:'sub',x:'Write the date'},
+     {t:'gaps',id:'d',loose:true,items:[['My birthday is ',{a:['on the'],w:8},' 18th of June.'],['We start the new course ',{a:['on the'],w:8},' 3rd of January.'],['I play football ',{a:['on'],w:6},' Fridays.'],['I waited ',{a:['for'],w:6},' two hours at the airport.']]}
+   ]},
+   {id:'if-words',short:'Words',name:'The right words',label:'Vocabulary',title:'The right words',brief:'Practise these words and expressions in complete sentences: <b>feel, freedom, politicians, above 50, jobs, for hours, for months, finish work</b>.',body:[
+     {t:'say',groups:[["Words",["feel","freedom","politicians","jobs"]],["Phrases",["above 50","for hours","for months","finish work"]]]},
+     {t:'sub',x:'Choose the right word'},
+     {t:'opts',id:'w',items:[['',{o:['Politics','Politicians'],a:1},' make the laws.'],['I like reading about ',{o:['politics','politicians'],a:0},' in the news.'],['My father is ',{o:['upper','above'],a:1},' 60.'],['There are many ',{o:['works','jobs'],a:1},' for engineers in Riyadh.'],['I have a lot of ',{o:['work','works'],a:0},' today.'],['I ',{o:['end','finish'],a:1},' work at four on Thursdays.']]},
+     {t:'rule',x:'<b>work</b> (the activity) has no -s: <i>I have a lot of work.</i> <b>a job</b> is a position: <i>She has a good job. There are many jobs.</i> <b>over 50</b> = <b>above 50</b>.'},
+     {t:'sub',x:'Your sentences'},
+     {t:'q',items:[["if-w1","Use three of these in your own sentences: feel, freedom, politicians, above 50, jobs, for hours, for months, finish work.","I usually finish work at five. I worked on a big project for months. I feel happy on Fridays because I don't work."]]}
+   ]},
+   {id:'if-speak',short:'Speak',name:'Short sentences, every day',label:'Speaking',title:'Short sentences, every day',brief:'Your teacher says: make short sentences every day. Check the subject and the verb every time.',body:[
+     {t:'q',items:[["if-s1","How do you feel at the end of a work day?","I feel tired, but I feel happy when my work is finished."],["if-s2","Tell me about your company. What is it like?","My company is a big transport company in Riyadh. It has a lot of employees, and it is a good place to work."],["if-s3","What do you do on Friday?","On Friday I don't work. I visit my family and we have lunch together."],["if-s4","How long do you work every day? When do you finish work?","I work for eight or nine hours every day. I usually finish work at five o'clock."],["if-s5","What do you love about your country?","I love Egypt because it has a lot of history and the people are very friendly."]]},
+     {t:'sub',x:'Role-play: tell a new colleague about yourself'},
+     {t:'chat',id:'col',role:'Colleague',me:'You',title:'Meet a new colleague',rules:'You are a friendly new COLLEAGUE in an office in Riyadh. Ask me how I feel about my job, what my company is like, what I do on Friday, how long I work every day and when I finish work, and when my birthday is. Ask one question at a time.',start:'Start now: introduce yourself and ask how I feel about my job.',empty:'Your new colleague will say hello.',ph:'Answer in short, complete sentences…',fbFocus:'Focus on the teacher\'s feedback points: "I feel" (not "I feeling"), "the company is", "has" for possession, "on Friday", "on the 18th of June", "for hours", "jobs", and "finish work".'}
+   ]}
+  ],
+  tracks:[{id:'if-fix',title:'My corrected sentences',desc:'The right versions from your initial feedback.',lines:["I feel happy.","The company is better than any other company.","America has freedom.","Politicians gain money.","My father is above fifty.","There are a lot of jobs here.","I don't work on Friday.","I worked for hours.","I studied English for months.","My birthday is on the eighteenth of June.","I finish work at five."].map(t=>({t}))}]
+});
+
+/* =====================================================================
    A1 PLAN — 28 days, one rule a day: rule, fix the mistakes, words,
    speaking, then a check that brings back earlier days and weak words
    ===================================================================== */
@@ -8101,7 +8368,7 @@ const A1=(()=>{
   /* ---------- home banner ---------- */
   function banner(){
     const c=current(),D=DAYS[c],n=doneCount(),due=dueKeys().length,sk=streak(),started=!!S.d[c];
-    return `<div><span class="mono kick">Level 6 · A1 plan</span><h2>Day ${c+1}: ${esc(D.t)}</h2><p>About 30 minutes a day. Learn one rule, fix 3 mistakes, learn new words, speak, then check what you remember.</p>
+    return `<div><span class="mono kick">Level 2 · A1 plan</span><h2>Day ${c+1}: ${esc(D.t)}</h2><p>About 30 minutes a day. Learn one rule, fix 3 mistakes, learn new words, speak, then check what you remember.</p>
       <div class="c-row a1-bn-cta"><span class="btn primary cta">${started?'Continue':'Start'} Day ${c+1}${icon('right')}</span>${due?`<span class="hint"><b>${due}</b> ${due===1?'word':'words'} to review</span>`:''}</div></div>
       <div class="a1-bn-r">${mini()}
       <div class="a1-bn-n"><span><b>${n}</b>/ 28 days</span><span><b>${Object.keys(S.words).length}</b>words</span><span><b>${sk}</b>${sk===1?'day':'days'} in a row</span></div></div>`;
@@ -8168,7 +8435,7 @@ function hwRender(){
   const groups=[['A1 plan','A1 plan · one report a week'],['Exam','Exams'],['Workbook','Workbook pages'],['Assignment','Assignments from the lessons']];
   box.innerHTML=groups.map(([k,h])=>{const us=HW.filter(u=>u.kind===k);if(!us.length)return '';
     return `<h2 class="hw-gh">${h}</h2><div class="hw-grid">${us.map(u=>{const rep=u.report(),st=hwStats(rep),sub=HWS.subs[u.id],ss=hwState(u,rep),busy=!!HWS.busy[u.id];
-      return `<article class="hw-card t-${u.lessonKey}"><div class="hw-top"><span class="mono" style="color:var(--mark)">${esc([WHERE[u.lessonKey]&&WHERE[u.lessonKey].label,u.kind==='Assignment'?u.lesson:u.kind].filter(Boolean).join(' · '))}</span><span class="hw-chip ${ss.k}">${esc(ss.t)}</span></div>
+      return `<article class="hw-card t-${u.lessonKey}"><div class="hw-top"><span class="mono" style="color:var(--mark)">${esc([WHERE[u.lessonKey]&&WHERE[u.lessonKey].lv.name+' · '+WHERE[u.lessonKey].label,u.kind==='Assignment'?u.lesson:u.kind].filter(Boolean).join(' · '))}</span><span class="hw-chip ${ss.k}">${esc(ss.t)}</span></div>
         <h3>${esc(u.kind==='Assignment'?u.title.replace(u.lesson+' · ',''):u.title)}</h3>
         <div class="hw-meta"><span><b>${st.a}</b> / ${st.n} answered</span>${st.sc&&(u.kind!=='Exam'||(sub&&sub.status==='reviewed'))?`<span><b>${st.ok}</b> / ${st.sc} correct</span>`:''}${sub&&sub.submittedAt?`<span>Sent ${esc(hwDate(sub.submittedAt))}</span>`:''}</div>
         <div class="bar"><span style="--p:${st.n?st.a/st.n:0}"></span></div>
@@ -8191,25 +8458,25 @@ hwLoad().then(hwBanner);
 /* =====================================================================
    HOME + ROUTER
    ===================================================================== */
-const ROUTES={'':'home','home':'home','health-illness':'health','last-weekend':'weekend','can-cant':'can','noisy-neighbours':'nn','seasons-weather':'wx','arriving-in-london':'ld','open-your-books':'oy','workbook':'hw','writers-room':'wr','workbook-2a':'w2','how-much':'pr','mid-feedback':'mf','stars-and-stripes':'sb','feelings':'fe','workbook-2b':'w3','exam-1':'ex1','exam-2':'ex2','homework':'homework','shadowing':'studio','a1-plan':'a1','a1-rules':'a1','a1-words':'a1','level-5':'home','level-6':'home','earlier-lessons':'home'};
+const ROUTES={'':'home','home':'home','health-illness':'health','last-weekend':'weekend','can-cant':'can','noisy-neighbours':'nn','seasons-weather':'wx','arriving-in-london':'ld','open-your-books':'oy','workbook':'hw','writers-room':'wr','workbook-2a':'w2','how-much':'pr','mid-feedback':'mf','stars-and-stripes':'sb','feelings':'fe','workbook-2b':'w3','exam-1':'ex1','exam-2':'ex2','homework':'homework','shadowing':'studio','a1-plan':'a1','a1-rules':'a1','a1-words':'a1','level-5':'home','level-6':'home','earlier-lessons':'home','level-1':'home','level-2':'home','things-i-love':'us','workbook-3a':'w4','initial-feedback':'if'};
 for(let i=1;i<=28;i++)ROUTES['a1-day-'+i]='a1';
 /* the course map: levels → lectures → lessons, workbook pages and exams */
 const LEVELS=[
-  {id:'level-5',name:'Level 5',sub:'Units 1–2 · your class',tk:'Units 1–2',th:'Your class now',lead:'Your class lessons in order, lecture by lecture, with the workbook pages and exams for each part.',
+  {id:'level-1',name:'Level 1',sub:'Units 1–2 · previous level',tk:'Units 1–2',th:'Previous level',lead:'Every session from your first level, in order, with the workbook pages, the exams and the extra lessons. Good for review.',
    rows:[{n:1,keys:['oy','hw']},{n:2,keys:['nn']},{n:3,keys:['wx']},{n:4,keys:['ld','pr']},{n:5,keys:['wr','w2']},
-     {mile:'Mid-course check',keys:['mf','ex1']},{n:6,keys:['sb']},{n:7,keys:['fe','w3']},{mile:'End of Unit 2',keys:['ex2']}]},
-  {id:'level-6',name:'Level 6',sub:'A1 plan · Files 3–4',tk:'A1 plan',th:'28 days · Files 3–4',plan:true,lead:'A 28-day plan for Files 3 and 4: one short lesson a day, with spaced review.'},
-  {id:'earlier-lessons',name:'Earlier lessons',sub:'Before Level 5',tk:'Review',th:'Before Level 5',lead:'Lessons from before Level 5. Open one when you want to review it.',rows:[{keys:['health','weekend','can']}]}
+     {mile:'Mid-course check',keys:['mf','ex1']},{n:6,keys:['sb']},{n:7,keys:['fe','w3']},{mile:'End of Unit 2',keys:['ex2']},{extra:'Extra lessons',keys:['health','weekend','can']}]},
+  {id:'level-2',name:'Level 2',sub:'Units 3–4 · your class now',tk:'Units 3–4',th:'Your class now',now:true,plan:true,lead:'Your new level, lecture by lecture: the class lesson, the workbook pages and your teacher\'s feedback. The 28-day A1 plan for Files 3 and 4 is at the bottom.',
+   rows:[{n:1,keys:['us','w4','if']}]}
 ];
-const KIND={hw:'Workbook',w2:'Workbook',w3:'Workbook',ex1:'Exam',ex2:'Exam',mf:'Feedback'};
-const UNIT={oy:'Unit 1C',hw:'Units 1A–1C',nn:'Present continuous',wx:'Weather and dates',ld:'Practical English',pr:'Numbers and prices',wr:'Unit 2A',w2:'Unit 2A',mf:'Your teacher',ex1:'Units 1A–2A',sb:'Unit 2B',fe:'Unit 2C',w3:'Units 2B–2C',ex2:'Units 2B–2C',health:'Vocabulary',weekend:'Past simple',can:"can / can't"};
+const KIND={hw:'Workbook',w2:'Workbook',w3:'Workbook',w4:'Workbook',ex1:'Exam',ex2:'Exam',mf:'Feedback',if:'Feedback'};
+const UNIT={us:'Unit 3A',w4:'Unit 3A · pages 17–18',if:'Your teacher',oy:'Unit 1C',hw:'Units 1A–1C',nn:'Present continuous',wx:'Weather and dates',ld:'Practical English',pr:'Numbers and prices',wr:'Unit 2A',w2:'Unit 2A',mf:'Your teacher',ex1:'Units 1A–2A',sb:'Unit 2B',fe:'Unit 2C',w3:'Units 2B–2C',ex2:'Units 2B–2C',health:'Vocabulary',weekend:'Past simple',can:"can / can't"};
 const WHERE={},SEQ=[];
-LEVELS.forEach(lv=>(lv.rows||[]).forEach(r=>r.keys.forEach(k=>{WHERE[k]={lv,label:r.mile||(r.n?'Lecture '+r.n:'')};SEQ.push(k);})));
+LEVELS.forEach(lv=>lv.rows.forEach(r=>r.keys.forEach(k=>{WHERE[k]={lv,label:r.mile||r.extra||'Lecture '+r.n};SEQ.push(k);})));
 const prog=k=>Math.min(1,LESSONS[k].progress()||0);
 const isDone=k=>prog(k)>=.999;
 const avg=ks=>ks.length?ks.reduce((n,k)=>n+prog(k),0)/ks.length:0;
-const lvKeys=lv=>(lv.rows||[]).flatMap(r=>r.keys);
-const lvProg=lv=>lv.plan?A1.today().done/28:avg(lvKeys(lv));
+const lvKeys=lv=>lv.rows.flatMap(r=>r.keys);
+const lvProg=lv=>{const ks=lvKeys(lv);return lv.plan?(ks.reduce((n,k)=>n+prog(k),0)+A1.today().done/28)/(ks.length+1):avg(ks);};
 const deEnt=s=>String(s).replace(/&amp;/g,'&');
 function hwCounts(){let toSend=0,fresh=0,waiting=0;HW.forEach(u=>{const rep=u.report(),st=hwStats(rep),ss=hwState(u,rep);if((ss.k==='new'&&st.a)||ss.changed)toSend++;if(ss.k==='fresh')fresh++;if(ss.k==='sent'&&!ss.changed)waiting++;});return {toSend,fresh,waiting};}
 function hwChip(k){
@@ -8230,19 +8497,18 @@ function itemRow(k){
     <span class="it-s">${hwChip(k)}<span class="prog"><span class="bar"><span style="--p:${p}"></span></span><span class="n">${pc}%</span></span><span class="it-go">${pc>=100?'Review':pc>0?'Continue':'Start'}${icon('right')}</span></span></a>`;
 }
 function levelHTML(lv){
-  const ks=lvKeys(lv),done=ks.filter(isDone).length,head=`<header class="lv-head"><div><span class="mono">${esc(lv.sub)}</span><h2>${esc(lv.name)}</h2><p class="hint">${esc(lv.lead)}</p></div>`;
-  if(lv.plan)return `${head}</header>${A1.levelHTML()}`;
-  const nowAt=lv.rows.findIndex(r=>avg(r.keys)<.999);
+  const ks=lvKeys(lv),done=ks.filter(isDone).length,lect=lv.rows.filter(r=>r.n).length;
+  const nowAt=lv.rows.findIndex(r=>!r.extra&&avg(r.keys)<.999);
   const rows=lv.rows.map((r,i)=>{
-    const a=avg(r.keys),ok=a>=.999,lab=r.mile||(r.n?'Lecture '+r.n:'');
-    if(!lab)return `<div class="lec-items">${r.keys.map(itemRow).join('')}</div>`;
-    return `<li class="lec${r.mile?' mile':''}${ok?' done':''}${i===nowAt?' now':''}" id="${lv.id}-${r.n||'m'+i}">
-      <span class="lec-dot" aria-hidden="true">${ok?icon('check'):r.mile?icon('flag'):r.n}</span>
+    const a=avg(r.keys),ok=a>=.999,lab=r.mile||r.extra||'Lecture '+r.n;
+    return `<li class="lec${r.mile?' mile':''}${r.extra?' extra':''}${ok?' done':''}${i===nowAt?' now':''}" id="${lv.id}-${r.n||'m'+i}">
+      <span class="lec-dot" aria-hidden="true">${ok?icon('check'):r.mile?icon('flag'):r.extra?'+':r.n}</span>
       <div class="lec-body"><div class="lec-h"><h3>${esc(lab)}</h3><span class="hint">${r.keys.length} ${r.keys.length===1?'part':'parts'} · ${Math.round(a*100)}%</span>${i===nowAt?'<span class="lec-now">Up next</span>':''}</div>
       <div class="lec-items">${r.keys.map(itemRow).join('')}</div></div></li>`;
   }).join('');
-  const lect=lv.rows.filter(r=>r.n).length;
-  return `${head}<div class="lv-nums">${lect?`<span><b>${lect}</b>lectures</span>`:''}<span><b>${done} / ${ks.length}</b>finished</span><span><b>${Math.round(avg(ks)*100)}%</b>done</span></div></header>${lv.rows.some(r=>r.n||r.mile)?`<ol class="lec-list">${rows}</ol>`:rows}`;
+  return `<header class="lv-head"><div><span class="mono">${esc(lv.sub)}</span><h2>${esc(lv.name)}</h2><p class="hint">${esc(lv.lead)}</p></div>
+    <div class="lv-nums"><span><b>${lect}</b>${lect===1?'lecture':'lectures'}</span><span><b>${done} / ${ks.length}</b>finished</span><span><b>${Math.round(avg(ks)*100)}%</b>done</span></div></header>
+    <ol class="lec-list">${rows}</ol>${lv.plan?`<div class="lv-plan"><div class="lv-plan-h"><span class="mono">Daily practice · Files 3 and 4</span><h3>28-day A1 plan</h3></div>${A1.levelHTML()}</div>`:''}`;
 }
 function paintLevels(){
   $('#lv-tabs').innerHTML=LEVELS.map(lv=>{const p=lvProg(lv),on=lv.id===G.lv;
@@ -8251,9 +8517,9 @@ function paintLevels(){
   const el=$('#lv-panel');el.setAttribute('aria-labelledby','tab-'+lv.id);el.innerHTML=levelHTML(lv);
 }
 function resumeHTML(){
-  if(G.lastL==='a1'){const a=A1.today();return `<a class="resume t-a1" href="${a.href}"><span class="rs-img">${A1.mini()}</span><span class="rs-body"><span class="mono">Continue where you left off</span><span class="rs-where">Level 6 · A1 plan · Day ${a.day} of 28</span><b>${esc(a.title)}</b><span class="btn primary">${a.started?'Continue':'Start'} Day ${a.day}${icon('right')}</span></span></a>`;}
+  if(G.lastL==='a1'){const a=A1.today();return `<a class="resume t-a1" href="${a.href}"><span class="rs-img">${A1.mini()}</span><span class="rs-body"><span class="mono">Continue where you left off</span><span class="rs-where">Level 2 · A1 plan · Day ${a.day} of 28</span><b>${esc(a.title)}</b><span class="btn primary">${a.started?'Continue':'Start'} Day ${a.day}${icon('right')}</span></span></a>`;}
   let k=G.lastL,lead='Continue where you left off';
-  if(!WHERE[k]||isDone(k)){k=SEQ.find(x=>!isDone(x))||SEQ[0];lead='Up next';}
+  if(!WHERE[k]||isDone(k)){const cur=LEVELS.find(l=>l.now)||LEVELS[0];k=lvKeys(cur).find(x=>!isDone(x))||SEQ.find(x=>!isDone(x))||SEQ[0];lead='Up next';}
   const L=LESSONS[k],w=WHERE[k],p=prog(k),pc=Math.round(p*100);
   return `<a class="resume t-${k}" href="#${L.hash}"><span class="rs-img"><img src="${L.card.img}" alt=""></span><span class="rs-body"><span class="mono">${lead}</span><span class="rs-where">${esc(w.lv.name)}${w.label?' · '+esc(w.label):''} · ${KIND[k]||'Lesson'}</span><b>${esc(L.title)}</b><span class="prog"><span class="bar"><span style="--p:${p}"></span></span><span class="n">${pc}%</span></span><span class="btn primary">${pc>0?'Continue':'Start'}${icon('right')}</span></span></a>`;
 }
@@ -8270,11 +8536,11 @@ function paintNav(r){
   $$('.mainnav a').forEach(a=>{if(a.dataset.nav===sec)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
   const b=$('#nav-hw');if(b){const n=hwCounts().fresh;b.hidden=!n;b.textContent=n;}
 }
-const LV_ROUTE={'level-5':'level-5','level-6':'level-6','earlier-lessons':'earlier-lessons'};
+const LV_ROUTE={'level-1':'level-1','level-2':'level-2','level-5':'level-1','level-6':'level-2','earlier-lessons':'level-1'};
 function renderHome(){
   const h=(location.hash||'').slice(1);
-  if(LV_ROUTE[h])G.lv=h;
-  if(!LEVELS.some(l=>l.id===G.lv))G.lv='level-5';
+  if(LV_ROUTE[h])G.lv=LV_ROUTE[h];
+  if(!LEVELS.some(l=>l.id===G.lv))G.lv=(LEVELS.find(l=>l.now)||LEVELS[0]).id;
   $('#home-resume').innerHTML=resumeHTML();
   paintToday();paintLevels();
   if(LV_ROUTE[h])requestAnimationFrame(()=>$('#lv-tabs').scrollIntoView({block:'start'}));
@@ -8295,7 +8561,7 @@ SEQ.forEach((k,i)=>{
     +(same(n)?`<a class="next" href="#${LESSONS[n].hash}"><span class="mono">Next · ${esc(lab(n))}${icon('right')}</span><b>${esc(LESSONS[n].title)}</b></a>`:`<a class="next" href="#${w.lv.id}"><span class="mono">${esc(w.lv.name)}${icon('right')}</span><b>Back to all lectures</b></a>`);
   v.appendChild(ln);
 });
-{const b=$('#v-a1 > .back');if(b){const nav=document.createElement('nav');nav.className='crumbs';nav.setAttribute('aria-label','You are here');nav.innerHTML=`<a href="#home">${icon('left')}Home</a><span class="sep" aria-hidden="true">/</span><a href="#level-6">Level 6</a><span class="sep" aria-hidden="true">/</span><span class="here">A1 plan</span>`;b.replaceWith(nav);}}
+{const b=$('#v-a1 > .back');if(b){const nav=document.createElement('nav');nav.className='crumbs';nav.setAttribute('aria-label','You are here');nav.innerHTML=`<a href="#home">${icon('left')}Home</a><span class="sep" aria-hidden="true">/</span><a href="#level-2">Level 2</a><span class="sep" aria-hidden="true">/</span><span class="here">A1 plan</span>`;b.replaceWith(nav);}}
 
 /* settings: voice speed, Arabic hints, feedback status */
 {const btn=$('#set-btn'),pop=$('#set-pop');
